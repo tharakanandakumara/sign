@@ -188,32 +188,49 @@
       <script>
          $("#studentreg").submit(function(event) {
          
-           /* stop form from submitting normally */
-           event.preventDefault();
-             var datatopost=JSON.stringify($(this).serializeJSON());
-             console.log(datatopost);
-                $.ajax({
-                     type: "POST",
-                     url: "http://ec2-3-88-20-111.compute-1.amazonaws.com/public/students",
-                     data: datatopost,
-                    dataType: 'json',
-                    contentType: "application/json",
-                     success: function(msg) {
-                         alert(msg);
-         
-                     },
-                     error: function(msg) {
-                         alert(msg);
-                     },
-              
-  
-                 });
-         
-         
+            /* stop form from submitting normally */
+            event.preventDefault();
+
+            /* function to create JSON */
+            $.fn.serializeObject = function() {
+               var o = {};
+               var a = this.serializeArray();
+               $.each(a, function() {
+                  if (o[this.name] !== undefined) {
+                        if (!o[this.name].push) {
+                           o[this.name] = [o[this.name]];
+                        }
+                        o[this.name].push(this.value || '');
+                  } else {
+                        o[this.name] = this.value || '';
+                  }
+               });
+               return o;
+            };
+
+            var data = JSON.stringify($('#studentreg').serializeObject());
+            console.log("data: "+data)
+
+            $.ajax({
+               type: "POST",
+               url: "http://ec2-3-88-20-111.compute-1.amazonaws.com/public/students",
+               data: data,
+               dataType: 'json',
+               contentType: 'application/json;charset=UTF-8',
+               success: function(msg) {
+                  console.log("Success: ",msg)
+                  alert(msg);
+               },
+               error: function(err) {
+                  console.log("Error: ",err)
+                  alert(err);
+               },
+            });
          });
-          $('#checkUser').click(function () {
-	$('#basicExampleModal').modal({show : true});
-});
+         
+         $('#checkUser').click(function () {
+            $('#basicExampleModal').modal({show : true});
+         });
          
       </script>
    </head>
