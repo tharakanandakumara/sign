@@ -3,8 +3,10 @@
    <head>
       <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
       <link href="style.css" rel="stylesheet" id="bootstrap-css">
+       <script src="js/jquerymin.js"></script>
       <script src="js/bootstrap.min.js"></script>
-      <script src="js/jquerymin.js"></script>
+      
+       <script type="text/javascript" src="js/jquery.serializejson.min.js"></script>
       <!------ Include the above in your HEAD tag ---------->
       <div class="container register">
          <div class="row">
@@ -12,6 +14,12 @@
                <img src="src/logo.jpg" alt=""/>
                <h3>Welcome</h3>
                <p>Joseph Vaz College - Student Registration!</p>
+                            <button id="checkUser" type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal">
+  Check Student
+</button>
+
+                <input type="submit" class="btnRegister"  value="Update Student"/>
+
             </div>
             <div class="col-md-9 register-right">
                <form id="studentreg" data-toggle="validator" role="form">
@@ -151,29 +159,61 @@
             </div>
          </div>
       </div>
+                       <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Enter Student Index Number</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <form id="studentreg" data-toggle="validator" role="form">
+      <div class="modal-body">
+            
+        <div class="form-group">
+                                 <input name ="indexNumber" type="text" class="form-control" placeholder="Index Number" value="" required>
+                              </div>
+         
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Enter</button>
+      </div>
+             </form>
+    </div>
+  </div>
+</div>
       <script>
          $("#studentreg").submit(function(event) {
          
            /* stop form from submitting normally */
            event.preventDefault();
-             var datatopost=JSON.stringify($(this).serializeArray());
-             console.log(JSON.stringify((datatopost)));
+             var datatopost=JSON.stringify($(this).serializeJSON());
+             console.log(datatopost);
                 $.ajax({
                      type: "POST",
                      url: "http://ec2-3-88-20-111.compute-1.amazonaws.com/public/students",
                      data: datatopost,
                     dataType: 'json',
+                    contentType: "application/json",
                      success: function(msg) {
                          alert(msg);
          
                      },
-                     error: function() {
-                         alert("ajax error");
-                     }
+                     error: function(msg) {
+                         alert(msg);
+                     },
+              
+  
                  });
          
          
          });
+          $('#checkUser').click(function () {
+	$('#basicExampleModal').modal({show : true});
+});
          
       </script>
    </head>
