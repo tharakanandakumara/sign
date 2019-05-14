@@ -310,8 +310,9 @@
                 success: function(response) {
                     if (response.indexNo != null) {
                         $(".notify_panel2").notify("User Added", "success");
+                        $('#studentreg')[0].reset();
                     }
-                    console.log("Success: ", msg)
+                    
 
                 },
                 error: function(err) {
