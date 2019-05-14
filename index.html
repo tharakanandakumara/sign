@@ -18,8 +18,10 @@
                 <button id="checkUser" type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal">
                     Check Student
                 </button>
-                
-                <input type="submit" class="btnRegister" value="Update Student" />
+                <button id="updateUser" type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicUpdateeModal">
+                    Update Student
+                </button>
+              
 
             </div>
             <div class="col-md-9 register-right">
@@ -336,7 +338,7 @@
             e.preventDefault();
             $.ajax({
                 type: "GET",
-                url: "localhost:3000/public/students/" + cindex,
+                url: "http://localhost:3000/public/students/" + cindex,
                 data: {
 
                 },
