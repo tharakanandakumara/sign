@@ -211,6 +211,10 @@ header("location: login.html");
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
+                    <div class="form-group">
+                        <input id="studIndex" name="indexNo" type="number" class="form-control" placeholder="Index No *" value="">
+                    </div>
+                    <button id="indexGrabber" type="button" class="btn btn-secondary" data-dismiss="modal">Populate</button>
                 </div>
                 <div class="notify_panel"></div>
                 <form id="studentupdate" data-toggle="validator" role="form">
@@ -223,10 +227,7 @@ header("location: login.html");
                                 <div class="row register-form">
 
                                     <div class="col-md-12">
-                                        <div class="form-group">
-                                            <input id="studIndex" name="indexNo" type="number" class="form-control" placeholder="Index No *" value="">
-                                        </div>
-                                        <button id="indexGrabber" type="button" class="btn btn-secondary" data-dismiss="modal">Populate</button>
+
                                     </div>
                                     <br>
                                     <div class="col-md-6">
@@ -285,7 +286,7 @@ header("location: login.html");
                                                 <div class="form-group">
                                                     <input name="section" type="text" class="form-control" placeholder="Section/Class" value="" required>
                                                 </div>
-                                               
+
                                             </div>
 
                                         </div>
@@ -332,8 +333,8 @@ header("location: login.html");
     <script>
         /* stop form from submitting normally */
         var web_token = "<?php echo $_SESSION['token'] ?>";
-        auth="BEARER " +web_token;
-        
+        auth = "BEARER " + web_token;
+
         // POST Request to add User
         $("#studentreg").submit(function(event) {
             event.preventDefault();
@@ -361,7 +362,7 @@ header("location: login.html");
             $.ajax({
                 type: "POST",
                 url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/public/students",
-               
+
                 data: data,
                 dataType: 'json',
                 contentType: 'application/json;charset=UTF-8',
@@ -370,7 +371,7 @@ header("location: login.html");
                         notifyMe('.notify_panel3', 'User added', '1');
                         $('#studentreg')[0].reset();
                     }
-                    
+
 
                 },
                 error: function(err) {
@@ -393,7 +394,7 @@ header("location: login.html");
                 show: true
             });
         });
-        
+
         // PUT Request to update User == Still implementing
         $('#update-form-submit').on('click', function(e) {
 
@@ -412,7 +413,7 @@ header("location: login.html");
                 });
                 return o;
             };
-            var data = JSON.stringify($('#studentreg').serializeObject());
+            var data = JSON.stringify($('#update-form-submit').serializeObject());
             console.log("data: " + data)
 
             var sindex = $("#studIndex").val();
@@ -421,7 +422,7 @@ header("location: login.html");
 
             $.ajax({
                 type: "PUT",
-                url: "http://localhost:3000/public/students/"+sindex,
+                url: "http://localhost:3000/public/students/" + sindex,
                 data: data,
                 dataType: 'json',
                 contentType: 'application/json;charset=UTF-8',
@@ -430,7 +431,7 @@ header("location: login.html");
                     if (response.indexNo != null) {
                         notifyMe('.notify_panel', 'User added', '1');
                     }
-                    
+
 
                 },
                 error: function(err) {
@@ -440,8 +441,8 @@ header("location: login.html");
             });
             return false;
         });
-        
-         // Get Request to validate index availability for Update User Modal
+
+        // Get Request to validate index availability for Update User Modal
         $('#indexGrabber').on('click', function(e) {
 
             var sindex = $("#studIndex").val();
@@ -449,7 +450,7 @@ header("location: login.html");
             e.preventDefault();
             $.ajax({
                 type: "GET",
-              
+
                 url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/public/students/" + sindex,
                 data: {
 
@@ -476,16 +477,16 @@ header("location: login.html");
             });
             return false;
         });
-        
+
         // Get Request to validate index availability for Check User Modal
         $('#tag-form-submit').on('click', function(e) {
-            
+
             console.log(auth);
             var cindex = $("#checkIndexNumber").val();
             e.preventDefault();
             $.ajax({
                 type: "GET",
-               
+
                 url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/public/students/" + cindex,
                 data: {
 
@@ -505,8 +506,8 @@ header("location: login.html");
             });
             return false;
         });
-        
-        
+
+
         // Populate update modal
         function populate(frm, data) {
             $.each(data, function(key, value) {
