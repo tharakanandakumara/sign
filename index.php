@@ -487,11 +487,8 @@ header("location: login.html");
             e.preventDefault();
             $.ajax({
                 type: "GET",
-                headers: {
-                    'Authorization': auth,
-                    
-                },
-                url: "http://localhost:3000/protected/students/" + cindex,
+               
+                url: "http://localhost:3000/public/students/" + cindex,
                 data: {
 
                 },
