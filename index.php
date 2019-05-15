@@ -370,7 +370,7 @@ header("location: login.html");
                         notifyMe('.notify_panel3', 'User added', '1');
                         $('#studentreg')[0].reset();
                     }
-                    console.log("Success: ", msg)
+                    
 
                 },
                 error: function(err) {
