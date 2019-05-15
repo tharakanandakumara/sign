@@ -472,14 +472,14 @@ header("location: login.html");
             return false;
         });
         $('#tag-form-submit').on('click', function(e) {
+             e.preventDefault();
             auth="BEARER " +web_token;
             console.log(auth);
             var cindex = $("#checkIndexNumber").val();
-            e.preventDefault();
+           
             $.ajax({
                 type: "GET",
-               
-                url: "http://localhost:3000/public/students/" + cindex,
+                url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/public/students/" + cindex,
                 data: {
 
                 },
