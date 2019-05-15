@@ -285,6 +285,9 @@ header("location: login.html");
                                                 <div class="form-group">
                                                     <input name="section" type="text" class="form-control" placeholder="Section/Class" value="" required>
                                                 </div>
+                                                <div class="form-group">
+                                                    <input name="class" type="text" class="form-control" placeholder="Section/Class" value="" required>
+                                                </div>
                                             </div>
 
                                         </div>
