@@ -482,7 +482,7 @@ header("location: login.html");
                     'Authorization': auth,
                     
                 },
-                url: "http://localhost:3000/protected/students/" + cindex,
+                url: "http://localhost:3000/public/students/" + cindex,
                 data: {
 
                 },
