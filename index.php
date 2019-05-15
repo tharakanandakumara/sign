@@ -479,7 +479,7 @@ header("location: login.html");
                 headers: {
                     'Authorization': web_token,
                 },
-                url: "http://localhost:3000/public/students/" + cindex,
+                url: "http://localhost:3000/protected/students/" + cindex,
                 data: {
 
                 },
