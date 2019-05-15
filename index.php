@@ -208,13 +208,16 @@ header("location: login.html");
                 <div class="modal-header">
 
                     <h5 class="modal-title" id="exampleModalLabel">Update Student</h5>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input id="studIndex" name="indexNo" type="number" class="form-control" placeholder="Index No *" value="">
+                        </div>
+                        <button id="indexGrabber" type="button" class="btn btn-secondary" data-dismiss="modal">Populate</button>
+                    </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <div class="form-group">
-                        <input id="studIndex" name="indexNo" type="number" class="form-control" placeholder="Index No *" value="">
-                    </div>
-                    <button id="indexGrabber" type="button" class="btn btn-secondary" data-dismiss="modal">Populate</button>
+
                 </div>
                 <div class="notify_panel"></div>
                 <form id="studentupdate" data-toggle="validator" role="form">
@@ -226,9 +229,7 @@ header("location: login.html");
 
                                 <div class="row register-form">
 
-                                    <div class="col-md-12">
 
-                                    </div>
                                     <br>
                                     <div class="col-md-6">
 
