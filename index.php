@@ -208,9 +208,16 @@ header("location: login.html");
                 <div class="modal-header">
 
                     <h5 class="modal-title" id="exampleModalLabel">Update Student</h5>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input id="studIndex" name="indexNo" type="number" class="form-control" placeholder="Index No *" value="">
+                        </div>
+                        <button id="indexGrabber" type="button" class="btn btn-secondary" data-dismiss="modal">Populate</button>
+                    </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
+
                 </div>
                 <div class="notify_panel"></div>
                 <form id="studentupdate" data-toggle="validator" role="form">
@@ -222,12 +229,7 @@ header("location: login.html");
 
                                 <div class="row register-form">
 
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <input id="studIndex" name="indexNo" type="number" class="form-control" placeholder="Index No *" value="">
-                                        </div>
-                                        <button id="indexGrabber" type="button" class="btn btn-secondary" data-dismiss="modal">Populate</button>
-                                    </div>
+
                                     <br>
                                     <div class="col-md-6">
 
@@ -285,7 +287,7 @@ header("location: login.html");
                                                 <div class="form-group">
                                                     <input name="section" type="text" class="form-control" placeholder="Section/Class" value="" required>
                                                 </div>
-                                               
+
                                             </div>
 
                                         </div>
@@ -323,7 +325,7 @@ header("location: login.html");
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button id="update-form-submit" type="button" class="btn btn-primary">Enter</button>
+                        <button id="update-form-submit" type="button" class="btn btn-success">Enter</button>
                     </div>
                 </form>
             </div>
@@ -391,7 +393,7 @@ header("location: login.html");
                 show: true
             });
         });
-        
+
         // PUT Request to update User == Still implementing
         $('#update-form-submit').on('click', function(e) {
 
@@ -410,7 +412,7 @@ header("location: login.html");
                 });
                 return o;
             };
-            var data = JSON.stringify($('#studentreg').serializeObject());
+            var data = JSON.stringify($('#update-form-submit').serializeObject());
             console.log("data: " + data)
 
             var sindex = $("#studIndex").val();
@@ -419,7 +421,7 @@ header("location: login.html");
 
             $.ajax({
                 type: "PUT",
-                url: "http://127.0.0.1:3000/protected/students",
+                url: "http://127.0.0.1:3000/protected/students/" + sindex,
                 data: data,
                 dataType: 'json',
                 contentType: 'application/json;charset=UTF-8',
@@ -427,10 +429,11 @@ header("location: login.html");
                     Authorization: auth
                 },
                 success: function(response) {
+                    console.log("Success: ", response);
                     if (response.indexNo != null) {
                         notifyMe('.notify_panel', 'User added', '1');
                     }
-                    console.log("Success: ", msg);
+
 
                 },
                 error: function(err) {
@@ -440,8 +443,8 @@ header("location: login.html");
             });
             return false;
         });
-        
-         // Get Request to validate index availability for Update User Modal
+
+        // Get Request to validate index availability for Update User Modal
         $('#indexGrabber').on('click', function(e) {
 
             var sindex = $("#studIndex").val();
@@ -477,10 +480,10 @@ header("location: login.html");
             });
             return false;
         });
-        
+
         // Get Request to validate index availability for Check User Modal
         $('#tag-form-submit').on('click', function(e) {
-            
+
             console.log(auth);
             var cindex = $("#checkIndexNumber").val();
             e.preventDefault();
@@ -507,8 +510,8 @@ header("location: login.html");
             });
             return false;
         });
-        
-        
+
+
         // Populate update modal
         function populate(frm, data) {
             $.each(data, function(key, value) {
