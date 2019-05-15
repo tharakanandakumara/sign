@@ -440,15 +440,14 @@ header("location: login.html");
             return false;
         });
         
-         // Get Request to validate index availability for Update User Modal
+         // Get Request to validate index availability for Update User Modal - Working in Localhost
         $('#indexGrabber').on('click', function(e) {
 
             var sindex = $("#studIndex").val();
             console.log(sindex);
             e.preventDefault();
             $.ajax({
-                type: "GET",
-              
+                type: "GET",  
                 url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/public/students/" + sindex,
                 data: {
 
