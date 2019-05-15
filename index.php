@@ -477,7 +477,7 @@ header("location: login.html");
             $.ajax({
                 type: "GET",
                 headers: {
-                    'Authorization': web_token,
+                    'Authorization': "BEARER " +web_token,
                 },
                 url: "http://localhost:3000/protected/students/" + cindex,
                 data: {
