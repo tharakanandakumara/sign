@@ -23,7 +23,7 @@ header("location: login.html");
     <div class="container register">
         <div class="row">
             <div class="col-md-3 register-left">
-                <img src="src/logo.jpg" alt="" />
+                <img src="src/Logo.jpg" alt="" />
                 <h3>Welcome</h3>
                 <p>Joseph Vaz College - Student Registration!</p>
                 <button id="checkUser" type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal">
