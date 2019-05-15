@@ -445,7 +445,7 @@ header("location: login.html");
                 headers: {
                     'Authorization': web_token,
                 },
-                url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/public/students/" + sindex,
+                url: "http://localhost:3000/public/students/" + sindex,
                 data: {
 
                 },
