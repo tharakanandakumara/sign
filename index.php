@@ -472,13 +472,15 @@ header("location: login.html");
             return false;
         });
         $('#tag-form-submit').on('click', function(e) {
+            auth="BEARER " +web_token;
+            console.log(auth);
             var cindex = $("#checkIndexNumber").val();
             e.preventDefault();
             $.ajax({
                 type: "GET",
                 headers: {
-                    'Authorization': "BEARER " +web_token,
-                    'Content-Type':'text/plain'
+                    'Authorization': auth,
+                    
                 },
                 url: "http://localhost:3000/protected/students/" + cindex,
                 data: {
