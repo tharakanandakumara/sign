@@ -25,7 +25,7 @@ header("location: login.html");
             <div class="col-md-3 register-left">
                 <img src="src/Logo.jpg" alt="" />
                 <h3>Welcome</h3>
-                <p>Joseph Vaz College - Student Registration!</p>
+                <p>Joseph Vaz College - Student Registration</p>
                 <button id="checkUser" type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal">
                     Check Student
                 </button>
@@ -60,7 +60,7 @@ header("location: login.html");
                                         <input name="DOB" id="dob " type="date" class="form-control" value="" required>
                                     </div>
                                     <div class="form-group">
-                                        <input name="address" type="text" class="form-control" placeholder="Adress *" value="" required>
+                                        <input name="address" type="text" class="form-control" placeholder="Address *" value="" required>
                                     </div>
                                     <div class="form-group">
                                         <div class="maxl">
@@ -116,7 +116,7 @@ header("location: login.html");
                                         <input name="guardianName" type="text" class="form-control" placeholder="Guardian Name" value="">
                                     </div>
                                     <div class="form-group">
-                                        <input name="guardianAddress" type="text" class="form-control" placeholder="Guardian Adress" value="">
+                                        <input name="guardianAddress" type="text" class="form-control" placeholder="Guardian Address" value="">
                                     </div>
                                     <div class="form-group">
                                         <input name="guardianRelationship" type="text" class="form-control" placeholder="Guardian Relationship" value="">
@@ -246,7 +246,7 @@ header("location: login.html");
                                             <input name="DOB" id="dob " type="date" class="form-control" value="">
                                         </div>
                                         <div class="form-group">
-                                            <input name="address" type="text" class="form-control" placeholder="Adress *" value="" />
+                                            <input name="address" type="text" class="form-control" placeholder="Address *" value="" />
                                         </div>
                                         <div class="form-group">
                                             <div class="maxl">
@@ -303,7 +303,7 @@ header("location: login.html");
                                             <input name="guardianName" type="text" class="form-control" placeholder="Guardian Name" value="">
                                         </div>
                                         <div class="form-group">
-                                            <input name="guardianAddress" type="text" class="form-control" placeholder="Guardian Adress" value="">
+                                            <input name="guardianAddress" type="text" class="form-control" placeholder="Guardian Address" value="">
                                         </div>
                                         <div class="form-group">
                                             <input name="guardianRelationship" type="text" class="form-control" placeholder="Guardian Relationship" value="">
@@ -332,7 +332,7 @@ header("location: login.html");
     <script>
         /* stop form from submitting normally */
         var web_token = "<?php echo $_SESSION['token'] ?>";
-        auth="BEARER " +web_token;
+        var auth = "BEARER " + web_token;
         
         // POST Request to add User
         $("#studentreg").submit(function(event) {
@@ -356,25 +356,23 @@ header("location: login.html");
             var data = JSON.stringify($('#studentreg').serializeObject());
             console.log("data: " + data)
 
-
-
             $.ajax({
                 type: "POST",
-                url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/public/students",
-               
+                url: "http://127.0.0.1:3000/protected/students",
                 data: data,
                 dataType: 'json',
+                headers: {
+                    Authorization: auth
+                },
                 contentType: 'application/json;charset=UTF-8',
                 success: function(response) {
                     if (response.indexNo != null) {
                         notifyMe('.notify_panel3', 'User added', '1');
                         $('#studentreg')[0].reset();
                     }
-                    console.log("Success: ", msg)
-
+                    console.log("Success: ", response)
                 },
                 error: function(err) {
-
                     notifyMe('.notify_panel3', 'User not added :' + err, '0');
                     alert(err);
                 },
@@ -421,10 +419,13 @@ header("location: login.html");
 
             $.ajax({
                 type: "PUT",
-                url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/public/students",
+                url: "http://127.0.0.1:3000/protected/students",
                 data: data,
                 dataType: 'json',
                 contentType: 'application/json;charset=UTF-8',
+                headers: {
+                    Authorization: auth
+                },
                 success: function(response) {
                     if (response.indexNo != null) {
                         notifyMe('.notify_panel', 'User added', '1');
@@ -448,12 +449,13 @@ header("location: login.html");
             e.preventDefault();
             $.ajax({
                 type: "GET",
-              
-                url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/public/students/" + sindex,
+                url: "http://127.0.0.1:3000/protected/students/" + sindex,
                 data: {
 
                 },
-
+                headers: {
+                    Authorization: auth
+                },
                 success: function(response) {
                     console.log(response)
                     if (response.indexNo != null) {
@@ -484,12 +486,13 @@ header("location: login.html");
             e.preventDefault();
             $.ajax({
                 type: "GET",
-               
-                url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/public/students/" + cindex,
+                url: "http://127.0.0.1:3000/protected/students/" + cindex,
                 data: {
 
                 },
-
+                headers: {
+                    Authorization: auth
+                },
                 success: function(response) {
 
                     if (response.indexNo != null) {

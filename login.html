@@ -152,7 +152,7 @@
             var token = "";
             $.ajax({
                 type: "POST",
-                url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/public/login",
+                url: "http://127.0.0.1:3000/public/login",
                 dataType: 'json',
                 data: data,
                 contentType: 'application/json;charset=UTF-8',
@@ -161,12 +161,9 @@
                 success: function(response) { // Setting Token
 
                     if (response.token) {
+                        console.log("test,", response)
                         ajaxCallBack(response.token);
-                        
-
-
                     } else {
-
                         notifyMe('.notify_panel', 'Invalid Credentials Entered', '0');
                     }
                 },
@@ -190,7 +187,7 @@
                 console.log("Token Available :" + token1);
                 $.ajax({
                     method: "POST",
-                    url: "http://ec2-18-234-208-163.compute-1.amazonaws.com/login.php",
+                    url: "login.php",
                     data: {
                         token: token1
                     },
