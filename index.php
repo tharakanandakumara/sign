@@ -331,6 +331,9 @@ header("location: login.html");
     <script>
         /* stop form from submitting normally */
         var web_token = "<?php echo $_SESSION['token'] ?>";
+        auth="BEARER " +web_token;
+        
+        // POST Request to add User
         $("#studentreg").submit(function(event) {
             event.preventDefault();
 
@@ -356,8 +359,10 @@ header("location: login.html");
 
             $.ajax({
                 type: "POST",
-                url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/public/students",
-               
+                url: "http://localhost:3000/protected/students",
+                headers: {
+                    'Authorization': auth,
+                },
                 data: data,
                 dataType: 'json',
                 contentType: 'application/json;charset=UTF-8',
@@ -389,6 +394,8 @@ header("location: login.html");
                 show: true
             });
         });
+        
+        // PUT Request to update User == Still implementing
         $('#update-form-submit').on('click', function(e) {
 
             $.fn.serializeObject = function() {
@@ -415,7 +422,7 @@ header("location: login.html");
 
             $.ajax({
                 type: "PUT",
-                url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/public/students",
+                url: "http://localhost:3000/public/students",
                 data: data,
                 dataType: 'json',
                 contentType: 'application/json;charset=UTF-8',
@@ -433,6 +440,8 @@ header("location: login.html");
             });
             return false;
         });
+        
+         // Get Request to validate index availability for Update User Modal
         $('#indexGrabber').on('click', function(e) {
 
             var sindex = $("#studIndex").val();
@@ -440,8 +449,10 @@ header("location: login.html");
             e.preventDefault();
             $.ajax({
                 type: "GET",
-                
-                url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/public/students/" + sindex,
+                headers: {
+                    'Authorization': auth,
+                },
+                url: "http://localhost:3000/protected/students/" + sindex,
                 data: {
 
                 },
@@ -467,15 +478,20 @@ header("location: login.html");
             });
             return false;
         });
+        
+        // Get Request to validate index availability for Check User Modal
         $('#tag-form-submit').on('click', function(e) {
-             e.preventDefault();
-            auth="BEARER " +web_token;
+            
             console.log(auth);
             var cindex = $("#checkIndexNumber").val();
-           
+            e.preventDefault();
             $.ajax({
                 type: "GET",
-                url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/public/students/" + cindex,
+                headers: {
+                    'Authorization': auth,
+                    
+                },
+                url: "http://localhost:3000/protected/students/" + cindex,
                 data: {
 
                 },
@@ -494,6 +510,8 @@ header("location: login.html");
             });
             return false;
         });
+        
+        
         // Populate update modal
         function populate(frm, data) {
             $.each(data, function(key, value) {
