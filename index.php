@@ -323,7 +323,7 @@ header("location: login.html");
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button id="update-form-submit" type="button" class="btn btn-primary">Enter</button>
+                        <button id="update-form-submit" type="button" class="btn btn-success">Enter</button>
                     </div>
                 </form>
             </div>
@@ -421,15 +421,16 @@ header("location: login.html");
 
             $.ajax({
                 type: "PUT",
-                url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/public/students",
+                url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/public/students/"+sindex,
                 data: data,
                 dataType: 'json',
                 contentType: 'application/json;charset=UTF-8',
                 success: function(response) {
+                    console.log("Success: ", response);
                     if (response.indexNo != null) {
                         notifyMe('.notify_panel', 'User added', '1');
                     }
-                    console.log("Success: ", msg);
+                    
 
                 },
                 error: function(err) {
