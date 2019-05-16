@@ -360,7 +360,7 @@ header("location: login.html");
 
             $.ajax({
                 type: "POST",
-                url: "http://127.0.0.1:3000/protected/students",
+                url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/protected/students",
                 data: data,
                 dataType: 'json',
                 headers: {
@@ -421,7 +421,7 @@ header("location: login.html");
 
             $.ajax({
                 type: "PUT",
-                url: "http://127.0.0.1:3000/protected/students/" + sindex,
+                url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/protected/students/" + sindex,
                 data: data,
                 dataType: 'json',
                 contentType: 'application/json;charset=UTF-8',
@@ -452,7 +452,7 @@ header("location: login.html");
             e.preventDefault();
             $.ajax({
                 type: "GET",
-                url: "http://127.0.0.1:3000/protected/students/" + sindex,
+                url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/protected/students/" + sindex,
                 data: {
 
                 },
@@ -489,7 +489,7 @@ header("location: login.html");
             e.preventDefault();
             $.ajax({
                 type: "GET",
-                url: "http://127.0.0.1:3000/protected/students/" + cindex,
+                url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/protected/students/" + cindex,
                 data: {
 
                 },
