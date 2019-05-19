@@ -96,7 +96,7 @@ header("location: login.html");
         });
 
         function xltojson() {
-            var url = "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/upload/test.xlsx";
+            var url = "http://ec2-18-234-208-163.compute-1.amazonaws.com/upload/test.xlsx";
             var oReq = new XMLHttpRequest();
             oReq.open("GET", url, true);
             oReq.responseType = "arraybuffer";
