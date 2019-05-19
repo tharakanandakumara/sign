@@ -32,7 +32,7 @@ header("location: login.html");
                 <button id="updateUser" type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicUpdateeModal">
                     Update Student
                 </button>
-                <button id="updateUser" type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicUpdateeModal">
+                <button onclick="window.location.href='/exceluploader.php'" id="uploadexcel" type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicUpdateeModal">
                     Upload Excel
                 </button>
                 <br>

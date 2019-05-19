@@ -48,7 +48,7 @@ header("location: login.html");
                     <div class="form-group">
                         <button id="uploadBtn" type="submit" class="btn btn-primary login-btn btn-block">Upload</button>
                     </div>
-                    <p><strong>Note:</strong> Only .jpg, .jpeg, .gif, .png formats allowed to a max size of 5 MB.</p>
+                    <p><strong>Note:</strong> Only .xlsx file format allowed to a max size of 5 MB.</p>
                 </form>
             </div>
         </div>
@@ -96,7 +96,7 @@ header("location: login.html");
         });
 
         function xltojson() {
-            var url = "http://localhost/jvaz/upload/test.xlsx";
+            var url = "http://localhost/upload/test.xlsx";
             var oReq = new XMLHttpRequest();
             oReq.open("GET", url, true);
             oReq.responseType = "arraybuffer";
