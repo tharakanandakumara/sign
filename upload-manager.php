@@ -37,7 +37,7 @@ else
             } else{
                 
                 move_uploaded_file($_FILES["photo"]["tmp_name"], "http://ec2-18-234-208-163.compute-1.amazonaws.com/upload/" . $newFilename);
-              echo  $_FILES['photo']['error'];
+              //echo  $_FILES['photo']['error'];
                 echo "Your file was uploaded successfully";
             } 
         } else{
