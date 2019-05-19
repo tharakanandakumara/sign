@@ -32,6 +32,10 @@ header("location: login.html");
                 <button id="updateUser" type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicUpdateeModal">
                     Update Student
                 </button>
+                <button id="updateUser" type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicUpdateeModal">
+                    Upload Excel
+                </button>
+                <br>
                 <a id="logoutBtn" href="index.php?logout=1">Log Out</a>
 
             </div>

@@ -118,3 +118,9 @@ a#logoutBtn {
   button#indexGrabber {
             margin-bottom: 50px;
         }
+form#uploader {
+    margin: 80px;
+}
+button#uploadBtn {
+    margin-top: 50px;
+}
