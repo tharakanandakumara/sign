@@ -1,0 +1,131 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>File Upload Form</title>
+    <script src="js/jquerymin.js"></script>
+    <script src="js/xl-min.js"></script>
+</head>
+
+<body>
+    <form id="uploader" caction="upload-manager.php" method="post" enctype="multipart/form-data">
+        <h2>Upload File</h2>
+        <label for="fileSelect">Filename:</label>
+        <input type="file" name="photo" id="fileSelect">
+        <input type="submit" name="submit" value="Upload">
+        <p><strong>Note:</strong> Only .jpg, .jpeg, .gif, .png formats allowed to a max size of 5 MB.</p>
+    </form>
+</body>
+<script>
+    $('#uploader').submit(function(e) {
+        e.preventDefault();
+
+
+        $.ajax({
+            type: "POST",
+            url: "upload-manager.php",
+            contentType: false,
+            cache: false,
+            processData: false,
+            data: new FormData(this),
+            // Update Url
+            success: function(response) { // Setting Token
+
+                if (response) {
+                    if (response == "Your file was uploaded successfully") {
+                        console.log(response);
+                        xltojson();
+                    } else {
+                        console.log(response);
+                        //error notification here
+                    }
+
+                } else {
+                    // notifyMe('.notify_panel', 'Invalid Credentials Entered', '0');
+                }
+            },
+            statusCode: {
+                404: function() {
+                    //notifyMe('.notify_panel', 'Invalid Username', '0');
+                },
+                401: function() {
+                    //notifyMe('.notify_panel', 'Invalid password', '0');
+                }
+            }
+        });
+        //console.log("token : " + token);
+
+        return false;
+    });
+
+    function xltojson() {
+        var url = "http://localhost/charge/upload/test.xlsx";
+        var oReq = new XMLHttpRequest();
+        oReq.open("GET", url, true);
+        oReq.responseType = "arraybuffer";
+
+        oReq.onload = function(e) {
+            var arraybuffer = oReq.response;
+
+            /* convert data to binary string */
+            var data = new Uint8Array(arraybuffer);
+            var arr = new Array();
+            for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+            var bstr = arr.join("");
+
+            /* Call XLSX */
+            var workbook = XLSX.read(bstr, {
+                type: "binary"
+            });
+
+            /* DO SOMETHING WITH workbook HERE */
+            var first_sheet_name = workbook.SheetNames[0];
+            /* Get worksheet */
+            var worksheet = workbook.Sheets[first_sheet_name];
+            var json=XLSX.utils.sheet_to_json(worksheet, {
+                raw: true
+            })
+           //json="{students:"+json+"}";
+            console.log(JSON.stringify({ 'students': json }));
+            dataPoster(JSON.stringify({ 'students': json }));
+        }
+
+        oReq.send();
+    }
+
+    function dataPoster(datatoPost) {
+        $.ajax({
+            type: "POST",
+            url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/public/students/multiple",
+            dataType: 'json',
+            data: datatoPost,
+            contentType: 'application/json;charset=UTF-8',
+            // Update Url
+
+            success: function(response) { // Setting Token
+
+                if (response.token) {
+                    console.log("test,", response)
+                    ajaxCallBack(response.token);
+                } else {
+                    notifyMe('.notify_panel', 'Invalid Credentials Entered', '0');
+                }
+            },
+            statusCode: {
+                400: function(response) {
+                     console.log("test,", response.responseJSON.message)
+                },
+                401: function() {
+                    notifyMe('.notify_panel', 'Invalid password', '0');
+                },
+                500: function(response) {
+                     console.log("test,", response.responseJSON.message)
+                }
+                
+            }
+        });
+    }
+
+</script>
+
+</html>
