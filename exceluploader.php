@@ -171,7 +171,7 @@ header("location: login.html");
         }
 
         function deleteFile() {
-            $.ajax({
+           /* $.ajax({
                 type: "POST",
                 url: "deletefile.php",
 
@@ -188,7 +188,7 @@ header("location: login.html");
                 }
 
             });
-
+*/
         }
 
         function notifyMe($classname, $message, $status) {
