@@ -32,11 +32,11 @@ else
         // Verify MYME type of the file
         if(in_array($filetype, $allowed)){
             // Check whether file exists before uploading it
-            if(file_exists("http://ec2-18-234-208-163.compute-1.amazonaws.com/upload/" . $filename)){
+            if(file_exists("upload/" . $filename)){
                 echo "E1300 : ".$filename . " is already exists.";
             } else{
                 
-                move_uploaded_file($_FILES["photo"]["tmp_name"], "http://ec2-18-234-208-163.compute-1.amazonaws.com/upload/" . $newFilename);
+                move_uploaded_file($_FILES["photo"]["tmp_name"], "upload/" . $newFilename);
               //echo  $_FILES['photo']['error'];
                 echo "Your file was uploaded successfully";
             } 
