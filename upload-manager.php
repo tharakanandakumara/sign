@@ -19,7 +19,7 @@ else
     // includes the period in the extension; do $pos + 1 if you don't want it
     $ext = substr($filename, $pos);
 }
-         $newFilename = "test" . $ext;
+        // $newFilename = "test" . $ext;
         // Verify file extension
         $ext = pathinfo($filename, PATHINFO_EXTENSION);
        
@@ -36,7 +36,7 @@ else
                 echo "E1300 : ".$filename . " is already exists.";
             } else{
                 
-                move_uploaded_file($_FILES["photo"]["tmp_name"], "upload/" . $newFilename);
+                move_uploaded_file($_FILES["photo"]["tmp_name"], "upload/" . $filename);
               //echo  $_FILES['photo']['error'];
                 echo "Your file was uploaded successfully,".$newFilename;
             } 
