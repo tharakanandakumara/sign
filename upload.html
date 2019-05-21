@@ -33,8 +33,9 @@
 
                 if (response) {
                     if (response == "Your file was uploaded successfully") {
+                        var filename=response.split(",")
                         console.log(response);
-                        xltojson();
+                        xltojson(filename);
                     } else {
                         console.log(response);
                         //error notification here
@@ -58,8 +59,8 @@
         return false;
     });
 
-    function xltojson() {
-        var url = "http://ec2-18-234-208-163.compute-1.amazonaws.com/upload/test/test.xlsx";
+    function xltojson(filename) {
+        var url = "http://ec2-18-234-208-163.compute-1.amazonaws.com/upload/"+filename;
         var oReq = new XMLHttpRequest();
         oReq.open("GET", url, true);
         oReq.responseType = "arraybuffer";
