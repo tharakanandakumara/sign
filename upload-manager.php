@@ -38,7 +38,7 @@ else
                 
                 move_uploaded_file($_FILES["photo"]["tmp_name"], "upload/" . $filename);
               //echo  $_FILES['photo']['error'];
-                echo "Your file was uploaded successfully,".$newFilename;
+                echo "Your file was uploaded successfully,".$Filename;
             } 
         } else{
             echo "E1400 : There was a problem uploading your file. Please try again."; 
