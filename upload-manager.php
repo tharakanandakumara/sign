@@ -4,7 +4,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
    
     // Check if file was uploaded without errors
     if(isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0){
-        $allowed = array("xlsx" => "application/octet-stream");
+        // $allowed = array("xlsx" => "application/octet-stream");
+        $allowed = array(
+            "xls" => array( "application/vnd.ms-excel" ),
+            "xlsx" => array(
+                "application/vnd.ms-excel",
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            )
+        );
         $filename = $_FILES["photo"]["name"];
         $filetype = $_FILES["photo"]["type"];
         $filesize = $_FILES["photo"]["size"];
@@ -30,7 +37,8 @@ else
         if($filesize > $maxsize) die("E1200 : File size is larger than the allowed limit.");
     
         // Verify MYME type of the file
-        if(in_array($filetype, $allowed)){
+        if ( isset( $allowed[$ext] ) && in_array( $filetype, $allowed[$ext] ) ){
+        // if(in_array($filetype, $allowed)){
             // Check whether file exists before uploading it
             if(file_exists("upload/" . $filename)){
                 echo "E1300 : ".$filename . " is already exists.";
