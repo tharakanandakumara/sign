@@ -32,10 +32,11 @@
             success: function(response) { // Setting Token
 
                 if (response) {
-                    if (response.split("",2) == "Your file") {
-                        var filename=response.split(",")
+                    var code=response.split(":");
+                    if (code[0] == "S1200 ") {
+                       
                         console.log(response);
-                        xltojson(filename);
+                        xltojson(code[2]);
                     } else {
                         console.log(response);
                         //error notification here
