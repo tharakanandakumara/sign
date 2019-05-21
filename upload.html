@@ -32,7 +32,7 @@
             success: function(response) { // Setting Token
 
                 if (response) {
-                    if (response == "Your file was uploaded successfully") {
+                    if (response.split("",2) == "Your file") {
                         var filename=response.split(",")
                         console.log(response);
                         xltojson(filename);
