@@ -36,9 +36,11 @@ else
         $maxsize = 5 * 1024 * 1024;
         if($filesize > $maxsize) die("E1200 : File size is larger than the allowed limit.");
     
+
         // Verify MYME type of the file
         if ( isset( $allowed[$ext] ) && in_array( $filetype, $allowed[$ext] ) ){
         // if(in_array($filetype, $allowed)){
+
             // Check whether file exists before uploading it
             if(file_exists("upload/" . $filename)){
                 echo "E1300 : ".$filename . " is already exists.";
@@ -46,7 +48,7 @@ else
                 
                 move_uploaded_file($_FILES["photo"]["tmp_name"], "upload/" . $filename);
               //echo  $_FILES['photo']['error'];
-                echo "Your file was uploaded successfully,".$filename;
+                echo "S1200 : Your file was uploaded successfully :".$filename;
             } 
         } else{
             echo "E1400 : There was a problem uploading your file. Please try again."; 
