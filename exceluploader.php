@@ -69,9 +69,12 @@ header("location: login.html");
                 success: function(response) { // Setting Token
 
                     if (response) {
-                        if (response == "Your file was uploaded successfully") {
+                        var code = response.split(":");
+                        console.log("Code : " + code[0]);
+                        if (code[0] == "S1200 ") {
+
                             console.log(response);
-                            xltojson();
+                            xltojson(code[2]);
                         } else {
                             console.log(response);
                             //error notification here
@@ -171,7 +174,7 @@ header("location: login.html");
         }
 
         function deleteFile() {
-           /* $.ajax({
+            $.ajax({
                 type: "POST",
                 url: "deletefile.php",
 
@@ -188,7 +191,7 @@ header("location: login.html");
                 }
 
             });
-*/
+
         }
 
         function notifyMe($classname, $message, $status) {
