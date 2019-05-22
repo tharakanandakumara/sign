@@ -54,6 +54,8 @@ header("location: login.html");
         </div>
     </div>
     <script>
+        var web_token = "<?php echo $_SESSION['token'] ?>";
+        var auth = "BEARER " + web_token;
         $('#uploader').submit(function(e) {
             e.preventDefault();
 
@@ -140,12 +142,14 @@ header("location: login.html");
         function dataPoster(datatoPost) {
             $.ajax({
                 type: "POST",
-                url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/public/students/multiple",
+                url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/protected/students/multiple",
                 dataType: 'json',
                 data: datatoPost,
                 contentType: 'application/json;charset=UTF-8',
                 // Update Url
-
+                headers: {
+                    Authorization: auth
+                },
                 success: function(response) { // Setting Token
 
                     if (response) {
