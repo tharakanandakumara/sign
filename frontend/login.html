@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Sign in Form with Facebook and Twitter Buttons</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="style.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="js/jquerymin.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/noty.min.js"></script>
+    <style type="text/css">
+        body {
+            background-image: url("src/background.jpg");
+            background-color: #cccccc;
+            background-size: 1500px;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+            background-blend-mode: darken;
+        }
+
+        .login-form {
+            width: 385px;
+            margin: 30px auto;
+        }
+
+        .login-form form {
+            margin-bottom: 15px;
+            background: #f7f7f7;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+        }
+
+        .login-form h2 {
+            margin: 0 0 15px;
+        }
+
+        .form-control,
+        .login-btn {
+            min-height: 38px;
+            border-radius: 2px;
+        }
+
+        .input-group-addon .fa {
+            font-size: 18px;
+        }
+
+        .login-btn {
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .social-btn .btn {
+            border: none;
+            margin: 10px 3px 0;
+            opacity: 1;
+        }
+
+        .social-btn .btn:hover {
+            opacity: 0.9;
+        }
+
+        .social-btn .btn-primary {
+            background: #507cc0;
+        }
+
+        .social-btn .btn-info {
+            background: #64ccf1;
+        }
+
+        .social-btn .btn-danger {
+            background: #df4930;
+        }
+
+        .or-seperator {
+            margin-top: 20px;
+            text-align: center;
+            border-top: 1px solid #ccc;
+        }
+
+        .or-seperator i {
+            padding: 0 10px;
+            background: #f7f7f7;
+            position: relative;
+            top: -11px;
+            z-index: 1;
+        }
+
+        .illustration {
+            text-align: center;
+            padding: 15px 0 20px;
+            font-size: 100px;
+            color: #2980ef;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="login-form">
+        <form id="loginform" method="post">
+
+            <div class="notify_panel"></div>
+            <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+
+
+
+            <h2 class="text-center">Sign in</h2>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                    <input type="text" class="form-control" name="username" placeholder="Username" required="required">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                    <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary login-btn btn-block">Sign in</button>
+            </div>
+
+        </form>
+
+    </div>
+    <script>
+        $('#loginform').submit(function(e) {
+            e.preventDefault();
+            $.fn.serializeObject = function() {
+                var o = {};
+                var a = this.serializeArray();
+                $.each(a, function() {
+                    if (o[this.name] !== undefined) {
+                        if (!o[this.name].push) {
+                            o[this.name] = [o[this.name]];
+                        }
+                        o[this.name].push(this.value || '');
+                    } else {
+                        o[this.name] = this.value || '';
+                    }
+                });
+                return o;
+            };
+            var data = JSON.stringify($('#loginform').serializeObject());
+            console.log("data: " + data);
+            var token = "";
+            $.ajax({
+                type: "POST",
+                url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/public/login",
+                dataType: 'json',
+                data: data,
+                contentType: 'application/json;charset=UTF-8',
+                // Update Url
+
+                success: function(response) { // Setting Token
+
+                    if (response.token) {
+                        ajaxCallBack(response.token);
+                        
+
+
+                    } else {
+
+                        notifyMe('.notify_panel', 'Invalid Credentials Entered', '0');
+                    }
+                },
+                statusCode: {
+                    404: function() {
+                        notifyMe('.notify_panel', 'Invalid Username', '0');
+                    },
+                    401: function() {
+                        notifyMe('.notify_panel', 'Invalid password', '0');
+                    }
+                }
+            });
+            console.log("token : " + token);
+
+            return false;
+        });
+
+        function ajaxCallBack(token1) {
+
+            if (token1) {
+                console.log("Token Available :" + token1);
+                $.ajax({
+                    method: "POST",
+                    url: "http://ec2-18-234-208-163.compute-1.amazonaws.com/login.php",
+                    data: {
+                        token: token1
+                    },
+                    success: function(response) {
+                        window.location = "index.php" // Redirecting user
+                    },
+                    error: function(err) {
+                        notifyMe('.notify_panel', err, '0');
+                    }
+                });
+
+            }
+        }
+
+        function notifyMe($classname, $message, $status) {
+
+            if ($status == "1") {
+                statusnew = 'success';
+            } else {
+                statusnew = 'error';
+            }
+
+            var n = $($classname).noty({
+                text: $message,
+                theme: 'metroui',
+
+                type: statusnew,
+
+
+                animation: {
+                    open: {
+                        height: 'toggle'
+                    },
+                    close: {
+                        height: 'toggle'
+                    },
+                    speed: 500
+                }
+            });
+            n.setTimeout(3000);
+        }
+
+    </script>
+    <script src="js/notify.js"></script>
+</body>
+
+</html>
