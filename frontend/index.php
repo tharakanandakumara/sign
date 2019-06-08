@@ -16,6 +16,11 @@ header("location: login.html");
 <!--<![endif]-->
 
 <head>
+    <!-- Developed by Jentek Smart Solutions 
+    Smart Attendence System for Joseph Vaz College
+    
+    
+    -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Joseph Vaz College - Admin Dashboard</title>
