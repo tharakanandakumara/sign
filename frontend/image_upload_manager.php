@@ -46,15 +46,10 @@ else
                 echo "E1300 : ".$filename . " is already exists.";
             } else{
                 move_uploaded_file($_FILES["photo"]["tmp_name"], "../upload/" . $filename);
-               
-            } 
-        } else{
-            echo "E1400 : There was a problem uploading your file. Please try again."; 
-        }
-    } else{
-        echo "E1500 : " . $_FILES["photo"]["error"];
-    }
-    
+                
+                // Uploading to Amazon
+                
+                    
     
     $bucketName = 'jvaz-images';
 	$filePath = $filename;
@@ -106,5 +101,14 @@ else
 	} catch (Exception $e) {
 		echo $e->getMessage();
 	}
+               
+            } 
+        } else{
+            echo "E1400 : There was a problem uploading your file. Please try again."; 
+        }
+    } else{
+        echo "E1500 : " . $_FILES["photo"]["error"];
+    }
+
 }
 ?>
