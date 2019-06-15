@@ -23,7 +23,7 @@ else
     $ext = substr($filename, $pos);
 }
          $filename = $_POST["indexNo"].$ext;
-        echo $filename;
+       
          $newFilename = "test" . $ext;
         // Verify file extension
        
