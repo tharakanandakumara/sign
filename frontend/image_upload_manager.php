@@ -42,7 +42,7 @@ else
         // Verify MYME type of the file
         if(in_array($ext, $allowed)){
             // Check whether file exists before uploading it
-            if(file_exists("../uploads/" . $filename)){
+            if(file_exists("../upload/" . $filename)){
                 echo "E1300 : ".$filename . " is already exists.";
             } else{
                 move_uploaded_file($_FILES["photo"]["tmp_name"], "../upload/" . $filename);
@@ -88,7 +88,7 @@ else
 		}
 		
 		// Create temp file
-		$tempFilePath = 'upload/' . $filename;
+		$tempFilePath = '../upload/' . $filename;
 	
 		// Put on S3
 		$s3->putObject(
