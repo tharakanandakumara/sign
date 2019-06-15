@@ -100,9 +100,7 @@
                                 <div class="form-group">
                                     <input name="fullName" type="text" class="form-control" placeholder="Full Name *" value="" required>
                                 </div>
-                                <div class="form-group">
-                                    <input name="indexNo" type="number" class="form-control" placeholder="Index No *" value="" required>
-                                </div>
+                               
                                 <div class="form-group">
                                     <input type="file" name="photo" id="fileSelect" accept="image/*">
                                 </div>
