@@ -46,7 +46,7 @@ else
                 echo "E1300 : ".$filename . " is already exists.";
             } else{
                 move_uploaded_file($_FILES["photo"]["tmp_name"], "../upload/" . $filename);
-                echo "Your file was uploaded successfully";
+               
             } 
         } else{
             echo "E1400 : There was a problem uploading your file. Please try again."; 
@@ -99,7 +99,7 @@ else
 				'StorageClass' => 'REDUCED_REDUNDANCY'
 			)
 		);
-        echo "Success";
+        echo "Your file was uploaded successfully";
 	} catch (S3Exception $e) {
          echo $e->getMessage();
 		

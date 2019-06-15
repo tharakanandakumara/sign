@@ -54,6 +54,7 @@
         <div class="breadcrumbs">
             <div class="col-sm-4">
                 <div class="page-header float-left">
+                    <div class="notify_panel"></div>
                     <div class="page-title">
                         <h1>Profile Picture Uploader</h1>
                     </div>
@@ -96,6 +97,7 @@
         <script src="vendors/jqvmap/dist/jquery.vmap.min.js"></script>
         <script src="vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
         <script src="vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+        <script type="text/javascript" src="js/noty.min.js"></script>
         <script>
         $('#profilePic').submit(function(e) {
         e.preventDefault();
@@ -113,7 +115,7 @@
 
                 if (response) {
                     if (response == "Your file was uploaded successfully") {
-                        console.log(response);
+                        notifyMe('.notify_panel', 'Invalid Credentials Entered', '0');
                         
                     } else {
                         console.log(response);
@@ -153,6 +155,33 @@
                     normalizeFunction: 'polynomial'
                 });
             })(jQuery);
+            function notifyMe($classname, $message, $status) {
+
+            if ($status == "1") {
+                statusnew = 'success';
+            } else {
+                statusnew = 'error';
+            }
+
+            var n = $($classname).noty({
+                text: $message,
+                theme: 'metroui',
+
+                type: statusnew,
+
+
+                animation: {
+                    open: {
+                        height: 'toggle'
+                    },
+                    close: {
+                        height: 'toggle'
+                    },
+                    speed: 500
+                }
+            });
+            n.setTimeout(3000);
+        }
 
         </script>
 
