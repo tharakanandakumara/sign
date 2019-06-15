@@ -45,7 +45,7 @@ else
             if(file_exists("../uploads/" . $filename)){
                 echo "E1300 : ".$filename . " is already exists.";
             } else{
-                move_uploaded_file($_FILES["photo"]["tmp_name"], "./upload/" . $filename);
+                move_uploaded_file($_FILES["photo"]["tmp_name"], "../upload/" . $filename);
                 echo "Your file was uploaded successfully";
             } 
         } else{
