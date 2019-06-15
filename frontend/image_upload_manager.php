@@ -42,7 +42,7 @@ else
         // Verify MYME type of the file
         if(in_array($ext, $allowed)){
             // Check whether file exists before uploading it
-            if(file_exists("../upload/" . $filename)){
+            if(file_exists("../uploads/" . $filename)){
                 echo "E1300 : ".$filename . " is already exists.";
             } else{
                 move_uploaded_file($_FILES["photo"]["tmp_name"], "./upload/" . $filename);
