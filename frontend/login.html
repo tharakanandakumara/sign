@@ -153,7 +153,7 @@
             var token = "";
             $.ajax({
                 type: "POST",
-                url: gOptions.serverUrl+"/public/login",
+                url: gOptions.serverUrl+gOptions.serverPort+"/public/login",
                 dataType: 'json',
                 data: data,
                 contentType: 'application/json;charset=UTF-8',
@@ -191,7 +191,7 @@
                 console.log("Token Available :" + token1);
                 $.ajax({
                     method: "POST",
-                    url: "http://ec2-18-234-208-163.compute-1.amazonaws.com/login.php",
+                    url: gOptions.serverUrl+"/login.php",
                     data: {
                         token: token1
                     },
