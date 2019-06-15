@@ -54,7 +54,7 @@
         <div class="breadcrumbs">
             <div class="col-sm-4">
                 <div class="page-header float-left">
-                    <div class="notify_panel"></div>
+                    
                     <div class="page-title">
                         <h1>Profile Picture Uploader</h1>
                     </div>
@@ -73,6 +73,7 @@
 
         <div class="content mt-3">
             <div class="col-md-6 offset-md-3">
+                <div class="notify_panel"></div>
                 <form id ="profilePic"  enctype="multipart/form-data">
                     <div class="form-group">
                         <input name="indexNo" type="number" class="form-control" placeholder="Index No *" value="" required>
@@ -115,7 +116,7 @@
 
                 if (response) {
                     if (response == "Your file was uploaded successfully") {
-                        notifyMe('.notify_panel', 'Invalid Credentials Entered', '0');
+                        notifyMe('.notify_panel', response, '1');
                         
                     } else {
                         var res=response.split(':');
