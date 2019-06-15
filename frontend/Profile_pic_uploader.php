@@ -88,6 +88,7 @@
         <script src="vendors/jquery/dist/jquery.min.js"></script>
         <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
         <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/noty.min.js"></script>
         <script src="assets/js/main.js"></script>
 
 
@@ -97,7 +98,7 @@
         <script src="vendors/jqvmap/dist/jquery.vmap.min.js"></script>
         <script src="vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
         <script src="vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-        <script type="text/javascript" src="js/noty.min.js"></script>
+        
         <script>
         $('#profilePic').submit(function(e) {
         e.preventDefault();
