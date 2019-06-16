@@ -107,6 +107,7 @@ else
             echo "E1400 : There was a problem uploading your file. Please try again."; 
         }
     } else{
+        echo "photo".$_FILES["photo"]) 
         echo "E1500 : " . $_FILES["photo"]["error"];
     }
 
