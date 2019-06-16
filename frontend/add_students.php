@@ -260,7 +260,7 @@ header("location: login.html");
             $("#studentreg").submit(function(event) {
                 event.preventDefault();
 
-                uploadImage();
+                uploadForm();
                 
                 
 
