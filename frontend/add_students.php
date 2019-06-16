@@ -1,5 +1,11 @@
-<?php
-
+<?php 
+    session_start();
+include 'logout.php';
+//$_SESSION['token']=null;
+    if(!isset($_SESSION['token'])){
+header("location: login.html");
+    
+}
 ?>
 
 <!doctype html>
@@ -225,8 +231,9 @@
         </div><!-- /#right-panel -->
 
         <!-- Right Panel -->
-        <script src="../js/jquerymin.js"></script>
-
+        <script src="js/jquerymin.js"></script>
+<script type="text/javascript" src="js/jquery.serializejson.min.js"></script>
+        
         <script type="text/javascript" src="js/noty.min.js"></script>
         <script src="assets/js/main.js"></script>
         <script src="properties.js"></script>
@@ -253,7 +260,7 @@
             $("#studentreg").submit(function(event) {
                 event.preventDefault();
 
-                
+                uploadImage();
                 
                 
 
