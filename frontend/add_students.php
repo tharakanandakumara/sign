@@ -255,6 +255,7 @@ header("location: login.html");
             /* stop form from submitting normally */
             var web_token = "<?php echo $_SESSION['token'] ?>";
             var auth = "BEARER " + web_token;
+            var data=new FormData(this);
 
             // POST Request to add User
             $("#studentreg").submit(function(event) {
