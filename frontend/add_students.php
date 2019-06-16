@@ -90,12 +90,18 @@ header("location: login.html");
             <form id="studentreg" enctype="multipart/form-data">
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                      
+
                         <h3 class="register-heading">Student Registration</h3>
                         <div class="row register-form">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <input name="indexNo" type="number" class="form-control" placeholder="Index No *" value="" required>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Looks bad!
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <input name="initials" type="text" class="form-control" placeholder="Initials *" value="" required>
@@ -227,7 +233,7 @@ header("location: login.html");
             </form>
 
 
-  <div class="notify_panel6"></div>
+            <div class="notify_panel6"></div>
         </div><!-- /#right-panel -->
 
         <!-- Right Panel -->
@@ -237,6 +243,7 @@ header("location: login.html");
         <script type="text/javascript" src="js/noty.min.js"></script>
         <script src="assets/js/main.js"></script>
         <script src="properties.js"></script>
+        <script src="js/validator.js"></script>
         <!--
         <script src="vendors/jquery/dist/jquery.min.js"></script>
         <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
@@ -278,7 +285,7 @@ header("location: login.html");
                     contentType: false,
                     cache: false,
                     processData: false,
-                    data:  new FormData(studentreg),
+                    data: new FormData(studentreg),
 
                     // Update Url
                     success: function(response) { // Setting Token
@@ -287,8 +294,8 @@ header("location: login.html");
                             if (response == "Your file was uploaded successfully") {
                                 uploadForm();
                                 notifyMe('.notify_panel6', response, '1');
-                                
-                                
+
+
 
                             } else {
                                 console.log("Data " + data);
