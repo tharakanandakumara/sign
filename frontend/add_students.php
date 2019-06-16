@@ -87,7 +87,7 @@ header("location: login.html");
                 </div>
             </div>
 
-            <form id="studentreg"  enctype="multipart/form-data">
+            <form id="studentreg" enctype="multipart/form-data">
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="notify_panel3"></div>
@@ -106,7 +106,7 @@ header("location: login.html");
                                 <div class="form-group">
                                     <input name="fullName" type="text" class="form-control" placeholder="Full Name *" value="" required>
                                 </div>
-                               
+
                                 <div class="form-group">
                                     <input type="file" name="photo" id="fileSelect" accept="image/*">
                                 </div>
@@ -232,8 +232,8 @@ header("location: login.html");
 
         <!-- Right Panel -->
         <script src="js/jquerymin.js"></script>
-<script type="text/javascript" src="js/jquery.serializejson.min.js"></script>
-        
+        <script type="text/javascript" src="js/jquery.serializejson.min.js"></script>
+
         <script type="text/javascript" src="js/noty.min.js"></script>
         <script src="assets/js/main.js"></script>
         <script src="properties.js"></script>
@@ -255,60 +255,64 @@ header("location: login.html");
             /* stop form from submitting normally */
             var web_token = "<?php echo $_SESSION['token'] ?>";
             var auth = "BEARER " + web_token;
-            var data=new FormData(this);
+            var fileInput = document.getElementById('fileSelect');
+            var file = fileInput.files[0];
+            var data = new FormData(this);
+            data.append('file', file);
 
             // POST Request to add User
             $("#studentreg").submit(function(event) {
                 event.preventDefault();
 
                 uploadImage();
-                
-                
+
+
 
             });
-            
-            function uploadImage(){
-                
+
+            function uploadImage() {
+
                 $.ajax({
-            type: "POST",
-            url: "image_upload_manager.php",
-            contentType: false,
-            cache: false,
-            processData: false,
-            data: new FormData(this),
-                    
-            // Update Url
-            success: function(response) { // Setting Token
+                    type: "POST",
+                    url: "image_upload_manager.php",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    data: new FormData(this),
 
-                if (response) {
-                    if (response == "Your file was uploaded successfully") {
-                        notifyMe('.notify_panel3', response, '1');
-                        uploadForm();
-                        
-                    } else {
-                        console.log("Data "+data);
-                        var res=response.split(':');
-                        notifyMe('.notify_panel', res[1], '0');
-                        console.log(response);
-                        //error notification here
+                    // Update Url
+                    success: function(response) { // Setting Token
+
+                        if (response) {
+                            if (response == "Your file was uploaded successfully") {
+                                notifyMe('.notify_panel3', response, '1');
+                                uploadForm();
+
+                            } else {
+                                console.log("Data " + data);
+                                var res = response.split(':');
+                                notifyMe('.notify_panel', res[1], '0');
+                                console.log(response);
+                                //error notification here
+                            }
+
+                        } else {
+                            // notifyMe('.notify_panel', 'Invalid Credentials Entered', '0');
+                        }
+                    },
+                    statusCode: {
+                        404: function() {
+                            //notifyMe('.notify_panel', 'Invalid Username', '0');
+                        },
+                        401: function() {
+                            //notifyMe('.notify_panel', 'Invalid password', '0');
+                        }
                     }
+                });
+            }
 
-                } else {
-                    // notifyMe('.notify_panel', 'Invalid Credentials Entered', '0');
-                }
-            },
-            statusCode: {
-                404: function() {
-                    //notifyMe('.notify_panel', 'Invalid Username', '0');
-                },
-                401: function() {
-                    //notifyMe('.notify_panel', 'Invalid password', '0');
-                }
-            }
-        });
-            }
-            function uploadForm(){
-                                $.fn.serializeObject = function() {
+            function uploadForm() {
+                $.fn.serializeObject = function() {
                     var o = {};
                     var a = this.serializeArray();
                     $.each(a, function() {
@@ -328,7 +332,7 @@ header("location: login.html");
 
                 $.ajax({
                     type: "POST",
-                    url: gOptions.serverUrl+":3000/protected/students",
+                    url: gOptions.serverUrl + ":3000/protected/students",
                     data: data,
                     dataType: 'json',
                     headers: {
@@ -348,6 +352,7 @@ header("location: login.html");
                     },
                 });
             }
+
             function notifyMe($classname, $message, $status) {
 
                 if ($status == "1") {
