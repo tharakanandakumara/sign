@@ -90,7 +90,7 @@ header("location: login.html");
             <form id="studentreg" enctype="multipart/form-data">
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <div class="notify_panel3"></div>
+                      
                         <h3 class="register-heading">Student Registration</h3>
                         <div class="row register-form">
                             <div class="col-md-6">
@@ -227,7 +227,7 @@ header("location: login.html");
             </form>
 
 
-
+  <div class="notify_panel6"></div>
         </div><!-- /#right-panel -->
 
         <!-- Right Panel -->
@@ -285,13 +285,13 @@ header("location: login.html");
 
                         if (response) {
                             if (response == "Your file was uploaded successfully") {
-                                notifyMe('.notify_panel3', response, '1');
+                                notifyMe('.notify_panel6', response, '1');
                                 uploadForm();
 
                             } else {
                                 console.log("Data " + data);
                                 var res = response.split(':');
-                                notifyMe('.notify_panel', res[1], '0');
+                                notifyMe('.notify_panel6', res[1], '0');
                                 console.log(response);
                                 //error notification here
                             }
@@ -341,13 +341,13 @@ header("location: login.html");
                     contentType: 'application/json;charset=UTF-8',
                     success: function(response) {
                         if (response.indexNo != null) {
-                            notifyMe('.notify_panel3', 'User added', '1');
+                            notifyMe('.notify_panel6', 'User added', '1');
                             $('#studentreg')[0].reset();
                         }
                         console.log("Success: ", response)
                     },
                     error: function(err) {
-                        notifyMe('.notify_panel3', 'User not added :' + err, '0');
+                        notifyMe('.notify_panel6', 'User not added :' + err, '0');
                         alert(err);
                     },
                 });
