@@ -275,7 +275,7 @@ header("location: login.html");
             cache: false,
             processData: false,
             data: new FormData(this),
-                    console.log(new FormData(this));
+                    console.log(data);
             // Update Url
             success: function(response) { // Setting Token
 
