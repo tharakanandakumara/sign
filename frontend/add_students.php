@@ -285,8 +285,10 @@ header("location: login.html");
 
                         if (response) {
                             if (response == "Your file was uploaded successfully") {
-                                notifyMe('.notify_panel6', response, '1');
                                 uploadForm();
+                                notifyMe('.notify_panel6', response, '1');
+                                
+                                
 
                             } else {
                                 console.log("Data " + data);
@@ -312,6 +314,7 @@ header("location: login.html");
             }
 
             function uploadForm() {
+                console.log("form coming")
                 $.fn.serializeObject = function() {
                     var o = {};
                     var a = this.serializeArray();
