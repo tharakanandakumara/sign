@@ -275,7 +275,7 @@ header("location: login.html");
             cache: false,
             processData: false,
             data: new FormData(this),
-                    console.log(data);
+                    
             // Update Url
             success: function(response) { // Setting Token
 
@@ -285,6 +285,7 @@ header("location: login.html");
                         uploadForm();
                         
                     } else {
+                        console.log("Data "+data);
                         var res=response.split(':');
                         notifyMe('.notify_panel', res[1], '0');
                         console.log(response);
