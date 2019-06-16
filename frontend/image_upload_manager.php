@@ -4,7 +4,7 @@ require 'aws/aws-autoloader.php';
 use Aws\S3\S3Client;
 use Aws\S3\Exception\S3Exception;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-var_dump($_FILES);   
+
     // Check if file was uploaded without errors
     if(isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0){
         $allowed =array("jpeg","jpg","png");
