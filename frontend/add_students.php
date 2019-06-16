@@ -87,7 +87,7 @@ header("location: login.html");
                 </div>
             </div>
 
-            <form id="studentreg" data-toggle="validator" role="form" enctype="multipart/form-data">
+            <form id="studentreg"  enctype="multipart/form-data">
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="notify_panel3"></div>
