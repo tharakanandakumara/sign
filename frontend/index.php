@@ -36,6 +36,7 @@ header("location: login.html");
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="vendors/selectFX/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="vendors/jqvmap/dist/jqvmap.min.css">
+    <link rel="stylesheet" href="css/spinner.css">
 
 
     <link rel="stylesheet" href="assets/css/style.css">
@@ -45,7 +46,20 @@ header("location: login.html");
 </head>
 
 <body>
-
+<div class="spinners">
+  <div class="row">
+    <div class="spinner spinner-bounce-bottom"></div>
+  </div>
+  <div class="row">
+    <div class="spinner spinner-bounce-top"></div>
+  </div>
+  <div class="row">
+    <div class="spinner spinner-bounce-middle"></div>
+  </div>
+  <div class="row">
+    <div class="spinner spinner-blink"></div>
+  </div>
+</div>
 
     <!-- Left Panel -->
 <?php include 'includes/left-menu.php' ?>
