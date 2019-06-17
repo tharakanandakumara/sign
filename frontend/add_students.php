@@ -105,12 +105,30 @@ header("location: login.html");
                                 </div>
                                 <div class="form-group">
                                     <input name="initials" type="text" class="form-control" placeholder="Initials *" value="" required>
+                                    <div class="valid-feedback">
+                                        
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Initials is a required field
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <input name="lastName" type="text" class="form-control" placeholder="Last Name *" value="" required>
+                                    <div class="valid-feedback">
+                                        
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Last Name is a required field
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <input name="fullName" type="text" class="form-control" placeholder="Full Name *" value="" required>
+                                    <div class="valid-feedback">
+                                        
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Full Name is a required field
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
@@ -119,6 +137,12 @@ header("location: login.html");
                                 <div class="form-group">
                                     <label for="dob">DOB</label>
                                     <input name="DOB" id="dob " type="date" class="form-control" value="" required>
+                                    <div class="valid-feedback">
+                                        
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Date of Birth is a required field
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <input name="address" type="text" class="form-control" placeholder="Adress *" value="" required>
@@ -159,12 +183,24 @@ header("location: login.html");
                                     <div class="col-md-8">
                                         <div class="form-group">
                                             <input name="class" type="text" class="form-control" placeholder="Section/Class" value="" required>
+                                            <div class="valid-feedback">
+                                        
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Section/Calss is a required field
+                                    </div>
                                         </div>
                                     </div>
 
                                 </div>
                                 <div class="form-group">
                                     <select name="medium" class="form-control" required>
+                                        <div class="valid-feedback">
+                                        
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Medium is a required field
+                                    </div>
                                         <option value="" class="hidden" selected disabled> Medium</option>
                                         <option value="Sinhala">Sinhala</option>
                                         <option value="English">English</option>
@@ -172,6 +208,12 @@ header("location: login.html");
                                 </div>
                                 <div class="form-group">
                                     <input type="number" minlength="10" maxlength="10" name="homeTel" class="form-control" placeholder="Home Tel *" value="" required>
+                                    <div class="valid-feedback">
+                                        
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Home Telephone  is a required field
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <input name="guardianName" type="text" class="form-control" placeholder="Guardian Name" value="">
