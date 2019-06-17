@@ -46,6 +46,7 @@ header("location: login.html");
 </head>
 
 <body>
+    <div class="loader">
 <div class="spinners">
   <div class="row">
     <div class="spinner spinner-bounce-bottom"></div>
@@ -60,6 +61,7 @@ header("location: login.html");
     <div class="spinner spinner-blink"></div>
   </div>
 </div>
+        </div>
 
     <!-- Left Panel -->
 <?php include 'includes/left-menu.php' ?>
