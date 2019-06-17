@@ -304,13 +304,13 @@ header("location: login.html");
         <!-- Right Panel -->
         <script src="js/jquerymin.js"></script>
         <script type="text/javascript" src="js/jquery.serializejson.min.js"></script>
-
+        <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+ <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/noty.min.js"></script>
         <script src="assets/js/main.js"></script>
         <script src="properties.js"></script>
         <script src="js/validator.js"></script>
-         <script src="assets/js/dashboard.js"></script>
-    <script src="assets/js/widgets.js"></script>
+
         <!--
         <script src="vendors/jquery/dist/jquery.min.js"></script>
         <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
