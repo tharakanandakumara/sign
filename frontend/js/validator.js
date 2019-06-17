@@ -39,7 +39,7 @@
     			validateSelectMultiple($(this));
     			break;
             case 'number':
-    			validateSelectNumber($(this));
+    			validateNumber($(this));
     			break;
     		default:
 	    		break;
