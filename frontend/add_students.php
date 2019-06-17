@@ -94,7 +94,7 @@ header("location: login.html");
                         <h3 class="register-heading">Student Registration</h3>
                         <div class="row register-form">
                             <div class="col-md-6">
-                                <div class="card" style="width: 18rem;">
+                                <div class="card">
 
                                     <div class="card-body">
                                         <h5 class="card-title">Student Info</h5>
@@ -169,8 +169,8 @@ header("location: login.html");
 
                             </div>
                             <div class="col-md-6">
-                                <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="..." alt="Card image cap">
+                                <div class="card">
+                                    
                                     <div class="card-body">
                                         <h5 class="card-title">Class</h5>
 
@@ -221,8 +221,8 @@ header("location: login.html");
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="..." alt="Card image cap">
+                                <div class="card" >
+                                   
                                     <div class="card-body">
                                         <h5 class="card-title">Guardian Information</h5>
                                         <div class="form-group">
