@@ -195,7 +195,7 @@ header("location: login.html");
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="form-group">
-                                                    <input name="class" type="text" class="form-control" placeholder="Section/Class" value="" required>
+                                                    <input name="section" type="text" class="form-control" placeholder="Section/Class" value="" required>
                                                     <div class="valid-feedback">
 
                                                     </div>
