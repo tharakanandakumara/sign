@@ -348,7 +348,7 @@ header("location: login.html");
 
                 $.ajax({
                     type: "POST",
-                    url: "image_upload_manager.php",
+                    url: "image-upload-manager.php",
                     contentType: false,
                     cache: false,
                     processData: false,
