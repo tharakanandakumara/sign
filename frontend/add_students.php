@@ -94,139 +94,162 @@ header("location: login.html");
                         <h3 class="register-heading">Student Registration</h3>
                         <div class="row register-form">
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <input name="indexNo" type="number" class="form-control" placeholder="Index No *" value="" required>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Looks bad!
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input name="initials" type="text" class="form-control" placeholder="Initials *" value="" required>
-                                    <div class="valid-feedback">
-                                        
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Initials is a required field
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input name="lastName" type="text" class="form-control" placeholder="Last Name *" value="" required>
-                                    <div class="valid-feedback">
-                                        
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Last Name is a required field
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input name="fullName" type="text" class="form-control" placeholder="Full Name *" value="" required>
-                                    <div class="valid-feedback">
-                                        
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Full Name is a required field
-                                    </div>
-                                </div>
+                                <div class="card" style="width: 18rem;">
 
-                                <div class="form-group">
-                                    <input type="file" name="photo" id="fileSelect" accept="image/*">
-                                </div>
-                                <div class="form-group">
-                                    <label for="dob">DOB</label>
-                                    <input name="DOB" id="dob " type="date" class="form-control" value="" required>
-                                    <div class="valid-feedback">
-                                        
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Date of Birth is a required field
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input name="address" type="text" class="form-control" placeholder="Adress *" value="" required>
-                                </div>
-                                <div class="form-group">
-                                    <div class="maxl">
-                                        <label class="radio inline">
-                                            <input type="radio" name="gender" value="male" checked>
-                                            <span> Male </span>
-                                        </label>
-                                        <label class="radio inline">
-                                            <input type="radio" name="gender" value="female">
-                                            <span>Female </span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <select name="grade" class="form-control" required>
-                                            <option value="" class="hidden" selected disabled> Grade</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                            <option value="11">11</option>
-                                            <option value="12">12</option>
-                                            <option value="13">13</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Student Info</h5>
+                                        <p class="card-text">All these fields are required. Please enter valid details</p>
                                         <div class="form-group">
-                                            <input name="class" type="text" class="form-control" placeholder="Section/Class" value="" required>
+                                            <input name="indexNo" type="number" class="form-control" placeholder="Index No *" value="" required>
                                             <div class="valid-feedback">
-                                        
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Section/Calss is a required field
-                                    </div>
+                                                Looks good!
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Looks bad!
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="initials" type="text" class="form-control" placeholder="Initials *" value="" required>
+                                            <div class="valid-feedback">
+
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Initials is a required field
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="lastName" type="text" class="form-control" placeholder="Last Name *" value="" required>
+                                            <div class="valid-feedback">
+
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Last Name is a required field
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="fullName" type="text" class="form-control" placeholder="Full Name *" value="" required>
+                                            <div class="valid-feedback">
+
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Full Name is a required field
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="file" name="photo" id="fileSelect" accept="image/*">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="dob">DOB</label>
+                                            <input name="DOB" id="dob " type="date" class="form-control" value="" required>
+                                            <div class="valid-feedback">
+
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Date of Birth is a required field
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="address" type="text" class="form-control" placeholder="Adress *" value="" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="maxl">
+                                                <label class="radio inline">
+                                                    <input type="radio" name="gender" value="male" checked>
+                                                    <span> Male </span>
+                                                </label>
+                                                <label class="radio inline">
+                                                    <input type="radio" name="gender" value="female">
+                                                    <span>Female </span>
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
+                                </div>
 
-                                </div>
-                                <div class="form-group">
-                                    <select name="medium" class="form-control" required>
-                                        <div class="valid-feedback">
-                                        
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="..." alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Class</h5>
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <select name="grade" class="form-control" required>
+                                                    <option value="" class="hidden" selected disabled> Grade</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                    <option value="13">13</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <input name="class" type="text" class="form-control" placeholder="Section/Class" value="" required>
+                                                    <div class="valid-feedback">
+
+                                                    </div>
+                                                    <div class="invalid-feedback">
+                                                        Section/Calss is a required field
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <select name="medium" class="form-control" required>
+                                                <div class="valid-feedback">
+
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Medium is a required field
+                                                </div>
+                                                <option value="" class="hidden" selected disabled> Medium</option>
+                                                <option value="Sinhala">Sinhala</option>
+                                                <option value="English">English</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="invalid-feedback">
-                                        Medium is a required field
+                                </div>
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="..." alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Guardian Information</h5>
+                                        <div class="form-group">
+                                            <input type="number" minlength="10" maxlength="10" name="homeTel" class="form-control" placeholder="Home Tel *" value="" required>
+                                            <div class="valid-feedback">
+
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Home Telephone is a required field
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="guardianName" type="text" class="form-control" placeholder="Guardian Name" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="guardianAddress" type="text" class="form-control" placeholder="Guardian Adress" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="guardianRelationship" type="text" class="form-control" placeholder="Guardian Relationship" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="guardianContact" type="text" class="form-control" placeholder="Guardian Contact" value="">
+                                        </div>
                                     </div>
-                                        <option value="" class="hidden" selected disabled> Medium</option>
-                                        <option value="Sinhala">Sinhala</option>
-                                        <option value="English">English</option>
-                                    </select>
                                 </div>
-                                <div class="form-group">
-                                    <input type="number" minlength="10" maxlength="10" name="homeTel" class="form-control" placeholder="Home Tel *" value="" required>
-                                    <div class="valid-feedback">
-                                        
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Home Telephone  is a required field
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input name="guardianName" type="text" class="form-control" placeholder="Guardian Name" value="">
-                                </div>
-                                <div class="form-group">
-                                    <input name="guardianAddress" type="text" class="form-control" placeholder="Guardian Adress" value="">
-                                </div>
-                                <div class="form-group">
-                                    <input name="guardianRelationship" type="text" class="form-control" placeholder="Guardian Relationship" value="">
-                                </div>
-                                <div class="form-group">
-                                    <input name="guardianContact" type="text" class="form-control" placeholder="Guardian Contact" value="">
-                                </div>
+
+
 
                                 <input type="submit" class="btnRegister" value="Register" />
                             </div>
