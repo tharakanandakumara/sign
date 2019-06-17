@@ -47,20 +47,7 @@ header("location: login.html");
 
 <body>
     <div class="loader">
-<div class="spinners">
-  <div class="row">
-    <div class="spinner spinner-bounce-bottom"></div>
-  </div>
-  <div class="row">
-    <div class="spinner spinner-bounce-top"></div>
-  </div>
-  <div class="row">
-    <div class="spinner spinner-bounce-middle"></div>
-  </div>
-  <div class="row">
-    <div class="spinner spinner-blink"></div>
-  </div>
-</div>
+Loading
         </div>
 
     <!-- Left Panel -->
