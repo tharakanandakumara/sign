@@ -309,6 +309,8 @@ header("location: login.html");
         <script src="assets/js/main.js"></script>
         <script src="properties.js"></script>
         <script src="js/validator.js"></script>
+         <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/widgets.js"></script>
         <!--
         <script src="vendors/jquery/dist/jquery.min.js"></script>
         <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
