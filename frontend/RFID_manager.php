@@ -76,7 +76,12 @@
 
         <div class="content mt-3">
             <div class="col-md-6 offset-md-3">
-                <form id="rfid">
+                <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Rfid Manager</h5>
+    <p class="card-text">Student should be added first.</p>
+    <form id="rfid">
                      <div class="notify_panel3"></div>
                     <div class="form-group">
                         <input id="indexno" name="indexNo" type="number" class="form-control" placeholder="Index No *" value="" required>
@@ -86,6 +91,12 @@
                     </div>
                     <input type="submit" class="btn-success" value="Add" />
                 </form>
+      
+  </div>
+</div>
+                
+                
+                
             </div>
         </div><!-- /#right-panel -->
 
