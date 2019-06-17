@@ -38,6 +38,9 @@
     		case 'select-multiple':
     			validateSelectMultiple($(this));
     			break;
+            case 'number':
+    			validateSelectNumber($(this));
+    			break;
     		default:
 	    		break;
     	}
@@ -68,6 +71,14 @@
 
     // Validate Text and password
     function validateText(thisObj) {
+        let fieldValue = thisObj.val();
+        if(fieldValue.length > 1) {
+            $(thisObj).addClass('is-valid');
+        } else {
+            $(thisObj).addClass('is-invalid');
+        }
+    }
+    function validateNumber(thisObj) {
         let fieldValue = thisObj.val();
         if(fieldValue.length > 1) {
             $(thisObj).addClass('is-valid');
