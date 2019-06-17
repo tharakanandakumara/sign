@@ -1,3 +1,4 @@
+<style>
 .spinners
   margin: 60px auto
   .row
@@ -147,3 +148,5 @@ $bar-radius: 2px
     @include glow(0.6s, 0s)
   &:after
     @include glow(0.6s, 0.2s)
+      
+      </style>
