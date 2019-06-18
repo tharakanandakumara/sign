@@ -1,5 +1,11 @@
 <?php
-
+  session_start();
+include 'logout.php';
+//$_SESSION['token']=null;
+    if(!isset($_SESSION['token'])){
+header("location: login.html");
+    
+}
 ?>
 
 <!doctype html>

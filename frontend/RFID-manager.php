@@ -1,5 +1,11 @@
 <?php
-
+  session_start();
+include 'logout.php';
+//$_SESSION['token']=null;
+    if(!isset($_SESSION['token'])){
+header("location: login.html");
+    
+}
 ?>
 
 <!doctype html>
@@ -116,13 +122,16 @@
         <script src="vendors/jqvmap/dist/jquery.vmap.min.js"></script>
         <script src="vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
         <script src="vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+        <script src="properties.js"></script>
 
 
         <script>
             $("#rfid").submit(function(event) {
+                var web_token = "<?php echo $_SESSION['token'] ?>";
+            var auth = "BEARER " + web_token;
                 $index = $("#indexno").val();
                 $rfidval = $("#rfidval").val();
-                $token = "BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5hbWUiOiJJc3VydSBSdWh1bmFnZSIsInVzZXJuYW1lIjoiYWRtaW4xIiwiZW1haWwiOiJpc3VydS5ydWh1QGdtYWlsLmNvbSIsImNvbnRhY3QiOiIwNzc3MTExMjIyIn0sImlhdCI6MTU1OTg4MDY1NiwiZXhwIjoxNTU5ODg3ODU2fQ.QIOx4m_Kk32oXHtqXfaeOb5vmeMKYfXRUo4o9Cr9qUI";
+                $token = "BEARER" +auth;
                 if ($index == null) {
 
 
@@ -135,7 +144,7 @@
                     //var data = JSON.stringify(jsonData);
                     console.log("data: " + jsonData)
 
-                    var value = HttpManager(jsonData, "PUT", 'http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/protected/students/' + $index, $token)
+                    var value = HttpManager(jsonData, "PUT", gOptions.serverUrl+'/protected/students/' + $index, $token)
                     if (value == "404") {
                         console.log("VALUE    " + value);
                         notifyMe('.notify_panel3', 'User not added : User Cannot Found', '0');
