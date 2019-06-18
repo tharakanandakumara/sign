@@ -123,6 +123,7 @@ header("location: login.html");
         <script src="vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
         <script src="vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
         <script src="properties.js"></script>
+        <script type="text/javascript" src="js/noty.min.js"></script>
 
 
         <script>
@@ -148,6 +149,12 @@ header("location: login.html");
                     if (value == "404") {
                         console.log("VALUE    " + value);
                         notifyMe('.notify_panel3', 'User not added : User Cannot Found', '0');
+                    }if(value=="401"){
+                        
+                        console.log("VALUE    " + value);
+                        notifyMe('.notify_panel3', 'User not added : User Cannot Found', '0');
+                    }else{
+                        notifyMe('.notify_panel3', 'RFID Value Entered', '1');
                     }
                 }
 
