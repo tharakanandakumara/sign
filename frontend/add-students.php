@@ -329,10 +329,11 @@
             /* stop form from submitting normally */
             var web_token = "<?php echo $_SESSION['token'] ?>";
             var auth = "BEARER " + web_token;
-            var fileInput = document.getElementById('fileSelect');
-            var file = fileInput.files[0];
-            var data = new FormData(this);
-            data.append('file', file);
+           
+            
+            var formData = new FormData();
+            formData.append('file', $('input[type=file]')[0].files[0]);
+            var data = formData;
 
             // POST Request to add User
             $("#studentreg").submit(function(event) {
