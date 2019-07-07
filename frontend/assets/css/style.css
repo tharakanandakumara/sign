@@ -1587,7 +1587,12 @@ header .form-inline {
       padding:0 16px;
       padding: 0 1rem;
       text-align: center; }
-
+section#chartCard {
+    min-height: 426px;
+}
+#fetchReports {
+    width: 100% !important;
+}
 .breadcrumbs {
   margin-top: 0; }
 
@@ -2013,11 +2018,11 @@ header .form-inline {
   vertical-align: top; }
 
 .stat-widget-one .stat-icon i {
-  font-size: 30px;
+  font-size: 10px;
   border-width: 3px;
   border-style: solid;
   border-radius: 100px;
-  padding: 15px;
+  padding: 5px;
   font-weight: 900;
   display: inline-block; }
 
@@ -2292,7 +2297,10 @@ header .form-inline {
   color: #ffffff !important;
   opacity: 0.75;
   -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=75)"; }
-
+h5#attendenceDate {
+    display: inline;
+    padding-left: 20px;
+}
 /* Mixed Styles */
 .badges h1,
 .badges h2,

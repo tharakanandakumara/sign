@@ -7,11 +7,11 @@
     var myChart = new Chart( ctx, {
         type: 'line',
         data: {
-            labels: [ "2010", "2011", "2012", "2013", "2014", "2015", "2016" ],
+            labels: grade,
             type: 'line',
             defaultFontFamily: 'Montserrat',
             datasets: [ {
-                data: [ 0, 7, 3, 5, 2, 10, 7 ],
+                data: students,
                 label: "Expense",
                 backgroundColor: 'rgba(0,103,255,.15)',
                 borderColor: 'rgba(0,103,255,0.5)',

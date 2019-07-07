@@ -38,7 +38,7 @@ else
     
 
         // Verify MYME type of the file
-        if ( isset( $allowed[$ext] ) && in_array( $filetype, $allowed[$ext] ) ){
+      
         // if(in_array($filetype, $allowed)){
 
             // Check whether file exists before uploading it
@@ -50,9 +50,7 @@ else
               //echo  $_FILES['photo']['error'];
                 echo "S1200 : Your file was uploaded successfully :".$newFilename;
             } 
-        } else{
-            echo "E1400 : There was a problem uploading your file. Please try again."; 
-        }
+    
     } else{
         echo "E1500 : " . $_FILES["photo"]["error"];
     }

@@ -936,7 +936,7 @@
         $datetable = _createDatePicker();
         _loadDateData($datetable, new Date(currentDate));
         $monthtable = _createMonthPicker();
-        $timetable = _createTimePicker(options.viewMode);
+        
         var $buttonpane = _createButtonPane();
         var VIEWMODE = CONSTS.VIEWMODE;
 
@@ -946,11 +946,7 @@
                 $wrapper.append($monthtable.show());
                 break;
             case VIEWMODE.HM : // HHmm
-            case VIEWMODE.HMS : // HHmmss
-                _loadTimeData($timetable, currentDate, options.viewMode);
-                $wrapper.append($timetable.show());
-                _addTimeOptPane($wrapper);
-                break;
+            
             case VIEWMODE.YMD : //yyyyMMdd
                 $wrapper.append($datetable.show());
                 $monthtable.hide().appendTo($wrapper);
@@ -962,8 +958,7 @@
             default : // yyyyMMddHHmm(ss)
                 $datetable.appendTo($wrapper).show();
                 $monthtable.hide().appendTo($wrapper);
-                _loadTimeData($timetable, currentDate, options.viewMode);
-                $timetable.show().appendTo($wrapper);
+               
                 $wrapper.append($buttonpane);
                 break;
         }
@@ -1033,7 +1028,7 @@
                 TODAY: "今天",
                 OK: "确定",
                 CURRENT: "当前",
-                TIME: "时间"
+               
             },
             en: {
                 SDN: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
@@ -1044,7 +1039,7 @@
                 TODAY: "Today",
                 OK: "OK",
                 CURRENT: "Now",
-                TIME: "Time"
+               
             },
             de: {
                 SDN: ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
@@ -1055,7 +1050,7 @@
                 TODAY: "Heute",
                 OK: "OK",
                 CURRENT: "Jetzt",
-                TIME: "Zeit"
+              
             },
             nl: {
                 SDN: ["Zo", "Ma", "Di", "Wo", "Do", "Vr", "Za"],
@@ -1066,7 +1061,7 @@
                 TODAY: "Vandaag",
                 OK: "OK",
                 CURRENT: "Nu",
-                TIME: "Tijd"
+               
             }
         },
 
