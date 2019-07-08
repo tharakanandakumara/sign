@@ -8,12 +8,12 @@ var students = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 //Function to pass the date and get reports by class
 //*Goptions should be imported
 function getDataByDate(fromDate, toDate) {
-
+ console.log(auth+"Auth")
     $.ajax({
         type: "GET",
         url: gOptions.serverUrl+":3000/protected/attendance/report?from=" + fromDate + "&to=" + toDate,
         //url: gOptions.serverUrl+":3000/protected/attendance/report?from="+fromDate+"&to="+toDate,
-        console.log(auth+"Auth");
+       
         dataType: 'json',
 
         contentType: 'application/json;charset=UTF-8',
