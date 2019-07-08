@@ -13,6 +13,7 @@ function getDataByDate(fromDate, toDate) {
         type: "GET",
         url: gOptions.serverUrl+":3000/protected/attendance/report?from=" + fromDate + "&to=" + toDate,
         //url: gOptions.serverUrl+":3000/protected/attendance/report?from="+fromDate+"&to="+toDate,
+        console.log(auth+"Auth");
         dataType: 'json',
 
         contentType: 'application/json;charset=UTF-8',
