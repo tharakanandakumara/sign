@@ -23,7 +23,7 @@ function getDataByDate(fromDate, toDate) {
         contentType: 'application/json;charset=UTF-8',
         // Update Url
         headers: {
-            Authorization: "BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5hbWUiOiJKZW50ZWsgRGV2ZWxvcGVyIiwidXNlcm5hbWUiOiJkZXZlbG9wZXIiLCJlbWFpbCI6ImlzdXJ1LnJ1aHVAZ21haWwuY29tIiwiY29udGFjdCI6IjA3NzcxMTEyMjIiLCJpc0FkbWluIjpmYWxzZX0sImlhdCI6MTU2MjU1MDU5NywiZXhwIjoxNTYyNTU3Nzk3fQ.4fqg6tn1c-VG5R6GW5RfuQPz1mUGr9u9ARguZTMSHxU"
+            Authorization: "BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5hbWUiOiJKZW50ZWsgRGV2ZWxvcGVyIiwidXNlcm5hbWUiOiJkZXZlbG9wZXIiLCJlbWFpbCI6ImlzdXJ1LnJ1aHVAZ21haWwuY29tIiwiY29udGFjdCI6IjA3NzcxMTEyMjIiLCJpc0FkbWluIjpmYWxzZX0sImlhdCI6MTU2MjU4ODM5MSwiZXhwIjoxNTYyNTk1NTkxfQ.xDcm_f9M4Xe57cTz4bh071I8c-jRwhY-2aBpA3dKjNw"
 
         },
         success: function (response) { // Setting Token

@@ -1,11 +1,12 @@
-<?php /*
+<?php 
     session_start();
-include 'logout.php';
+//include 'logout.php';
 //$_SESSION['token']=null;
+
     if(!isset($_SESSION['token'])){
 header("location: login.html");
     
-}*/
+}
 ?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -93,7 +94,7 @@ header("location: login.html");
             </div>
 
 
-            <div class="col-sm-6 col-lg-3">
+            <div class="col-sm-6 col-md-6">
                 <div class="card text-white bg-flat-color-1">
                     <div class="card-body pb-0">
                         <div class="dropdown float-right">
@@ -111,7 +112,7 @@ header("location: login.html");
                         <h4 class="mb-0">
                             <span id="studentCount"></span>
                         </h4>
-                        <p class="text-light">Students</p>
+                        <p class="text-light">Students In</p>
 
                         <div class="chart-wrapper px-0" style="height:70px;" height="70">
                             <canvas id="widgetChart1"></canvas>
@@ -123,7 +124,7 @@ header("location: login.html");
             </div>
             <!--/.col-->
 
-            <div class="col-sm-6 col-lg-3">
+      <!--      <div class="col-sm-6 col-lg-3">
                 <div class="card text-white bg-flat-color-2">
                     <div class="card-body pb-0">
                         <div class="dropdown float-right">
@@ -150,7 +151,7 @@ header("location: login.html");
                     </div>
                 </div>
             </div>
-            <!--/.col-->
+           
 
             <div class="col-sm-6 col-lg-3">
                 <div class="card text-white bg-flat-color-3">
@@ -181,7 +182,7 @@ header("location: login.html");
             </div>
             <!--/.col-->
 
-            <div class="col-sm-6 col-lg-3">
+            <div class="col-sm-6 col-md-6">
                 <div class="card text-white bg-flat-color-4">
                     <div class="card-body pb-0">
                         <div class="dropdown float-right">
@@ -212,7 +213,7 @@ header("location: login.html");
 
 
 
-            <div class="col-xl-6">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -251,7 +252,7 @@ header("location: login.html");
                 </div>
             </div>
 
-            <div class="col-xl-6 col-lg-6">
+            <div class="col-md-6 col-lg-6">
                 <section class="card">
 
                 <div class="animated fadeIn">
@@ -264,10 +265,10 @@ header("location: login.html");
                                     <img id ="live"src="images/live.gif">
                                 </div>
                                 <div class="card-body">
-                                    <table id="live-attendence" class="table table-striped table-bordered">
+                                    <table id="live-attendence" class="table table-striped table-bordered" style="width:100%">
                                         <thead>
                                             <tr>
-                                                <th>Index Number</th>
+                                                <th>Grade</th>
                                                 <th>Attendence</th>
 
                                             </tr>
@@ -308,6 +309,12 @@ header("location: login.html");
     <script src="vendors/jqvmap/dist/jquery.vmap.min.js"></script>
     <script src="vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
     <script src="vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+     <script src="vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+        <script src="vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+        <script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+        <script src="vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
     <script>
         $(window).load(function () {
         setTimeout(function(){

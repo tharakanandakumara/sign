@@ -3,6 +3,7 @@ var date = []
 var students = [];
  var web_token = "<?php echo $_SESSION['token'] ?>";
 var auth = "BEARER " + web_token;
+ 
 
 
     function getDate() {
@@ -49,6 +50,12 @@ function getDataByDate() {
             } catch (error) {
 
             }
+            try {
+                var tablereports = response["report"][today]["attendanceByGrade"];
+            } catch (error) {
+
+            }
+            populateTable(tablereports)
 
             $("#studentCount").text(reports);
             $("#staffCount").text("Not Supported")
@@ -77,13 +84,30 @@ function getDataByDate() {
     });
 
 }
+function createData(tableValues) {
+var data = [];
+    console.log("tab"+tableValues);
+ for (var key in tableValues) {
+    
+        if (tableValues.hasOwnProperty(key)) {
+             var val=[];
+            console.log(key+"key")
+            val.push(key)
+            val.push(tableValues[key])
+            
+        }    
+data.push(val);
+}
+    return data;
+}
 function populateTable(tableValues) {
     grade = [];
     students = [];
-$("#bootstrap-data-table-export").dataTable().fnDestroy();
+$("#live-attendence").dataTable().fnDestroy();
     var data=createData(tableValues);
-    $('#bootstrap-data-table-export').DataTable( {
-
+    $('#live-attendence').DataTable( {
+"searching": false,
+        "paging":false,
     data: data
 } );
     
@@ -101,7 +125,7 @@ function getDataByWeek() {
         contentType: 'application/json;charset=UTF-8',
         // Update Url
         headers: {
-            Authorization: "BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5hbWUiOiJKZW50ZWsgRGV2ZWxvcGVyIiwidXNlcm5hbWUiOiJkZXZlbG9wZXIiLCJlbWFpbCI6ImlzdXJ1LnJ1aHVAZ21haWwuY29tIiwiY29udGFjdCI6IjA3NzcxMTEyMjIiLCJpc0FkbWluIjpmYWxzZX0sImlhdCI6MTU2MjU1Nzg1OCwiZXhwIjoxNTYyNTY1MDU4fQ.ktXEjDx6FVpWptiDgbniqDytbYPd1uAEL1LRvFOqP9s"
+            Authorization: auth
 
         },
         success: function (response) { // Setting Token
