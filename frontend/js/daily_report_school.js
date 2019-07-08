@@ -4,7 +4,7 @@ var students = [];
  var web_token = "<?php echo $_SESSION['token'] ?>";
 var auth = "BEARER " + web_token;
  
-
+console.log("Auth "+auth)
 
     function getDate() {
 
