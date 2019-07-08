@@ -988,7 +988,10 @@ input,
 textarea {
   box-shadow: none;
   outline: 0 !important; }
-
+img#live {
+    width: 40px;
+    margin: 10px;
+}
 .no-padding {
   padding: 0 !important; }
 

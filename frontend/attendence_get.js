@@ -23,7 +23,7 @@ function getDataByDate(fromDate, toDate) {
         contentType: 'application/json;charset=UTF-8',
         // Update Url
         headers: {
-            Authorization: "BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5hbWUiOiJKZW50ZWsgRGV2ZWxvcGVyIiwidXNlcm5hbWUiOiJkZXZlbG9wZXIiLCJlbWFpbCI6ImlzdXJ1LnJ1aHVAZ21haWwuY29tIiwiY29udGFjdCI6IjA3NzcxMTEyMjIiLCJpc0FkbWluIjpmYWxzZX0sImlhdCI6MTU2MTk1MTIwNSwiZXhwIjoxNTYxOTU4NDA1fQ.84qdE_xndvwU5BNmhFB4_W3qvtJYruODtl7Q0NRSDFM"
+            Authorization: "BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5hbWUiOiJKZW50ZWsgRGV2ZWxvcGVyIiwidXNlcm5hbWUiOiJkZXZlbG9wZXIiLCJlbWFpbCI6ImlzdXJ1LnJ1aHVAZ21haWwuY29tIiwiY29udGFjdCI6IjA3NzcxMTEyMjIiLCJpc0FkbWluIjpmYWxzZX0sImlhdCI6MTU2MjU1MDU5NywiZXhwIjoxNTYyNTU3Nzk3fQ.4fqg6tn1c-VG5R6GW5RfuQPz1mUGr9u9ARguZTMSHxU"
 
         },
         success: function (response) { // Setting Token
@@ -66,25 +66,30 @@ function getDataByDate(fromDate, toDate) {
     });
 
 }
-
-function populateTable(tableValues) {
-    grade = []
-    students = [];
-    var table = document.createElement("table");
-    var tbody = $("#studentDataBody");
-    $("#bootstrap-data-table-export tr").remove();
-    for (var key in tableValues) {
+function createData(tableValues) {
+var data = [];
+ for (var key in tableValues) {
+    
         if (tableValues.hasOwnProperty(key)) {
-            console.log(key + " -> " + tableValues[key]);
+             var val=[];
+            val.push(key)
+            val.push(tableValues[key])
+            
+        }    
+data.push(val);
+}
+    return data;
+}
+function populateTable(tableValues) {
+    grade = [];
+    students = [];
+$("#bootstrap-data-table-export").dataTable().fnDestroy();
+    var data=createData(tableValues);
+    $('#bootstrap-data-table-export').DataTable( {
 
-            tbody
-                .append("<tr><td>" + key + "</td><td>" + tableValues[key] + "</td></tr>")
-
-
-        }
-
-        tbody.appendTo("#bootstrap-data-table-export");
-    }
+    data: data
+} );
+    
 }
 
 function populateGraph(chartValues) {

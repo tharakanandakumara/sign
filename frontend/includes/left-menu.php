@@ -22,15 +22,15 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Daily Reports</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-puzzle-piece"></i><a href="ui-buttons.html">Daily Report</a></li>
-                            <li><i class="fa fa-id-badge"></i><a href="ui-badges.html">Student Report</a></li>
+                            <li><i class="fa fa-puzzle-piece"></i><a href="attendence_grade.php">Attendence by Grade</a></li>
+                            <li><i class="fa fa-id-badge"></i><a href="ui-badges.html">Attendence by Class</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Student Report</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Monthly Report</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i><a href="student_report.php">Student Search</a></li>
-                            <li><i class="fa fa-table"></i><a href="tables-data.html">Data Table</a></li>
+                            <li><i class="fa fa-table"></i><a href="student_report.php">Attendence by Grade</a></li>
+                            <li><i class="fa fa-table"></i><a href="tables-data.html">Attendence by Class</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
