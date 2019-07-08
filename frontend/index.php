@@ -296,7 +296,11 @@ header("location: login.html");
     </div><!-- /#right-panel -->
 
     <!-- Right Panel -->
-
+    <script>
+        /* stop form from submitting normally */
+        var web_token = "<?php echo $_SESSION['token'] ?>";
+        var auth = "BEARER " + web_token;
+    </script>
     <script src="vendors/jquery/dist/jquery.min.js"></script>
     <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
     <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
