@@ -2,12 +2,6 @@ var grade = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 var students = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 
-function getAuth() {
-    var web_token = <script>"<?php echo $_SESSION['token'] ?>"</script>;
-    console.log(web_token);
-    return auth = "BEARER " + web_token;
-
-}
 
 // Token Grabber
 
