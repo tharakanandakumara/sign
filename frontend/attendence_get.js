@@ -4,6 +4,7 @@ var students = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 function getAuth() {
     var web_token = "<?php echo $_SESSION['token'] ?>";
+    console.log(web_token);
     return auth = "BEARER " + web_token;
 
 }
