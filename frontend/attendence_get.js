@@ -3,7 +3,7 @@ var students = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 
 function getAuth() {
-    var web_token = <?php echo $_SESSION['token'] ?>;
+    var web_token = <script>"<?php echo $_SESSION['token'] ?>"</script>;
     console.log(web_token);
     return auth = "BEARER " + web_token;
 
@@ -17,14 +17,14 @@ function getDataByDate(fromDate, toDate) {
 
     $.ajax({
         type: "GET",
-        url: "http://ec2-18-212-57-171.compute-1.amazonaws.com:3000/protected/attendance/report?from=" + fromDate + "&to=" + toDate,
+        url: gOptions.serverUrl":3000/protected/attendance/report?from=" + fromDate + "&to=" + toDate,
         //url: gOptions.serverUrl+":3000/protected/attendance/report?from="+fromDate+"&to="+toDate,
         dataType: 'json',
 
         contentType: 'application/json;charset=UTF-8',
         // Update Url
         headers: {
-            Authorization: "BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5hbWUiOiJKZW50ZWsgRGV2ZWxvcGVyIiwidXNlcm5hbWUiOiJkZXZlbG9wZXIiLCJlbWFpbCI6ImlzdXJ1LnJ1aHVAZ21haWwuY29tIiwiY29udGFjdCI6IjA3NzcxMTEyMjIiLCJpc0FkbWluIjpmYWxzZX0sImlhdCI6MTU2MjU4ODM5MSwiZXhwIjoxNTYyNTk1NTkxfQ.xDcm_f9M4Xe57cTz4bh071I8c-jRwhY-2aBpA3dKjNw"
+            Authorization: auth
 
         },
         success: function (response) { // Setting Token

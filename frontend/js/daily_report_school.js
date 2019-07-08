@@ -29,7 +29,7 @@ function getDataByDate() {
     var today = getDate();
     $.ajax({
         type: "GET",
-        url: "http://ec2-18-212-57-171.compute-1.amazonaws.com:3000/protected/attendance/report?from=" + today + "&to=" + today,
+        url: gOptions.serverUrl+"3000/protected/attendance/report?from=" + today + "&to=" + today,
         //url: gOptions.serverUrl+":3000/protected/attendance/report?from="+fromDate+"&to="+toDate,
         dataType: 'json',
 
@@ -115,7 +115,7 @@ function getDataByWeek() {
     var lastweek = getlastweekDate();
     $.ajax({
         type: "GET",
-        url: "http://ec2-18-212-57-171.compute-1.amazonaws.com:3000/protected/attendance/report?from=" + lastweek + "&to=" + today,
+        url: gOptions.serverUrl":3000/protected/attendance/report?from=" + lastweek + "&to=" + today,
         //url: gOptions.serverUrl+":3000/protected/attendance/report?from="+fromDate+"&to="+toDate,
         dataType: 'json',
 
