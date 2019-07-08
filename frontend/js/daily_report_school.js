@@ -115,7 +115,7 @@ function getDataByWeek() {
     var lastweek = getlastweekDate();
     $.ajax({
         type: "GET",
-        url: gOptions.serverUrl":3000/protected/attendance/report?from=" + lastweek + "&to=" + today,
+        url: gOptions.serverUrl+":3000/protected/attendance/report?from=" + lastweek + "&to=" + today,
         //url: gOptions.serverUrl+":3000/protected/attendance/report?from="+fromDate+"&to="+toDate,
         dataType: 'json',
 

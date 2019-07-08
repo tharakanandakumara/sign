@@ -17,7 +17,7 @@ function getDataByDate(fromDate, toDate) {
 
     $.ajax({
         type: "GET",
-        url: gOptions.serverUrl":3000/protected/attendance/report?from=" + fromDate + "&to=" + toDate,
+        url: gOptions.serverUrl+":3000/protected/attendance/report?from=" + fromDate + "&to=" + toDate,
         //url: gOptions.serverUrl+":3000/protected/attendance/report?from="+fromDate+"&to="+toDate,
         dataType: 'json',
 
