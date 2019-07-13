@@ -992,6 +992,10 @@ img#live {
     width: 40px;
     margin: 10px;
 }
+.stat-icon.dib {
+   margin-bottom: 20px;
+    margin-top: 20px;
+}
 .no-padding {
   padding: 0 !important; }
 
