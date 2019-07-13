@@ -23,7 +23,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Daily Reports</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-puzzle-piece"></i><a href="attendence_grade.php">Attendence by Grade</a></li>
-                            <li><i class="fa fa-id-badge"></i><a href="ui-badges.html">Attendence by Class</a></li>
+                            <li><i class="fa fa-id-badge"></i><a href="class-daily-report.php">Attendence by Class</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
