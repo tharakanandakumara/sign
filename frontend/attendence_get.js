@@ -26,7 +26,7 @@ function getDataByDate(fromDate, toDate) {
             console.log(response);
 
             try {
-                var reports = response["report"][fromDate]["attendanceByClass"];
+                var reports = response["report"][fromDate]["attendanceByGrade"];
             } catch (error) {
 
             }
