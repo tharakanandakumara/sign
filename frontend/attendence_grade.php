@@ -188,7 +188,7 @@ header("location: login.html");
                                     <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>Class</th>
+                                                <th>Grade</th>
                                                 <th>Attendence</th>
 
                                             </tr>
