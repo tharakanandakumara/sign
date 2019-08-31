@@ -2308,6 +2308,25 @@ h5#attendenceDate {
     display: inline;
     padding-left: 20px;
 }
+
+
+span#selectionErrors {
+    color: red;
+    text-align: center;
+    /* min-width: 100%; */
+    *: ;
+    margin: 10px;
+    */: ;
+    display: block;
+}
+#fetchReports:disabled {
+    background: grey;
+}
+
+
+
+
+
 /* Mixed Styles */
 .badges h1,
 .badges h2,
