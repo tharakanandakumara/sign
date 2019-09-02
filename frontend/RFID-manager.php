@@ -156,8 +156,8 @@ header("location: login.html");
                     }else{
                         notifyMe('.notify_panel3', 'RFID Value Entered', '1');
                     }
-                    $("#indexno").val()="";
-                    $("#rfidval").val()="";
+                    $("#indexno").val("")
+                    $("#rfidval").val("")
                 }
 
             });
