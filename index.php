@@ -1,10 +1,9 @@
-<?php 
-    session_start();
+<?php
+session_start();
 include 'logout.php';
 //$_SESSION['token']=null;
-    if(!isset($_SESSION['token'])){
-header("location: login.html");
-    
+if (!isset($_SESSION['token'])) {
+    header("location: login.html");
 }
 
 ?>
@@ -35,8 +34,12 @@ header("location: login.html");
                 <button onclick="window.location.href='/exceluploader.php'" id="uploadexcel" type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicUpdateeModal">
                     Upload Excel
                 </button>
+                <a id="reports" class="btn btn-success" href="frontend/index.php" role="button">
+                    Admin Dashboard
+                </a>
+
                 <br>
-                <a id="logoutBtn" href="index.php?logout=1">Log Out</a>
+                <a id="logoutBtn" class="btn btn-danger" href="index.php?logout=1" role="button">Log Out</a>
 
             </div>
             <div class="col-md-9 register-right">
@@ -339,7 +342,7 @@ header("location: login.html");
         /* stop form from submitting normally */
         var web_token = "<?php echo $_SESSION['token'] ?>";
         var auth = "BEARER " + web_token;
-        
+
         // POST Request to add User
         $("#studentreg").submit(function(event) {
             event.preventDefault();
@@ -593,7 +596,6 @@ header("location: login.html");
             var dateStr = month + "/" + day + "/" + year;
             return dateStr;
         }
-
     </script>
     <script src="js/notify.js"></script>
 </head>

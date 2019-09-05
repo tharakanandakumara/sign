@@ -29,7 +29,7 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Monthly Report</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i><a href="student_report.php">Attendence by Grade</a></li>
+                            <li><i class="fa fa-table"></i><a href="grade-monthly-report_3.php">Attendence by Grade</a></li>
                             <li><i class="fa fa-table"></i><a href="tables-data.html">Attendence by Class</a></li>
                         </ul>
                     </li>

@@ -13,10 +13,12 @@
     min-width: 100%;
 }
 .btn-primary {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+}
+.btn-success {
+    margin-bottom: 10px;
 }
 a#logoutBtn {
-    
     border: 1px solid white;
     padding: 10px;
     position: relative;
