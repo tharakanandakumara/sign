@@ -127,7 +127,7 @@ header("location: login.html");
                 var worksheet = workbook.Sheets[first_sheet_name];
                 var json = XLSX.utils.sheet_to_json(worksheet, {
                     raw: false,
-                    dateNF: 'DD/MM/YYYY'
+                    dateNF: 'YYYY-MM-DD'
                 })
                 //json="{students:"+json+"}";
                 console.log(JSON.stringify({
