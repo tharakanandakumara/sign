@@ -109,15 +109,15 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <input name="initials" type="text" class="form-control" placeholder="Initials *" value="" required>
+                                            <input name="nameWithInitials" type="text" class="form-control" placeholder="Name With Initials *" value="" required>
                                             <div class="valid-feedback">
 
                                             </div>
                                             <div class="invalid-feedback">
-                                                Initials is a required field
+                                                Name with Initials is required
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <input name="lastName" type="text" class="form-control" placeholder="Last Name *" value="" required>
                                             <div class="valid-feedback">
 
@@ -125,7 +125,7 @@
                                             <div class="invalid-feedback">
                                                 Last Name is a required field
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="form-group">
                                             <input name="fullName" type="text" class="form-control" placeholder="Full Name *" value="" required>
                                             <div class="valid-feedback">
@@ -225,7 +225,7 @@
                                    
                                     <div class="card-body">
                                         <h5 class="card-title">Guardian Information</h5>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <input type="number" minlength="10" maxlength="10" name="homeTel" class="form-control" placeholder="Home Tel *" value="" required>
                                             <div class="valid-feedback">
 
@@ -233,7 +233,7 @@
                                             <div class="invalid-feedback">
                                                 Home Telephone is a required field
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="form-group">
                                             <input name="guardianName" type="text" class="form-control" placeholder="Guardian Name" value="">
                                         </div>
@@ -243,8 +243,20 @@
                                         <div class="form-group">
                                             <input name="guardianRelationship" type="text" class="form-control" placeholder="Guardian Relationship" value="">
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <input name="guardianContact" type="text" class="form-control" placeholder="Guardian Contact" value="">
+                                        </div> -->
+                                        <div class="form-group">
+                                            <input type="number" minlength="10" maxlength="10" name="contactNo1" class="form-control" placeholder="Contact Number 1 *" value="" required>
+                                            <div class="valid-feedback">
+
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Contact Number is required
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="contactNo2" type="text" class="form-control" placeholder="Contact Number 2" value="">
                                         </div>
                                     </div>
                                 </div>

@@ -54,11 +54,14 @@ if (!isset($_SESSION['token'])) {
                                         <input name="indexNo" type="number" class="form-control" placeholder="Index No *" value="" required>
                                     </div>
                                     <div class="form-group">
+                                        <input name="nameWithInitials" type="text" class="form-control" placeholder="Name With Initials *" value="" required>
+                                    </div>
+                                    <!-- <div class="form-group">
                                         <input name="initials" type="text" class="form-control" placeholder="Initials *" value="" required>
                                     </div>
                                     <div class="form-group">
                                         <input name="lastName" type="text" class="form-control" placeholder="Last Name *" value="" required>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group">
                                         <input name="fullName" type="text" class="form-control" placeholder="Full Name *" value="" required>
                                     </div>
@@ -116,9 +119,9 @@ if (!isset($_SESSION['token'])) {
                                             <option value="English">English</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <input type="number" minlength="10" maxlength="10" name="homeTel" class="form-control" placeholder="Home Tel *" value="" required>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group">
                                         <input name="guardianName" type="text" class="form-control" placeholder="Guardian Name" value="">
                                     </div>
@@ -128,8 +131,14 @@ if (!isset($_SESSION['token'])) {
                                     <div class="form-group">
                                         <input name="guardianRelationship" type="text" class="form-control" placeholder="Guardian Relationship" value="">
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <input name="guardianContact" type="text" class="form-control" placeholder="Guardian Contact" value="">
+                                    </div> -->
+                                    <div class="form-group">
+                                        <input type="number" minlength="10" maxlength="10" name="contactNo1" class="form-control" placeholder="Contact Number 1 *" value="" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="number" minlength="10" maxlength="10" name="contactNo2" class="form-control" placeholder="Contact Number 2" value="">
                                     </div>
 
                                     <input type="submit" class="btnRegister" value="Register" />
@@ -240,13 +249,15 @@ if (!isset($_SESSION['token'])) {
                                     <br>
                                     <div class="col-md-6">
 
-
                                         <div class="form-group">
+                                            <input name="nameWithInitials" type="text" class="form-control" placeholder="Name With Initials *" value="" />
+                                        </div>
+                                        <!-- <div class="form-group">
                                             <input name="initials" type="text" class="form-control" placeholder="Initials *" value="" />
                                         </div>
                                         <div class="form-group">
                                             <input name="lastName" type="text" class="form-control" placeholder="Last Name *" value="">
-                                        </div>
+                                        </div> -->
                                         <div class="form-group">
                                             <input name="fullName" type="text" class="form-control" placeholder="Full Name *" value="">
                                         </div>
@@ -305,9 +316,9 @@ if (!isset($_SESSION['token'])) {
                                                 <option value="English">English</option>
                                             </select>
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <input type="number" minlength="10" maxlength="10" name="homeTel" class="form-control" placeholder="Home Tel *" value="" required>
-                                        </div>
+                                        </div> -->
                                         <div class="form-group">
                                             <input name="guardianName" type="text" class="form-control" placeholder="Guardian Name" value="">
                                         </div>
@@ -317,8 +328,14 @@ if (!isset($_SESSION['token'])) {
                                         <div class="form-group">
                                             <input name="guardianRelationship" type="text" class="form-control" placeholder="Guardian Relationship" value="">
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <input name="guardianContact" type="text" class="form-control" placeholder="Guardian Contact" value="">
+                                        </div> -->
+                                        <div class="form-group">
+                                            <input type="number" minlength="10" maxlength="10" name="contactNo1" class="form-control" placeholder="Contact Number 1 *" value="" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="number" minlength="10" maxlength="10" name="contactNo2" class="form-control" placeholder="Contact Number 2" value="">
                                         </div>
 
                                         <input type="submit" class="btnRegister" value="Register" />
@@ -367,7 +384,7 @@ if (!isset($_SESSION['token'])) {
 
             $.ajax({
                 type: "POST",
-                url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/protected/students",
+                url: "http://ec2-18-212-57-171.compute-1.amazonaws.com:3000/protected/students",
                 data: data,
                 dataType: 'json',
                 headers: {
@@ -428,7 +445,7 @@ if (!isset($_SESSION['token'])) {
 
             $.ajax({
                 type: "PUT",
-                url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/protected/students/" + sindex,
+                url: "http://ec2-18-212-57-171.compute-1.amazonaws.com:3000/protected/students/" + sindex,
                 data: data,
                 dataType: 'json',
                 contentType: 'application/json;charset=UTF-8',
@@ -459,7 +476,7 @@ if (!isset($_SESSION['token'])) {
             e.preventDefault();
             $.ajax({
                 type: "GET",
-                url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/protected/students/" + sindex,
+                url: "http://ec2-18-212-57-171.compute-1.amazonaws.com:3000/protected/students/" + sindex,
                 data: {
 
                 },
@@ -496,7 +513,7 @@ if (!isset($_SESSION['token'])) {
             e.preventDefault();
             $.ajax({
                 type: "GET",
-                url: "http://ec2-18-234-208-163.compute-1.amazonaws.com:3000/protected/students/" + cindex,
+                url: "http://ec2-18-212-57-171.compute-1.amazonaws.com:3000/protected/students/" + cindex,
                 data: {
 
                 },
