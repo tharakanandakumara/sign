@@ -118,7 +118,7 @@ header("location: login.html");
                 /* Call XLSX */
                 var workbook = XLSX.read(bstr, {
                     type: "binary",
-                    cellDates: true
+                    cellDates: true, , cellNF: false, cellText:false
                 });
 
                 /* DO SOMETHING WITH workbook HERE */
@@ -126,8 +126,8 @@ header("location: login.html");
                 /* Get worksheet */
                 var worksheet = workbook.Sheets[first_sheet_name];
                 var json = XLSX.utils.sheet_to_json(worksheet, {
-                    raw: false,
-                    dateNF: 'yyyy/mm/dd;@'
+                    // raw: false,
+                    dateNF: 'YYYY-MM-DD'
                 })
                 //json="{students:"+json+"}";
                 console.log(JSON.stringify({
