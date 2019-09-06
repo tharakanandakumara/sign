@@ -119,7 +119,7 @@ header("location: login.html");
                 var workbook = XLSX.read(bstr, {
                     type: "binary",
                     cellDates: true,
-                    dateNF: 'dd/mm/yyyy'
+                    dateNF: 'YYYY-MM-DD'
                 });
 
                 /* DO SOMETHING WITH workbook HERE */
