@@ -117,7 +117,8 @@ header("location: login.html");
 
                 /* Call XLSX */
                 var workbook = XLSX.read(bstr, {
-                    type: "binary"
+                    type: "binary",
+                    cellDates: true
                 });
 
                 /* DO SOMETHING WITH workbook HERE */
@@ -125,8 +126,7 @@ header("location: login.html");
                 /* Get worksheet */
                 var worksheet = workbook.Sheets[first_sheet_name];
                 var json = XLSX.utils.sheet_to_json(worksheet, {
-                    raw: true,
-                    cellDates: true
+                    raw: true
                 })
                 //json="{students:"+json+"}";
                 console.log(JSON.stringify({
