@@ -1,11 +1,10 @@
-<?php 
-    session_start();
+<?php
+session_start();
 //include 'logout.php';
 //$_SESSION['token']=null;
 
-    if(!isset($_SESSION['token'])){
-header("location: login.html");
-    
+if (!isset($_SESSION['token'])) {
+    header("location: login.html");
 }
 ?>
 <!doctype html>
@@ -49,10 +48,10 @@ header("location: login.html");
 <body>
     <div class="loader loader2" id="preloader">
 
-        </div>
+    </div>
 
     <!-- Left Panel -->
-<?php include 'includes/left-menu.php' ?>
+    <?php include 'includes/left-menu.php' ?>
     <!-- Left Panel -->
 
     <!-- Right Panel -->
@@ -60,7 +59,8 @@ header("location: login.html");
     <div id="right-panel" class="right-panel">
 
         <!-- Header-->
-       <?php include 'includes/header.php' ?><!-- /header -->
+        <?php include 'includes/header.php' ?>
+        <!-- /header -->
         <!-- Header-->
 
         <div class="breadcrumbs">
@@ -71,7 +71,7 @@ header("location: login.html");
                     </div>
                 </div>
             </div>
-            <div class="col-sm-8">
+            <!-- <div class="col-sm-8">
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
@@ -79,218 +79,122 @@ header("location: login.html");
                         </ol>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <div class="content mt-3">
 
-            <div class="col-sm-12">
+            <!-- alert message -->
+            <!-- <div class="col-sm-12">
                 <div class="alert  alert-success alert-dismissible fade show" role="alert">
                     <span class="badge badge-pill badge-success">Success</span> You successfully read this important alert message.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-            </div>
+            </div> -->
 
 
-            <div class="col-sm-6 col-md-6">
+            <div class="col-sm-6 col-lg-4">
                 <div class="card text-white bg-flat-color-1">
-                    <div class="card-body pb-0">
-                        <div class="dropdown float-right">
-                            <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton1" data-toggle="dropdown">
-                                <i class="fa fa-cog"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <div class="dropdown-menu-content">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="text-light">Total Students</h4>
                             </div>
-                        </div>
-                        <h4 class="mb-0">
-                            <span id="studentCount"></span>
-                        </h4>
-                        <p class="text-light">Students In</p>
-
-                        <div class="chart-wrapper px-0" style="height:70px;" height="70">
-                            <canvas id="widgetChart1"></canvas>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-            <!--/.col-->
-
-      <!--      <div class="col-sm-6 col-lg-3">
-                <div class="card text-white bg-flat-color-2">
-                    <div class="card-body pb-0">
-                        <div class="dropdown float-right">
-                            <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton2" data-toggle="dropdown">
-                                <i class="fa fa-cog"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                <div class="dropdown-menu-content">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
+                            <div class="col-md-6">
+                                <h4 class="text-right">
+                                    <span id="studentCount"></span>
+                                </h4>
                             </div>
-                        </div>
-                        <h4 class="mb-0">
-                            <span id="teacherCount">5</span>
-                        </h4>
-                        <p class="text-light">Teachers</p>
-
-                        <div class="chart-wrapper px-0" style="height:70px;" height="70">
-                            <canvas id="widgetChart2"></canvas>
                         </div>
 
                     </div>
                 </div>
             </div>
-           
 
-            <div class="col-sm-6 col-lg-3">
-                <div class="card text-white bg-flat-color-3">
-                    <div class="card-body pb-0">
-                        <div class="dropdown float-right">
-                            <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton3" data-toggle="dropdown">
-                                <i class="fa fa-cog"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                                <div class="dropdown-menu-content">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </div>
-                        </div>
-                        <h4 class="mb-0">
-                            <span id="staffCount"></span>
-                        </h4>
-                        <p class="text-light">Staff</p>
-
-                    </div>
-
-                    <div class="chart-wrapper px-0" style="height:70px;" height="70">
-                        <canvas id="widgetChart3"></canvas>
-                    </div>
-                </div>
-            </div>
-            <!--/.col-->
-
-            <div class="col-sm-6 col-md-6">
-                <div class="card text-white bg-flat-color-4">
-                    <div class="card-body pb-0">
-                        <div class="dropdown float-right">
-                            <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton4" data-toggle="dropdown">
-                                <i class="fa fa-cog"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
-                                <div class="dropdown-menu-content">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </div>
-                        </div>
-                        <h4 class="mb-0">
-                            <span id="manualCount"></span>
-                        </h4>
-                        <p class="text-light">Students Out</p>
-
-                        <div class="chart-wrapper px-3" style="height:70px;" height="70">
-                            <canvas id="widgetChart4"></canvas>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <!--/.col-->
-
-
-
-            <div class="col-md-6">
-                <div class="card">
+            <div class="col-sm-6 col-lg-4">
+                <div class="card text-white bg-flat-color-5">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-sm-4">
-                                <h4 class="card-title mb-0">Attendence</h4>
-                                <div class="small text-muted">Past Week</div>
+                            <div class="col-md-6">
+                                <h4 class="text-light">Students In</h4>
                             </div>
-                            <!--/.col-->
-                          <!--  <div class="col-sm-8 hidden-sm-down">
-                                <button type="button" class="btn btn-primary float-right bg-flat-color-1"><i class="fa fa-cloud-download"></i></button>
-                                <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
-                                    <div class="btn-group mr-3" data-toggle="buttons" aria-label="First group">
-                                        <label class="btn btn-outline-secondary">
-                                            <input type="radio" name="options" id="option1"> Day
-                                        </label>
-                                        <label class="btn btn-outline-secondary active">
-                                            <input type="radio" name="options" id="option2" checked=""> Month
-                                        </label>
-                                        <label class="btn btn-outline-secondary">
-                                            <input type="radio" name="options" id="option3"> Year
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>-->
-                            <!--/.col-->
-
-
+                            <div class="col-md-6">
+                                <h4 class="text-right">
+                                    <span id="studentsIn"></span>
+                                </h4>
+                            </div>
                         </div>
-                        <!--/.row-->
-                        <div class="chart-wrapper mt-4">
-                            <canvas id="team-chart" style="height:200px;" height="200"></canvas>
-                        </div>
-
                     </div>
-
                 </div>
             </div>
 
-            <div class="col-md-6 col-lg-6">
-                <section class="card">
+            <div class="col-sm-6 col-lg-4">
+                <div class="card text-white bg-flat-color-4">
+                    <div class="card-body">
 
-                <div class="animated fadeIn">
-                    <div class="row">
-
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <strong class="card-title">Live Attendece Report</strong>
-                                    <img id ="live"src="images/live.gif">
-                                </div>
-                                <div class="card-body">
-                                    <table id="live-attendence" class="table table-striped table-bordered" style="width:100%">
-                                        <thead>
-                                            <tr>
-                                                <th>Grade</th>
-                                                <th>Attendence</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody id="studentDataBody">
-                                        </tbody>
-                                    </table>
-                                </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="text-light">Students Out</h4>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 class="text-right">
+                                    <span id="manualCount"></span>
+                                </h4>
                             </div>
                         </div>
-
-
                     </div>
-                </div><!-- .animated -->
-            <!-- .content -->
-                </section>
+                </div>
             </div>
 
 
+            <div class="row">
+                <div class="col-md-6 col-lg-6">
+                    <section class="card">
+                        <div class="animated fadeIn">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <strong class="card-title">Today's Attendance</strong>
+                                            <img id="live" src="images/live.gif">
+                                        </div>
+                                        <div class="card-body">
+                                            <table id="live-attendence" class="table table-striped table-bordered" style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Grade</th>
+                                                        <th>Attendence</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="studentDataBody">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
 
-            
-
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <strong class="card-title">Last Week Attendance</strong>
+                                </div>
+                            </div>
+                            <div class="chart-wrapper mt-4">
+                                <canvas id="team-chart" style="height:200px;" height="200"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div> <!-- .content -->
     </div><!-- /#right-panel -->
@@ -305,7 +209,7 @@ header("location: login.html");
     <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
     <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="assets/js/main.js"></script>
-<script src="js/daily_report_school.js"></script>
+    <script src="js/daily_report_school.js"></script>
 
     <script src="vendors/chart.js/dist/Chart.bundle.min.js"></script>
     <script src="assets/js/dashboard.js"></script>
@@ -313,20 +217,19 @@ header("location: login.html");
     <script src="vendors/jqvmap/dist/jquery.vmap.min.js"></script>
     <script src="vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
     <script src="vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-     <script src="vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
-        <script src="vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-        <script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-        <script src="vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-        <script src="vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-        <script src="vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
-     <script src="properties.js"></script>
+    <script src="vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="properties.js"></script>
     <script>
-        $(window).load(function () {
-        setTimeout(function(){
-            $('#preloader').fadeOut('slow', function () {
-            });
-        },2000); // set the time here
-    }); 
+        $(window).load(function() {
+            setTimeout(function() {
+                $('#preloader').fadeOut('slow', function() {});
+            }, 2000); // set the time here
+        });
         (function($) {
             "use strict";
 

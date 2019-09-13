@@ -54,7 +54,9 @@ function getDataByDate() {
             }
             populateTable(tablereports)
 
-            $("#studentCount").text(reports);
+            $("#studentsIn").text(reports);
+            $("#studentCount").text("Not Supported");
+            $("#studentsOut").text("Not Supported");
             $("#staffCount").text("Not Supported")
             $("#teacherCount").text("Not Supported")
             $("#manualCount").text("Not Supported")
@@ -232,7 +234,7 @@ function populateWeekGraph() {
                     },
                     scaleLabel: {
                         display: true,
-                        labelString: 'Grade'
+                        labelString: 'Date'
                     }
                         }],
                 yAxes: [{

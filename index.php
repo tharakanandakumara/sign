@@ -39,7 +39,7 @@ if (!isset($_SESSION['token'])) {
                 </a>
 
                 <br>
-                <a id="logoutBtn" class="btn btn-danger" href="index.php?logout=1" role="button">Log Out</a>
+                <a id="logoutBtn" class="btn btn-danger" href="index.php?logout=1" role="button">Logout</a>
 
             </div>
             <div class="col-md-9 register-right">

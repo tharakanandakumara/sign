@@ -36,7 +36,7 @@ header("location: login.html");
                     Upload Excel
                 </button>
                 <br>
-                <a id="logoutBtn" href="index.php?logout=1">Log Out</a>
+                <a id="logoutBtn" href="index.php?logout=1">Logout</a>
 
             </div>
             <div class="col-md-9 register-right">
