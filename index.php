@@ -384,7 +384,7 @@ if (!isset($_SESSION['token'])) {
 
             $.ajax({
                 type: "POST",
-                url: "http://ec2-18-212-57-171.compute-1.amazonaws.com:3000/protected/students",
+                url: gOptions.serverUrl+":3000/protected/students",
                 data: data,
                 dataType: 'json',
                 headers: {
@@ -445,7 +445,7 @@ if (!isset($_SESSION['token'])) {
 
             $.ajax({
                 type: "PUT",
-                url: "http://ec2-18-212-57-171.compute-1.amazonaws.com:3000/protected/students/" + sindex,
+                url: gOptions.serverUrl+":3000/protected/students/" + sindex,
                 data: data,
                 dataType: 'json',
                 contentType: 'application/json;charset=UTF-8',
@@ -476,7 +476,7 @@ if (!isset($_SESSION['token'])) {
             e.preventDefault();
             $.ajax({
                 type: "GET",
-                url: "http://ec2-18-212-57-171.compute-1.amazonaws.com:3000/protected/students/" + sindex,
+                url: gOptions.serverUrl+":3000/protected/students/" + sindex,
                 data: {
 
                 },
@@ -513,7 +513,7 @@ if (!isset($_SESSION['token'])) {
             e.preventDefault();
             $.ajax({
                 type: "GET",
-                url: "http://ec2-18-212-57-171.compute-1.amazonaws.com:3000/protected/students/" + cindex,
+                url: gOptions.serverUrl+":3000/protected/students/" + cindex,
                 data: {
 
                 },
