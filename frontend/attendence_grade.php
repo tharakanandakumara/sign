@@ -1,11 +1,10 @@
-<?php 
-    session_start();
+<?php
+session_start();
 //include 'logout.php';
 //$_SESSION['token']=null;
 
-    if(!isset($_SESSION['token'])){
-header("location: login.html");
-    
+if (!isset($_SESSION['token'])) {
+    header("location: login.html");
 }
 ?>
 
@@ -20,7 +19,7 @@ header("location: login.html");
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
+    <title>Joseph Vaz College - Admin Dashboard</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -39,183 +38,98 @@ header("location: login.html");
     <link rel="stylesheet" href="assets/css/style_registration.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-
 </head>
 
 <body>
-
-
     <!-- Left Panel -->
     <?php include 'includes/left-menu.php' ?>
-    <!-- Left Panel -->
-
-    <!-- Right Panel -->
 
     <div id="right-panel" class="right-panel">
-
         <!-- Header-->
         <?php include 'includes/header.php' ?>
-        <!-- /header -->
-        <!-- Header-->
 
         <div class="breadcrumbs">
             <div class="col-sm-6">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Attendence By Grade - Daily Report</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="page-header float-right">
-                    <div class="page-title">
-                        <ol class="breadcrumb text-right">
-                            <li class="active">Dashboard</li>
-                        </ol>
+                        <h1>Daily Reports - Attendence By Grade</h1>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="content mt-3">
-
-            <div class="col-sm-12">
-                <div class="alert  alert-success alert-dismissible fade show" role="alert">
-                    <span class="badge badge-pill badge-success">Success</span> You successfully read this important alert message.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            </div>
-
-            <div class="col-xl-8">
-                <section id="chartCard" class="card">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="mb-3">Attendence by Grade </h4>
-                                <canvas id="team-chart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </section>
-
-                <!--<section class="card">
-                    <div class="twt-feed blue-bg">
-                        <div class="corner-ribon black-ribon">
-                            <i class="fa fa-user"></i>
-                        </div>
-                        
-
-                        <div class="media">
-                            <a href="#">
-                                <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="images/admin.jpg">
-                            </a>
-                            <div class="media-body">
-                                <h2 class="text-white display-6">Jim Doe</h2>
-                                <p class="text-light">Student</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="weather-category twt-category">
-                        <ul>
-                            <li class="active">
-                                <h5>24</h5>
-                                Presents
-                            </li>
-                            <li>
-                                <h5>10 B</h5>
-                                Class
-                            </li>
-                            <li>
-                                <h5>3645</h5>
-                                Followers
-                            </li>
-                        </ul>
-                    </div>
-                  
-
-                </section>-->
-            </div>
-
-
-
-
-            <div class="col-xl-4">
-                <div class="card">
-                    <div class="card-body">
-
-                        <div class="stat-widget-one">
-                            <div class="stat-icon dib"><i class="fa fa-map-signs text-success border-success"></i>
-                                <h5 id="attendenceDate" class="card-title">Select Date</h5>
-                            </div>
-                            <div class="stat-content dib">
-
-
-
-                                <div>
-
-                                    <span id="date-text-ymd1-1"></span>
+            <div class="row" >
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="stat-widget-one">
+                                <div class="stat-icon dib"><i class="fa fa-map-signs text-success border-success"></i>
+                                    <h5 id="attendenceDate" class="card-title">Select Date</h5>
                                 </div>
+                                <div class="stat-content dib">
+                                    <div>
+                                        <span id="date-text-ymd1-1"></span>
+                                    </div>
 
-                                <div id="demo1-1"></div>
-                                <input id="fetchReports" type="submit" class="btnRegister" value="Fetch Reports" />
+                                    <div id="demo1-1"></div>
+                                    <input id="fetchReports" type="submit" class="btnRegister" value="Fetch Reports" />
 
+                                </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
-            </div>
 
-
-
-
-
-
-            <div class="content mt-3">
-                <div class="animated fadeIn">
-                    <div class="row">
-
-                        <div class="col-md-12">
+                <div class="col-md-8">
+                    <section id="chartCard" class="card">
+                        <div class="col-lg-12">
                             <div class="card">
-                                <div class="card-header">
-                                    <strong class="card-title">Student Attendece Report</strong>
-                                </div>
                                 <div class="card-body">
-                                    <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>Grade</th>
-                                                <th>Attendence</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody id="studentDataBody">
-                                        </tbody>
-                                    </table>
+                                    <h4 class="mb-3">Attendence by Grade </h4>
+                                    <canvas id="team-chart"></canvas>
                                 </div>
                             </div>
                         </div>
+                    </section>
+                </div>
+            </div>
+        </div>
 
+        <div class="content mt-3">
+            <div class="animated fadeIn">
+                <div class="row">
 
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Student Attendece Report</strong>
+                            </div>
+                            <div class="card-body">
+                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Grade</th>
+                                            <th>Attendence</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="studentDataBody">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                </div><!-- .animated -->
-            </div><!-- .content -->
+                </div>
+            </div>
+        </div>
 
 
+        <script>
+            /* stop form from submitting normally */
+            var web_token = "<?php echo $_SESSION['token'] ?>";
+            var auth = "BEARER " + web_token;
+        </script>
 
-
-
-        </div><!-- /#right-panel -->
-<script>
-        /* stop form from submitting normally */
-        var web_token = "<?php echo $_SESSION['token'] ?>";
-        var auth = "BEARER " + web_token;
-    </script>
-        <!-- Right Panel -->
         <script src="vendors/jquery/dist/jquery.min.js"></script>
         <script src="vendors/jquery/dist/jquery.min.js"></script>
         <script src="attendence_get.js"></script>
@@ -241,10 +155,19 @@ header("location: login.html");
         <script src="vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
         <script src="vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
         <script src="assets/js/init-scripts/data-table/datatables-init.js"></script>
- <script src="properties.js"></script>
+        <script src="properties.js"></script>
         <script>
             $(document).ready(function() {
+                var today = new Date();
+                var dd = String(today.getDate()).padStart(2, '0');
+                var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                var yyyy = today.getFullYear();
+
+                today = yyyy + '-' + mm + '-' + dd;
+                getDataByDate(today, today);
+
                 var selectedDate;
+
                 function logEvent(type, date) {
                     $("<div class='log__entry'/>").hide().html("<strong>" + type + "</strong>: " + date).prependTo($('#eventlog')).show(200);
                 }
@@ -252,22 +175,18 @@ header("location: login.html");
                     $('#eventlog').html('');
                 });
                 $("#fetchReports").click(function() {
-                    
-                   
-                   getDataByDate(selectedDate,selectedDate)
+                    getDataByDate(selectedDate, selectedDate)
                 });
                 $('#demo1-1').datetimepicker({
-                    //date: new Date(),
+                    date: new Date(),
                     viewMode: 'YMDHMS',
                     //date selection event
                     onDateChange: function() {
                         logEvent('onDateChange', this.getValue());
-                       // getDataByDate((this.getText('YYYY-MM-DD')), (this.getText('YYYY-MM-DD')))
-                        selectedDate=this.getText('YYYY-MM-DD');
-
+                        // getDataByDate((this.getText('YYYY-MM-DD')), (this.getText('YYYY-MM-DD')))
+                        selectedDate = this.getText('YYYY-MM-DD');
                     },
                     //clear button click event
-
                 });
             });
             (function($) {
@@ -287,7 +206,6 @@ header("location: login.html");
                 });
             })(jQuery);
         </script>
-
+    </div>
 </body>
-
 </html>

@@ -1,18 +1,17 @@
-http: //localhost:3000/protected/attendance/report
 var date = []
 var students = [];
 
 
-    function getDate() {
+function getDate() {
 
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-        var yyyy = today.getFullYear();
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
 
-        today = yyyy + '-' + mm + '-' + dd;
-        return today;
-    }
+    today = yyyy + '-' + mm + '-' + dd;
+    return today;
+}
 
 function getlastweekDate() {
 
@@ -230,7 +229,7 @@ function populateWeekGraph() {
                     display: true,
                     gridLines: {
                         display: false,
-                        drawBorder: false
+                        drawBorder: true
                     },
                     scaleLabel: {
                         display: true,
@@ -240,8 +239,8 @@ function populateWeekGraph() {
                 yAxes: [{
                     display: true,
                     gridLines: {
-                        display: false,
-                        drawBorder: false
+                        display: true,
+                        drawBorder: true
                     },
                     scaleLabel: {
                         display: true,

@@ -1,28 +1,27 @@
 var grade = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 var students = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-var date=[];
+var date = [];
 
 
-auth="BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5hbWUiOiJKZW50ZWsgRGV2ZWxvcGVyIiwidXNlcm5hbWUiOiJkZXZlbG9wZXIiLCJlbWFpbCI6ImlzdXJ1LnJ1aHVAZ21haWwuY29tIiwiY29udGFjdCI6IjA3NzcxMTEyMjIiLCJpc0FkbWluIjpmYWxzZX0sImlhdCI6MTU2MzE2MjM2MCwiZXhwIjoxNTYzMTY5NTYwfQ.lo69VsVdn6J000kjtAa2SSwfmF-yOYOGz9fTioih5Hc" ;
+// var auth="BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5hbWUiOiJKZW50ZWsgRGV2ZWxvcGVyIiwidXNlcm5hbWUiOiJkZXZlbG9wZXIiLCJlbWFpbCI6ImlzdXJ1LnJ1aHVAZ21haWwuY29tIiwiY29udGFjdCI6IjA3NzcxMTEyMjIiLCJpc0FkbWluIjpmYWxzZX0sImlhdCI6MTU2MzE2MjM2MCwiZXhwIjoxNTYzMTY5NTYwfQ.lo69VsVdn6J000kjtAa2SSwfmF-yOYOGz9fTioih5Hc" ;
 
 // Token Grabber
 
 //Function to pass the date and get reports by class
 //*Goptions should be imported
 function getDataByDate(fromDate, toDate) {
- console.log(auth+"Auth")
+    console.log("Auth: " + auth)
     $.ajax({
         type: "GET",
-        url: gOptions.serverUrl+":3000/protected/attendance/report?from=" + fromDate + "&to=" + toDate,
+        url: gOptions.serverUrl + ":3000/protected/attendance/report?from=" + fromDate + "&to=" + toDate,
         //url: gOptions.serverUrl+":3000/protected/attendance/report?from="+fromDate+"&to="+toDate,
-       
+
         dataType: 'json',
 
         contentType: 'application/json;charset=UTF-8',
         // Update Url
         headers: {
             Authorization: auth
-
         },
         success: function (response) { // Setting Token
             console.log(response);
@@ -37,7 +36,6 @@ function getDataByDate(fromDate, toDate) {
             } catch (error) {
                 grade = []
                 students = [];
-
             }
             console.log(reports)
             populateTable(reports)
@@ -64,13 +62,13 @@ function getDataByDate(fromDate, toDate) {
     });
 
 }
-function getDatabyMonth(fromDate, toDate,selectedGrade){
-    
-        $.ajax({
+function getDatabyMonth(fromDate, toDate, selectedGrade) {
+
+    $.ajax({
         type: "GET",
-        url: gOptions.serverUrl+":3000/protected/attendance/report?from=" + fromDate + "&to=" + toDate,
+        url: gOptions.serverUrl + ":3000/protected/attendance/report?from=" + fromDate + "&to=" + toDate,
         //url: gOptions.serverUrl+":3000/protected/attendance/report?from="+fromDate+"&to="+toDate,
-       
+
         dataType: 'json',
 
         contentType: 'application/json;charset=UTF-8',
@@ -85,36 +83,36 @@ function getDatabyMonth(fromDate, toDate,selectedGrade){
             try {
                 var reports = response["report"];
                 var keys = Object.keys(reports);
-                    students=[];
-                    date=[];
-                for(i=0;i<=Object.keys(reports).length;i++){
-                   
-                   reports = response["report"][keys[i]]["attendanceByGrade"];
-                   createMonthlyData(selectedGrade,reports,keys[i]);
-                     console.log("print"+date[0]);
-                                                             
+                students = [];
+                date = [];
+                for (i = 0; i <= Object.keys(reports).length; i++) {
+
+                    reports = response["report"][keys[i]]["attendanceByGrade"];
+                    createMonthlyData(selectedGrade, reports, keys[i]);
+                    console.log("print" + date[0]);
+
                 }
-                populateMonthlyGraph(date,students);
+                populateMonthlyGraph(date, students);
             } catch (error) {
-            console.log(error);
+                console.log(error);
             }
-            
-            
-          
-           
+
+
+
+
             console.log(reports)
-           /* populateTable(reports)
-            populateGraph(chart)
-            $("#attendenceDate").html("Reports for " + fromDate)
-            /*  if (response.token) {
-                  ajaxCallBack(response.token);
-                  
-
-
-              } else {
-
-                  notifyMe('.notify_panel', 'Invalid Credentials Entered', '0');
-              }*/
+            /* populateTable(reports)
+             populateGraph(chart)
+             $("#attendenceDate").html("Reports for " + fromDate)
+             /*  if (response.token) {
+                   ajaxCallBack(response.token);
+                   
+ 
+ 
+               } else {
+ 
+                   notifyMe('.notify_panel', 'Invalid Credentials Entered', '0');
+               }*/
         },
         statusCode: {
             404: function () {
@@ -125,47 +123,47 @@ function getDatabyMonth(fromDate, toDate,selectedGrade){
             }
         }
     });
-    
-}
-function createMonthlyData(grade,data,dateg){
 
-    
-    for(var key in data){
-                  
-                    var val=[];
-                    if(key==grade)    {
-                        date.push(dateg);
-                        students.push(data[key]);
-                        
 }
-}
+function createMonthlyData(grade, data, dateg) {
+
+
+    for (var key in data) {
+
+        var val = [];
+        if (key == grade) {
+            date.push(dateg);
+            students.push(data[key]);
+
+        }
+    }
     console.log(date[1]);
     console.log(students[1]);
 }
 function createData(tableValues) {
-var data = [];
- for (var key in tableValues) {
-    
+    var data = [];
+    for (var key in tableValues) {
+
         if (tableValues.hasOwnProperty(key)) {
-             var val=[];
+            var val = [];
             val.push(key)
             val.push(tableValues[key])
-            
-        }    
-data.push(val);
-}
+
+        }
+        data.push(val);
+    }
     return data;
 }
 function populateTable(tableValues) {
     grade = [];
     students = [];
-$("#bootstrap-data-table-export").dataTable().fnDestroy();
-    var data=createData(tableValues);
-    $('#bootstrap-data-table-export').DataTable( {
+    $("#bootstrap-data-table-export").dataTable().fnDestroy();
+    var data = createData(tableValues);
+    $('#bootstrap-data-table-export').DataTable({
 
-    data: data
-} );
-    
+        data: data
+    });
+
 }
 
 function populateGraph(chartValues) {
@@ -186,24 +184,24 @@ function populateGraph(chartValues) {
     console.log(grade)
 
     var ctx = document.getElementById("team-chart");
-    ctx.height = 250;
+    ctx.height = 200;
     var myChart = new Chart(ctx, {
-        type: 'line',
+        type: 'bar',
         data: {
             labels: grade,
-            type: 'line',
+            type: 'bar',
             defaultFontFamily: 'Montserrat',
             datasets: [{
                 data: students,
                 label: "Students",
-                backgroundColor: 'rgba(0,103,255,.15)',
-                borderColor: 'rgba(0,103,255,0.5)',
+                backgroundColor: 'rgba(0,103,255,1)',
+                borderColor: 'rgba(0,103,255,1)',
                 borderWidth: 3.5,
                 pointStyle: 'circle',
                 pointRadius: 5,
                 pointBorderColor: 'transparent',
                 pointBackgroundColor: 'rgba(0,103,255,0.5)',
-                    }, ]
+            },]
         },
         options: {
             responsive: true,
@@ -225,32 +223,30 @@ function populateGraph(chartValues) {
                     usePointStyle: true,
                     fontFamily: 'Montserrat',
                 },
-
-
             },
             scales: {
                 xAxes: [{
                     display: true,
                     gridLines: {
                         display: false,
-                        drawBorder: false
+                        drawBorder: true
                     },
                     scaleLabel: {
                         display: true,
                         labelString: 'Grade'
                     }
-                        }],
+                }],
                 yAxes: [{
                     display: true,
                     gridLines: {
-                        display: false,
-                        drawBorder: false
+                        display: true,
+                        drawBorder: true
                     },
                     scaleLabel: {
                         display: true,
                         labelString: 'Students'
                     }
-                        }]
+                }]
             },
             title: {
                 display: false,
@@ -258,11 +254,11 @@ function populateGraph(chartValues) {
         }
     });
 }
-function populateMonthlyGraph(gradeClass,students) {
+function populateMonthlyGraph(gradeClass, students) {
 
     console.log("Populating Graph");
 
-    console.log("Grade Data"+gradeClass[1])
+    console.log("Grade Data" + gradeClass[1])
 
     var ctx = document.getElementById("class-chart");
     ctx.height = 250;
@@ -282,7 +278,7 @@ function populateMonthlyGraph(gradeClass,students) {
                 pointRadius: 5,
                 pointBorderColor: 'transparent',
                 pointBackgroundColor: 'rgba(0,103,255,0.5)',
-                    }, ]
+            },]
         },
         options: {
             responsive: true,
@@ -318,7 +314,7 @@ function populateMonthlyGraph(gradeClass,students) {
                         display: true,
                         labelString: 'Date'
                     }
-                        }],
+                }],
                 yAxes: [{
                     display: true,
                     gridLines: {
@@ -329,7 +325,7 @@ function populateMonthlyGraph(gradeClass,students) {
                         display: true,
                         labelString: 'Students'
                     }
-                        }]
+                }]
             },
             title: {
                 display: false,
