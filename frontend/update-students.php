@@ -155,7 +155,7 @@ header("location: login.html");
                                         </div>
                                         <div class="col-md-8">
                                             <div class="form-group">
-                                                <input name="class" type="text" class="form-control" placeholder="Section/Class" value="" required>
+                                                <input name="section" type="text" class="form-control" placeholder="Section/Class" value="" required>
                                             </div>
                                         </div>
 
@@ -317,9 +317,9 @@ header("location: login.html");
                 }
                 $('input[name="'+key+'"]').val(value);
                 
-                if(key="medium"){
-                    $('select[name=medium]').val(key);
-                    console.log("medium");
+                if(key="grade"){
+                    $('select[name=grade]').val(key);
+                    console.log("grade");
                 }
                 
                 var $ctrl = $('[name=' + key + ']', frm);
@@ -358,7 +358,7 @@ header("location: login.html");
             var day = date.getDate();
             var year = date.getFullYear();
             var month = date.getMonth() + 1;
-            var dateStr = month + "/" + day + "/" + year;
+            var dateStr = year + "-" + month + "-" + date;
             return dateStr;
         }
     </script>
