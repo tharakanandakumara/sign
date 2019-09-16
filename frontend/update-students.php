@@ -316,7 +316,8 @@ header("location: login.html");
 
                 }
                 if(key=="address"){
-                    $('input[name="adress"]').val(value)
+                    $('input[name="address"]').val(value);
+                    console.log("address updated")
                 }
                 
                 
