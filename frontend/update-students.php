@@ -161,7 +161,7 @@ header("location: login.html");
 
                                     </div>
                                     <div class="form-group">
-                                        <select name="medium" class="form-control" required>
+                                        <select name="medium" id="medium" class="form-control" required>
                                             <option value="" class="hidden" selected disabled> Medium</option>
                                             <option value="Sinhala">Sinhala</option>
                                             <option value="English">English</option>
@@ -323,6 +323,11 @@ header("location: login.html");
                     
                     console.log("grade");
                 }
+                if(key="medium"){
+                    $('#medium').find('option[value="'+value+'"]').prop('selected', 'selected');
+                    
+                    console.log("grade");
+                }
                 
                 var $ctrl = $('[name=' + key + ']', frm);
                 if ($ctrl.is('select')) {
@@ -360,7 +365,7 @@ header("location: login.html");
             var day = date.getDate();
             var year = date.getFullYear();
             var month = date.getMonth() + 1;
-            var dateStr = year + "-" + month + "-" + date;
+            var dateStr = year + "-" + month + "-" + day;
             return dateStr;
         }
     </script>
