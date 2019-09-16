@@ -312,7 +312,7 @@ header("location: login.html");
                 if (key == "DOB") {
                     datevalue = convertDate(value);
                     console.log(datevalue);
-                    $('#DOB').val(datevalue);
+                    $('#dob').val(datevalue);
 
                 }
                 var $ctrl = $('[name=' + key + ']', frm);
