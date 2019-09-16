@@ -317,7 +317,10 @@ header("location: login.html");
                 }
                 $('input[name="'+key+'"]').val(value);
                 
-                
+                if(key="medium"){
+                    $('select[name=medium]').val(key);
+                    console.log("medium");
+                }
                 
                 var $ctrl = $('[name=' + key + ']', frm);
                 if ($ctrl.is('select')) {
