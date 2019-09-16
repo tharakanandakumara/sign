@@ -1,7 +1,12 @@
 <?php
-
+  session_start();
+include 'logout.php';
+//$_SESSION['token']=null;
+    if(!isset($_SESSION['token'])){
+header("location: login.html");
+    
+}
 ?>
-
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -241,7 +246,7 @@
     <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="assets/js/main.js"></script>
 
-
+<script src="properties.js"></script>
     <script src="vendors/chart.js/dist/Chart.bundle.min.js"></script>
     <script src="assets/js/dashboard.js"></script>
     <script src="assets/js/widgets.js"></script>
@@ -265,6 +270,82 @@
                 normalizeFunction: 'polynomial'
             });
         })(jQuery);
+        var web_token = "<?php echo $_SESSION['token'] ?>";
+            var auth = "BEARER " + web_token;
+                $('#indexGrabber').on('click', function(e) {
+
+            var sindex = $("#studIndex").val();
+            console.log(sindex);
+            e.preventDefault();
+            $.ajax({
+                type: "GET",
+                url: gOptions.serverUrl+":3000/protected/students/" + sindex,
+                data: {
+
+                },
+                headers: {
+                    Authorization: auth
+                },
+                success: function(response) {
+                    console.log(response)
+                    if (response.indexNo != null) {
+                        console.log(response)
+
+                        populate('#studentupdate', response);
+
+                    } else {
+
+                        notifyMe('.notify_panel', 'User does not exist', '0');
+                        $('#studentupdate')[0].reset();
+                    }
+                },
+                error: function(err) {
+                    notifyMe('.notify_panel', 'User does not exist', '0');
+
+                    $('#studentupdate')[0].reset();
+                }
+            });
+            return false;
+        });
+                function populate(frm, data) {
+            $.each(data, function(key, value) {
+                if (key == "DOB") {
+                    datevalue = convertDate(value);
+                    console.log(datevalue);
+                    $('#DOB').val(datevalue);
+
+                }
+                var $ctrl = $('[name=' + key + ']', frm);
+                if ($ctrl.is('select')) {
+
+                    $("option", $ctrl).each(function() {
+
+                        if (this.value == value) {
+
+                            this.selected = true;
+                        }
+                    });
+                } else {
+                    switch ($ctrl.attr("type")) {
+                        case "text":
+                        case "hidden":
+                        case "textarea":
+                            $ctrl.val(value);
+                            break;
+                        case "radio":
+                        case "checkbox":
+                            $ctrl.each(function() {
+                                if ($(this).attr('value') == value) {
+                                    $(this).attr("checked", value);
+                                }
+                            });
+                            break;
+                    }
+                }
+            });
+
+
+        };
     </script>
 
 </body>
