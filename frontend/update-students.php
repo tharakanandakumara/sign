@@ -228,7 +228,8 @@ header("location: login.html");
                                     <div class="form-group">
                                         <input type="text" class="form-control" placeholder="`Answer *" value="" />
                                     </div>
-                                    <input type="submit" class="btnRegister" value="Register" />
+                                    <button id="update-form-submit" type="button" class="btn btn-success">Update</button>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -368,6 +369,7 @@ header("location: login.html");
             var dateStr = year + "-" + month + "-" + day;
             return dateStr;
         }
+        
     </script>
 
 </body>
