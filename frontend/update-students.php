@@ -189,7 +189,7 @@ header("location: login.html");
                                         <input type="number" minlength="10" maxlength="10" name="contactNo2" class="form-control" placeholder="Contact Number 2" value="">
                                     </div>
 
-                                   <button id="update-form-submit" type="button" class="btn btn-success">Update</button>
+                                   <button id="update-form-submit" type="Submit" class="btn btn-success">Update</button>
                                     
                                 </div>
                             </div>
@@ -255,6 +255,7 @@ header("location: login.html");
     <script src="vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
     <script src="vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
         <script src="js/select-min.js"></script>
+        <script type="text/javascript" src="js/noty.min.js"></script>
     <script>
         (function($) {
             "use strict";
@@ -417,6 +418,33 @@ header("location: login.html");
             });
             return false;
         });
+function notifyMe($classname, $message, $status) {
+
+            if ($status == "1") {
+                statusnew = 'success';
+            } else {
+                statusnew = 'error';
+            }
+            console.log(statusnew);
+            var n = $($classname).noty({
+                text: $message,
+                theme: 'metroui',
+
+                type: statusnew,
+
+
+                animation: {
+                    open: {
+                        height: 'toggle'
+                    },
+                    close: {
+                        height: 'toggle'
+                    },
+                    speed: 500
+                }
+            });
+            n.setTimeout(3000);
+        }
 
     </script>
 
