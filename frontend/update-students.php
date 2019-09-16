@@ -315,10 +315,8 @@ header("location: login.html");
                     $('#dob').val(datevalue);
 
                 }
-                if(key=="address"){
-                    $('input[name="address"]').val(value);
-                    console.log("address updated")
-                }
+                $('input[name="'+key+'"]').val(value);
+                
                 
                 
                 var $ctrl = $('[name=' + key + ']', frm);
