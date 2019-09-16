@@ -346,6 +346,14 @@ header("location: login.html");
 
 
         };
+        function convertDate(dateval) {
+            var date = new Date(dateval);
+            var day = date.getDate();
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var dateStr = month + "/" + day + "/" + year;
+            return dateStr;
+        }
     </script>
 
 </body>
