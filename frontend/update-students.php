@@ -369,7 +369,55 @@ header("location: login.html");
             var dateStr = year + "-" + month + "-" + day;
             return dateStr;
         }
-        
+         $('#update-form-submit').on('click', function(e) {
+
+            $.fn.serializeObject = function() {
+                var o = {};
+                var a = this.serializeArray();
+                $.each(a, function() {
+                    if (o[this.name] !== undefined) {
+                        if (!o[this.name].push) {
+                            o[this.name] = [o[this.name]];
+                        }
+                        o[this.name].push(this.value || '');
+                    } else {
+                        o[this.name] = this.value || '';
+                    }
+                });
+                return o;
+            };
+            var data = JSON.stringify($('#update-form-submit').serializeObject());
+            console.log("data: " + data)
+
+            var sindex = $("#studIndex").val();
+            console.log(sindex);
+            e.preventDefault();
+
+            $.ajax({
+                type: "PUT",
+                url: gOptions.serverUrl+":3000/protected/students/" + sindex,
+                data: data,
+                dataType: 'json',
+                contentType: 'application/json;charset=UTF-8',
+                headers: {
+                    Authorization: auth
+                },
+                success: function(response) {
+                    console.log("Success: ", response);
+                    if (response.indexNo != null) {
+                        notifyMe('.notify_panel', 'User added', '1');
+                    }
+
+
+                },
+                error: function(err) {
+                    console.log("Error: ", err)
+                    alert(err);
+                },
+            });
+            return false;
+        });
+
     </script>
 
 </body>
