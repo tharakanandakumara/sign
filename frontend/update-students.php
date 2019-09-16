@@ -315,6 +315,11 @@ header("location: login.html");
                     $('#dob').val(datevalue);
 
                 }
+                if(key=="address"){
+                    $('input[name="adress"]').val(value)
+                }
+                
+                
                 var $ctrl = $('[name=' + key + ']', frm);
                 if ($ctrl.is('select')) {
 
