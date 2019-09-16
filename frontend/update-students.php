@@ -136,7 +136,7 @@ header("location: login.html");
                                 <div class="col-md-6">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <select name="grade" class="form-control" required>
+                                            <select name="grade" id="grade" class="form-control" required>
                                                 <option value="" class="hidden" selected disabled> Grade</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -318,7 +318,7 @@ header("location: login.html");
                 $('input[name="'+key+'"]').val(value);
                 
                 if(key="grade"){
-                    $('select[name=grade]').val(key);
+                    $('#grade').selectpicker('val', key);
                     console.log("grade");
                 }
                 
