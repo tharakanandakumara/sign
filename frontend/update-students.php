@@ -189,7 +189,8 @@ header("location: login.html");
                                         <input type="number" minlength="10" maxlength="10" name="contactNo2" class="form-control" placeholder="Contact Number 2" value="">
                                     </div>
 
-                                    <input type="submit" class="btnRegister" value="Register" />
+                                   <button id="update-form-submit" type="button" class="btn btn-success">Update</button>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -228,7 +229,6 @@ header("location: login.html");
                                     <div class="form-group">
                                         <input type="text" class="form-control" placeholder="`Answer *" value="" />
                                     </div>
-                                    <button id="update-form-submit" type="button" class="btn btn-success">Update</button>
                                     
                                 </div>
                             </div>
