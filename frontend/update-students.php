@@ -319,7 +319,7 @@ header("location: login.html");
                 $('input[name="'+key+'"]').val(value);
                 
                 if(key="grade"){
-                    $('#grade').find('option[value="'+ key +'"]').prop('selected', 'selected');
+                    $('#grade').find('option[value="'+value+'"]').prop('selected', 'selected');
                     
                     console.log("grade");
                 }
