@@ -103,7 +103,7 @@ if (!isset($_SESSION['token'])) {
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Student Attendece Report</strong>
+                                <strong class="card-title">Student Attendance Report</strong>
                             </div>
                             <div class="card-body">
                                 <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
