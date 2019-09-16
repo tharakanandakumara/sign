@@ -48,7 +48,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Students</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-fort-awesome"></i><a href="add-students.php">Add Students</a></li>
-                            <li><i class="menu-icon ti-themify-logo"></i><a href="font-themify.html">Update Students</a></li>
+                            <li><i class="menu-icon ti-themify-logo"></i><a href="update-students.php">Update Students</a></li>
                             <li><i class="menu-icon ti-themify-logo"></i><a href="font-themify.html">Check Student</a></li>
                         </ul>
                     </li>

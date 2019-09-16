@@ -53,7 +53,9 @@ header("location: login.html");
             </div>
         </div>
     </div>
+    <script src="frontend/properties.js"></script>
     <script>
+         
         var web_token = "<?php echo $_SESSION['token'] ?>";
         var auth = "BEARER " + web_token;
         $('#uploader').submit(function(e) {
@@ -101,7 +103,7 @@ header("location: login.html");
         });
 
         function xltojson() {
-            var url = "http://ec2-18-212-57-171.compute-1.amazonaws.com/upload/test.xlsx";
+            var url = gOptions.serverUrl+"/upload/test.xlsx";
             var oReq = new XMLHttpRequest();
             oReq.open("GET", url, true);
             oReq.responseType = "arraybuffer";
@@ -144,7 +146,7 @@ header("location: login.html");
         function dataPoster(datatoPost) {
             $.ajax({
                 type: "POST",
-                url: "http://ec2-18-212-57-171.compute-1.amazonaws.com:3000/protected/students/multiple",
+                url: gOptions.serverUrl+":3000/protected/students/multiple",
                 dataType: 'json',
                 data: datatoPost,
                 contentType: 'application/json;charset=UTF-8',

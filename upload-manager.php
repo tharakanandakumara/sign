@@ -33,7 +33,7 @@ else
         if(!array_key_exists($ext, $allowed)) die("E1100 : Please select a valid file format.");
     
         // Verify file size - 5MB maximum
-        $maxsize = 5 * 1024 * 1024;
+        $maxsize = 20 * 1024 * 1024;
         if($filesize > $maxsize) die("E1200 : File size is larger than the allowed limit.");
     
 
