@@ -422,7 +422,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: gOptions.serverUrl + ":3000/protected/students",
+                    url: gOptions.serverUrl + "/protected/students",
                     data: data,
                     dataType: 'json',
                     headers: {

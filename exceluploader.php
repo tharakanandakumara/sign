@@ -103,7 +103,7 @@ header("location: login.html");
         });
 
         function xltojson() {
-            var url = gOptions.serverUrl+"/upload/test.xlsx";
+            var url = gOptions.clientUrl+"/upload/test.xlsx";
             var oReq = new XMLHttpRequest();
             oReq.open("GET", url, true);
             oReq.responseType = "arraybuffer";
@@ -146,7 +146,7 @@ header("location: login.html");
         function dataPoster(datatoPost) {
             $.ajax({
                 type: "POST",
-                url: gOptions.serverUrl+":3000/protected/students/multiple",
+                url: gOptions.serverUrl+"/protected/students/multiple",
                 dataType: 'json',
                 data: datatoPost,
                 contentType: 'application/json;charset=UTF-8',

@@ -28,10 +28,8 @@ function getDataByDate() {
     var today = getDate();
     $.ajax({
         type: "GET",
-        url: gOptions.serverUrl+":3000/protected/attendance/report?from=" + today + "&to=" + today,
-        //url: gOptions.serverUrl+":3000/protected/attendance/report?from="+fromDate+"&to="+toDate,
+        url: gOptions.serverUrl+"/protected/attendance/report?from=" + today + "&to=" + today,
         dataType: 'json',
-
         contentType: 'application/json;charset=UTF-8',
         // Update Url
         headers: {
@@ -116,10 +114,8 @@ function getDataByWeek() {
     var lastweek = getlastweekDate();
     $.ajax({
         type: "GET",
-        url: gOptions.serverUrl+":3000/protected/attendance/report?from=" + lastweek + "&to=" + today,
-        //url: gOptions.serverUrl+":3000/protected/attendance/report?from="+fromDate+"&to="+toDate,
+        url: gOptions.serverUrl+"/protected/attendance/report?from=" + lastweek + "&to=" + today,
         dataType: 'json',
-
         contentType: 'application/json;charset=UTF-8',
         // Update Url
         headers: {

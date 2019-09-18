@@ -13,11 +13,8 @@ function getDataByDate(fromDate, toDate) {
     console.log("Auth: " + auth)
     $.ajax({
         type: "GET",
-        url: gOptions.serverUrl + ":3000/protected/attendance/report?from=" + fromDate + "&to=" + toDate,
-        //url: gOptions.serverUrl+":3000/protected/attendance/report?from="+fromDate+"&to="+toDate,
-
+        url: gOptions.serverUrl + "/protected/attendance/report?from=" + fromDate + "&to=" + toDate,
         dataType: 'json',
-
         contentType: 'application/json;charset=UTF-8',
         // Update Url
         headers: {
@@ -66,11 +63,8 @@ function getDatabyMonth(fromDate, toDate, selectedGrade) {
 
     $.ajax({
         type: "GET",
-        url: gOptions.serverUrl + ":3000/protected/attendance/report?from=" + fromDate + "&to=" + toDate,
-        //url: gOptions.serverUrl+":3000/protected/attendance/report?from="+fromDate+"&to="+toDate,
-
+        url: gOptions.serverUrl + "/protected/attendance/report?from=" + fromDate + "&to=" + toDate,
         dataType: 'json',
-
         contentType: 'application/json;charset=UTF-8',
         // Update Url
         headers: {

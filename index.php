@@ -384,7 +384,7 @@ if (!isset($_SESSION['token'])) {
 
             $.ajax({
                 type: "POST",
-                url: gOptions.serverUrl+":3000/protected/students",
+                url: gOptions.serverUrl+"/protected/students",
                 data: data,
                 dataType: 'json',
                 headers: {
@@ -445,7 +445,7 @@ if (!isset($_SESSION['token'])) {
 
             $.ajax({
                 type: "PUT",
-                url: gOptions.serverUrl+":3000/protected/students/" + sindex,
+                url: gOptions.serverUrl+"/protected/students/" + sindex,
                 data: data,
                 dataType: 'json',
                 contentType: 'application/json;charset=UTF-8',
@@ -476,7 +476,7 @@ if (!isset($_SESSION['token'])) {
             e.preventDefault();
             $.ajax({
                 type: "GET",
-                url: gOptions.serverUrl+":3000/protected/students/" + sindex,
+                url: gOptions.serverUrl+"/protected/students/" + sindex,
                 data: {
 
                 },
@@ -513,7 +513,7 @@ if (!isset($_SESSION['token'])) {
             e.preventDefault();
             $.ajax({
                 type: "GET",
-                url: gOptions.serverUrl+":3000/protected/students/" + cindex,
+                url: gOptions.serverUrl+"/protected/students/" + cindex,
                 data: {
 
                 },

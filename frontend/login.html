@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap Sign in Form with Facebook and Twitter Buttons</title>
+    <title>Joseph Vaz College - Attendance System</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link href="style.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
@@ -107,8 +107,6 @@
             <div class="notify_panel"></div>
             <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
 
-
-
             <h2 class="text-center">Sign in</h2>
             <div class="form-group">
                 <div class="input-group">
@@ -153,21 +151,15 @@
             var token = "";
             $.ajax({
                 type: "POST",
-                url: gOptions.serverUrl+":3000/public/login",
+                url: gOptions.serverUrl+"/public/login",
                 dataType: 'json',
                 data: data,
                 contentType: 'application/json;charset=UTF-8',
-                // Update Url
 
                 success: function(response) { // Setting Token
-
                     if (response.token) {
                         ajaxCallBack(response.token);
-                        
-
-
                     } else {
-
                         notifyMe('.notify_panel', 'Invalid Credentials Entered', '0');
                     }
                 },
@@ -181,17 +173,15 @@
                 }
             });
             console.log("token : " + token);
-
             return false;
         });
 
         function ajaxCallBack(token1) {
-
             if (token1) {
                 console.log("Token Available :" + token1);
                 $.ajax({
                     method: "POST",
-                    url: gOptions.serverUrl+"/login.php",
+                    url: gOptions.clientUrl+"/login.php",
                     data: {
                         token: token1
                     },

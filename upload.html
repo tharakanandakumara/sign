@@ -62,7 +62,7 @@
     });
 
     function xltojson(filename) {
-        var url = gOptions.serverUrl+"/upload/"+filename;
+        var url = gOptions.clientUrl+"/upload/"+filename;
         var oReq = new XMLHttpRequest();
         oReq.open("GET", url, true);
         oReq.responseType = "arraybuffer";
@@ -99,7 +99,7 @@
     function dataPoster(datatoPost) {
         $.ajax({
             type: "POST",
-            url: gOptions.serverUrl+":3000/public/students/multiple",
+            url: gOptions.serverUrl+"/public/students/multiple",
             dataType: 'json',
             data: datatoPost,
             contentType: 'application/json;charset=UTF-8',

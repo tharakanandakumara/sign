@@ -152,7 +152,7 @@
             var token = "";
             $.ajax({
                 type: "POST",
-                url: gOptions.serverUrl+":3000/public/login",
+                url: gOptions.serverUrl+"/public/login",
                 dataType: 'json',
                 data: data,
                 contentType: 'application/json;charset=UTF-8',
@@ -187,7 +187,7 @@
                 console.log("Token Available :" + token1);
                 $.ajax({
                     method: "POST",
-                    url: "login.php",
+                    url: gOptions.clientUrl+"/login.php",
                     data: {
                         token: token1
                     },

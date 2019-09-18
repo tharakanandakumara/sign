@@ -145,7 +145,7 @@ header("location: login.html");
                     //var data = JSON.stringify(jsonData);
                     console.log("data: " + jsonData)
 
-                    var value = HttpManager(jsonData, "PUT", gOptions.serverUrl+':3000/protected/students/' + $index, $token)
+                    var value = HttpManager(jsonData, "PUT", gOptions.serverUrl+'/protected/students/' + $index, $token)
                     if (value == "404") {
                         console.log("VALUE    " + value);
                         notifyMe('.notify_panel3', 'User not added : User Cannot Found', '0');

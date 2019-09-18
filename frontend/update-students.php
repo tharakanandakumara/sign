@@ -282,7 +282,7 @@ header("location: login.html");
             e.preventDefault();
             $.ajax({
                 type: "GET",
-                url: gOptions.serverUrl+":3000/protected/students/" + sindex,
+                url: gOptions.serverUrl+"/protected/students/" + sindex,
                 data: {
 
                 },
@@ -396,7 +396,7 @@ header("location: login.html");
 
             $.ajax({
                 type: "PUT",
-                url: gOptions.serverUrl+":3000/protected/students/" + sindex,
+                url: gOptions.serverUrl+"/protected/students/" + sindex,
                 data: data,
                 dataType: 'json',
                 contentType: 'application/json;charset=UTF-8',

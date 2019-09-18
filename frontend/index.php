@@ -8,18 +8,11 @@ if (!isset($_SESSION['token'])) {
 }
 ?>
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!-->
 <html class="no-js" lang="en">
-<!--<![endif]-->
 
 <head>
     <!-- Developed by Jentek Smart Solutions 
     Smart Attendence System for Joseph Vaz College
-    
-    
     -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,11 +31,9 @@ if (!isset($_SESSION['token'])) {
     <link rel="stylesheet" href="vendors/jqvmap/dist/jqvmap.min.css">
     <link rel="stylesheet" href="css/spinner.css">
 
-
     <link rel="stylesheet" href="assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-
 </head>
 
 <body>
@@ -52,16 +43,11 @@ if (!isset($_SESSION['token'])) {
 
     <!-- Left Panel -->
     <?php include 'includes/left-menu.php' ?>
-    <!-- Left Panel -->
-
-    <!-- Right Panel -->
 
     <div id="right-panel" class="right-panel">
 
         <!-- Header-->
         <?php include 'includes/header.php' ?>
-        <!-- /header -->
-        <!-- Header-->
 
         <div class="breadcrumbs">
             <div class="col-sm-4">
@@ -71,30 +57,9 @@ if (!isset($_SESSION['token'])) {
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-sm-8">
-                <div class="page-header float-right">
-                    <div class="page-title">
-                        <ol class="breadcrumb text-right">
-                            <li class="active">Dashboard</li>
-                        </ol>
-                    </div>
-                </div>
-            </div> -->
         </div>
 
         <div class="content mt-3">
-
-            <!-- alert message -->
-            <!-- <div class="col-sm-12">
-                <div class="alert  alert-success alert-dismissible fade show" role="alert">
-                    <span class="badge badge-pill badge-success">Success</span> You successfully read this important alert message.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            </div> -->
-
-
             <div class="col-sm-6 col-lg-4">
                 <div class="card text-white bg-flat-color-1">
                     <div class="card-body">
