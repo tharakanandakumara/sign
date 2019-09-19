@@ -18,6 +18,8 @@ if (!isset($_SESSION['token'])) {
     <script type="text/javascript" src="js/noty.min.js"></script>
 
     <script type="text/javascript" src="js/jquery.serializejson.min.js"></script>
+    <script src="frontend/properties.js"></script>
+
     <!------ Include the above in your HEAD tag ---------->
     <div class="container register">
         <div class="row">
@@ -31,7 +33,7 @@ if (!isset($_SESSION['token'])) {
                 <button id="updateUser" type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicUpdateeModal">
                     Update Student
                 </button>
-                <button onclick="window.location.href='/exceluploader.php'" id="uploadexcel" type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicUpdateeModal">
+                <button onclick="window.location.href=gOptions.clientUrl+'/exceluploader.php'" id="uploadexcel" type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicUpdateeModal">
                     Upload Excel
                 </button>
                 <a id="reports" class="btn btn-success" href="frontend/index.php" role="button">
