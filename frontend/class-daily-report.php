@@ -74,7 +74,7 @@ if (!isset($_SESSION['token'])) {
                                         <div class="stat-icon dib"><i class="fa fa-map-signs text-success border-success"></i>
                                             <h5 id="attendenceDate" class="card-title"> SelectGrade </h5>
                                         </div>
-                                        <select class="form-control" id="className">
+                                        <select class="form-control" id="selected_grade">
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
@@ -174,9 +174,20 @@ if (!isset($_SESSION['token'])) {
         <script src="vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
         <script src="assets/js/init-scripts/data-table/datatables-init.js"></script>
         <script src="properties.js"></script>
+        <!-- JS functions for fetching data from server -->
         <script src="js/class_daily.js"></script>
         <script>
             $(document).ready(function() {
+                var initialSelectedGrade = '6';
+                $('#selected_grade').val(initialSelectedGrade);
+                var today = new Date();
+                var dd = String(today.getDate()).padStart(2, '0');
+                var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                var yyyy = today.getFullYear();
+
+                today = yyyy + '-' + mm + '-' + dd;
+                getDataByDate(today, today, initialSelectedGrade);
+
                 var selectedDate;
 
                 function logEvent(type, date) {
@@ -187,9 +198,8 @@ if (!isset($_SESSION['token'])) {
                 });
                 $("#fetchReports").click(function() {
 
-                    var className = $('#className').val();
-                    console.log(className)
-                    getDataByDate(selectedDate, selectedDate, className)
+                    var selectedGrade = $('#selected_grade').val();
+                    getDataByDate(selectedDate, selectedDate, selectedGrade)
                 });
                 $('#demo1-1').datetimepicker({
                     date: new Date(),
@@ -197,10 +207,8 @@ if (!isset($_SESSION['token'])) {
                     //date selection event
                     onDateChange: function() {
                         logEvent('onDateChange', this.getValue());
-                        // getDataByDate((this.getText('YYYY-MM-DD')), (this.getText('YYYY-MM-DD')))
                         selectedDate = this.getText('YYYY-MM-DD');
                     },
-                    //clear button click event
                 });
             });
             (function($) {

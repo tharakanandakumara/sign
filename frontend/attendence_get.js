@@ -26,13 +26,14 @@ function getDataByDate(fromDate, toDate) {
             try {
                 var reports = response["report"][fromDate]["attendanceByGrade"];
             } catch (error) {
-
+                console.log("error: ", error)
             }
             try {
                 var chart = response["report"][fromDate]["attendanceByGrade"]
             } catch (error) {
                 grade = []
                 students = [];
+                console.log("error: ", error)
             }
             console.log(reports)
             populateTable(reports)
@@ -88,7 +89,7 @@ function getDatabyMonth(fromDate, toDate, selectedGrade) {
                 }
                 populateMonthlyGraph(date, students);
             } catch (error) {
-                console.log(error);
+                console.log("error: ", error)
             }
 
 

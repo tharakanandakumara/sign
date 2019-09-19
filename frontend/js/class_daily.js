@@ -8,71 +8,65 @@ var grade = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 
 //Function to pass the date and get reports by class
 //*Goptions should be imported
-function getDataByDate(fromDate, toDate,className) {
- console.log(auth+"Auth")
-   /* auth="BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5hbWUiOiJKZW50ZWsgRGV2ZWxvcGVyIiwidXNlcm5hbWUiOiJkZXZlbG9wZXIiLCJlbWFpbCI6ImlzdXJ1LnJ1aHVAZ21haWwuY29tIiwiY29udGFjdCI6IjA3NzcxMTEyMjIiLCJpc0FkbWluIjpmYWxzZX0sImlhdCI6MTU2MzAwNDk5MiwiZXhwIjoxNTYzMDEyMTkyfQ.qFkKS9aF-A4ScW64wZNgiRKxPtxjwocxayMgk82xMpU"*/
+function getDataByDate(fromDate, toDate, selectedGrade) {
 
     $.ajax({
         type: "GET",
-        url: gOptions.serverUrl+"/protected/attendance/report?from=" + fromDate + "&to=" + toDate,
+        url: gOptions.serverUrl + "/protected/attendance/report?from=" + fromDate + "&to=" + toDate,
         dataType: 'json',
         contentType: 'application/json;charset=UTF-8',
         // Update Url
         headers: {
             Authorization: auth
-
         },
         success: function (response) { // Setting Token
-            console.log(response);
-
+            console.log("Daily class getDataByDate response: ", response);
             try {
+                // reports - attendanceByClass report
                 var reports = response["report"][toDate]["attendanceByClass"];
                 console.log(reports)
             } catch (error) {
-
+                console.log("error: ", error)
             }
-            
-            
-            try{
-                gradeClass=[];
-                gradeStudents=[];
+
+            try {
+                gradeClass = [];
+                gradeStudents = [];
                 var data = [];
-                var recievedClass ;
-                for(var key in reports){
-                   recievedGrade = key.replace( /\D/g, '');
-                   recievedClass = key.replace(/[0-9]/g, ''); 
-                    var val=[];
-                    if(recievedGrade==className)    {
+                var recievedClass;
+                for (var key in reports) {
+                    recievedGrade = key.replace(/\D/g, '');
+                    // recievedClass = key.replace(/[0-9]/g, '');
+                    recievedClass = key;
+                    var val = [];
+                    if (recievedGrade == selectedGrade) {
                         gradeClass.push(recievedClass);
                         gradeStudents.push(reports[key]);
                         val.push(key);
                         val.push(reports[key]);
                         data.push(val);
                     }
-                    
-                    
                 }
-                
+
                 populateTable(data)
-                populateGraph(gradeClass,gradeStudents)
-                console.log("Data"+data);
-            }catch(error){
-                
+                populateGraph(gradeClass, gradeStudents)
+                console.log("Table Data" + data);
+            } catch (error) {
+                console.log("error: ", error)
             }
-           
-            console.log(reports)
-           /* populateTable(reports)
-            populateGraph(chart)
-            $("#attendenceDate").html("Reports for " + fromDate)
-            /*  if (response.token) {
-                  ajaxCallBack(response.token);
-                  
 
-
-              } else {
-
-                  notifyMe('.notify_panel', 'Invalid Credentials Entered', '0');
-              }*/
+            /* populateTable(reports)
+             populateGraph(chart)
+             $("#attendenceDate").html("Reports for " + fromDate)
+             /*  if (response.token) {
+                   ajaxCallBack(response.token);
+                   
+ 
+ 
+               } else {
+ 
+                   notifyMe('.notify_panel', 'Invalid Credentials Entered', '0');
+               }*/
         },
         statusCode: {
             404: function () {
@@ -89,25 +83,25 @@ function getDataByDate(fromDate, toDate,className) {
 function populateTable(data) {
     grade = [];
     students = [];
-$("#bootstrap-data-table-export").dataTable().fnDestroy();
-    
-    $('#bootstrap-data-table-export').DataTable( {
+    $("#bootstrap-data-table-export").dataTable().fnDestroy();
 
-    data: data
-} );
-    
+    $('#bootstrap-data-table-export').DataTable({
+
+        data: data
+    });
+
 }
 
-function populateGraph(gradeClass,students) {
+function populateGraph(gradeClass, students) {
 
     console.log("Populating Graph");
 
-    console.log("Grade Data"+gradeClass[0])
+    console.log("Grade Data" + gradeClass[0])
 
     var ctx = document.getElementById("class-chart");
     ctx.height = 250;
     var myChart = new Chart(ctx, {
-        type: 'line',
+        type: 'bar',
         data: {
             labels: gradeClass,
             type: 'line',
@@ -115,14 +109,14 @@ function populateGraph(gradeClass,students) {
             datasets: [{
                 data: gradeStudents,
                 label: "Students",
-                backgroundColor: 'rgba(0,103,255,.15)',
-                borderColor: 'rgba(0,103,255,0.5)',
+                backgroundColor: 'rgba(0,103,255,1)',
+                borderColor: 'rgba(0,103,255,1)',
                 borderWidth: 3.5,
                 pointStyle: 'circle',
                 pointRadius: 5,
                 pointBorderColor: 'transparent',
                 pointBackgroundColor: 'rgba(0,103,255,0.5)',
-                    }, ]
+            },]
         },
         options: {
             responsive: true,
@@ -152,24 +146,24 @@ function populateGraph(gradeClass,students) {
                     display: true,
                     gridLines: {
                         display: false,
-                        drawBorder: false
+                        drawBorder: true
                     },
                     scaleLabel: {
                         display: true,
-                        labelString: 'Grade'
+                        labelString: 'Class'
                     }
-                        }],
+                }],
                 yAxes: [{
                     display: true,
                     gridLines: {
-                        display: false,
-                        drawBorder: false
+                        display: true,
+                        drawBorder: true
                     },
                     scaleLabel: {
                         display: true,
                         labelString: 'Students'
                     }
-                        }]
+                }]
             },
             title: {
                 display: false,

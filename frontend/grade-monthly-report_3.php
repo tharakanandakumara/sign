@@ -366,7 +366,7 @@ header("location: login.html");
                         select.appendChild(opt);
                     }
                 } catch (error) {
-                    console.log(error);
+                    console.log("error: ", error)
                     $('#selectionErrors').text('Please adjust your computers date time');
                 }
 

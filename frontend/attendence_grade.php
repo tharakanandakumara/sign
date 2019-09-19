@@ -132,7 +132,8 @@ if (!isset($_SESSION['token'])) {
 
         <script src="vendors/jquery/dist/jquery.min.js"></script>
         <script src="vendors/jquery/dist/jquery.min.js"></script>
-        <script src="attendence_get.js"></script>
+        <!-- JS functions for fetching data from server -->
+        <script src="attendence_get.js"></script> 
         <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
         <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="assets/js/main.js"></script>
