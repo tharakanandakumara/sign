@@ -220,6 +220,10 @@ function populateWeekGraph() {
                 }],
                 yAxes: [{
                     display: true,
+                    ticks: {
+                        beginAtZero: true,
+                        precision: 0
+                    },
                     gridLines: {
                         display: true,
                         drawBorder: true

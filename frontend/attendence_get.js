@@ -233,6 +233,10 @@ function populateGraph(chartValues) {
                 }],
                 yAxes: [{
                     display: true,
+                    ticks: {
+                        precision: 0,
+                        beginAtZero: true
+                    },
                     gridLines: {
                         display: true,
                         drawBorder: true
@@ -312,6 +316,10 @@ function populateMonthlyGraph(gradeClass, students) {
                 }],
                 yAxes: [{
                     display: true,
+                    ticks: {
+                        beginAtZero: true,
+                        precision: 0
+                    },
                     gridLines: {
                         display: false,
                         drawBorder: false

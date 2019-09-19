@@ -49,7 +49,8 @@ function getDataByDate(fromDate, toDate, selectedGrade) {
                 }
 
                 populateTable(data)
-                populateGraph(gradeClass, gradeStudents)
+                // reverse data in order to show in proper order in graph
+                populateGraph(gradeClass.reverse(), gradeStudents.reverse())
                 console.log("Table Data" + data);
             } catch (error) {
                 console.log("error: ", error)
@@ -138,8 +139,6 @@ function populateGraph(gradeClass, students) {
                     usePointStyle: true,
                     fontFamily: 'Montserrat',
                 },
-
-
             },
             scales: {
                 xAxes: [{
@@ -155,6 +154,11 @@ function populateGraph(gradeClass, students) {
                 }],
                 yAxes: [{
                     display: true,
+                    ticks: {
+                        beginAtZero: true,
+                        // stepSize: 5,
+                        precision: 0
+                    },
                     gridLines: {
                         display: true,
                         drawBorder: true
@@ -170,7 +174,4 @@ function populateGraph(gradeClass, students) {
             }
         }
     });
-
-
-
 }
