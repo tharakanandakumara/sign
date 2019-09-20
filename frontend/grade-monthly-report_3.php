@@ -1,26 +1,20 @@
-<?php 
-    session_start();
+<?php
+session_start();
 //include 'logout.php';
 //$_SESSION['token']=null;
 
-    if(!isset($_SESSION['token'])){
-header("location: login.html");
-    
+if (!isset($_SESSION['token'])) {
+    header("location: login.html");
 }
 ?>
 
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!-->
 <html class="no-js" lang="en">
-<!--<![endif]-->
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Grade Monthly Report</title>
+    <title>Joseph Vaz College Attendence System - Reports</title>
     <meta name="description" content="Grade Mothly Report">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -39,110 +33,28 @@ header("location: login.html");
     <link rel="stylesheet" href="assets/css/style_registration.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-
 </head>
 
 <body>
-
-
     <!-- Left Panel -->
     <?php include 'includes/left-menu.php' ?>
-    <!-- Left Panel -->
 
     <!-- Right Panel -->
-
     <div id="right-panel" class="right-panel">
-
         <!-- Header-->
         <?php include 'includes/header.php' ?>
-        <!-- /header -->
-        <!-- Header-->
 
         <div class="breadcrumbs">
             <div class="col-sm-6">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Attendence By Grade - Monthly Report</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="page-header float-right">
-                    <div class="page-title">
-                        <ol class="breadcrumb text-right">
-                            <li class="active">Dashboard</li>
-                        </ol>
+                        <h1>Monthly Reports - Attendence By Grade</h1>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="content mt-3">
-
-            <div class="col-sm-12">
-                <div class="alert  alert-success alert-dismissible fade show" role="alert">
-                    <span class="badge badge-pill badge-success">Success</span> You successfully read this important alert message.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            </div>
-
-            <div class="col-xl-8">
-                <section id="chartCard" class="card">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="mb-3">Attendence by Grade </h4>
-                                <canvas id="class-chart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </section>
-
-                <!--<section class="card">
-                    <div class="twt-feed blue-bg">
-                        <div class="corner-ribon black-ribon">
-                            <i class="fa fa-user"></i>
-                        </div>
-                        
-
-                        <div class="media">
-                            <a href="#">
-                                <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="images/admin.jpg">
-                            </a>
-                            <div class="media-body">
-                                <h2 class="text-white display-6">Jim Doe</h2>
-                                <p class="text-light">Student</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="weather-category twt-category">
-                        <ul>
-                            <li class="active">
-                                <h5>24</h5>
-                                Presents
-                            </li>
-                            <li>
-                                <h5>10 B</h5>
-                                Class
-                            </li>
-                            <li>
-                                <h5>3645</h5>
-                                Followers
-                            </li>
-                        </ul>
-                    </div>
-                  
-
-                </section>-->
-            </div>
-
-
-
-
             <div class="col-xl-4">
                 <div class="card">
                     <div class="card-body">
@@ -169,19 +81,19 @@ header("location: login.html");
                                     <h5 id="attendenceDate" class="card-title">Select Grade</h5>
                                 </div>
                                 <select class="form-control" id="grade">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
-                                        <option>7</option>
-                                        <option>8</option>
-                                        <option>9</option>
-                                        <option>10</option>
-                                        <option>11</option>
-                                        <option>12</option>
-                                        <option>13</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
+                                    <option>13</option>
                                 </select>
                             </div>
                         </div>
@@ -190,6 +102,22 @@ header("location: login.html");
                     <input id="fetchReports" type="submit" class="btnRegister" value="Fetch Reports" />
                 </div>
             </div>
+
+
+            <div class="col-xl-8">
+                <section id="chartCard" class="card">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="mb-3">Attendence by Grade </h4>
+                                <canvas id="class-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            
 
 
 
@@ -236,7 +164,6 @@ header("location: login.html");
             var web_token = "<?php echo $_SESSION['token'] ?>";
             var auth = "BEARER " + web_token;
             document.getElementById("fetchReports").disabled = true;
-
         </script>
         <!-- Right Panel -->
         <script src="vendors/jquery/dist/jquery.min.js"></script>
@@ -268,7 +195,7 @@ header("location: login.html");
         <script>
             $(document).ready(function() {
                 document.getElementById("monthCard").style.display = "none";
-                
+
                 yearGenerator();
 
                 var selectedDate;
@@ -280,17 +207,17 @@ header("location: login.html");
                     $('#eventlog').html('');
                 });
                 $("#fetchReports").click(function() {
-                    
-                    var month=$('#month').val();
-                    var year=$('#year option:selected').text();
-                    var grade=$('#grade option:selected').text();
-                    month="0"+(parseInt(month)+1);
-                    var fromDate=""+year+"-"+month+"-01";
-                    var toDate=""+year+"-"+month+"-31";
-                    console.log(fromDate);
-                    console.log(month+year)
 
-                    getDatabyMonth(fromDate, toDate,grade);
+                    var month = $('#month').val();
+                    var year = $('#year option:selected').text();
+                    var grade = $('#grade option:selected').text();
+                    month = "0" + (parseInt(month) + 1);
+                    var fromDate = "" + year + "-" + month + "-01";
+                    var toDate = "" + year + "-" + month + "-31";
+                    console.log(fromDate);
+                    console.log(month + year)
+
+                    getDatabyMonth(fromDate, toDate, grade);
                 });
                 $('#demo1-1').datetimepicker({
                     //date: new Date(),
@@ -334,23 +261,24 @@ header("location: login.html");
                     document.getElementById("monthCard").style.display = "none";
 
                 } else {
-                   
+
                     $('#selectionErrors').text(' ');
                     monthGenerator(selectedYear);
 
                     document.getElementById("monthCard").style.display = "inherit";
-                   
+
 
                 }
             }
-            function selectedMonth(){
-                 document.getElementById("gradeCard").style.display = "inherit";
-                 document.getElementById("fetchReports").disabled = false;
+
+            function selectedMonth() {
+                document.getElementById("gradeCard").style.display = "inherit";
+                document.getElementById("fetchReports").disabled = false;
             }
 
             function yearGenerator() {
                 var difference = 0;
-               
+
                 try {
                     var min = new Date().getFullYear();
                     difference = min - 2019;
@@ -373,7 +301,7 @@ header("location: login.html");
             }
 
             function monthGenerator(selectedYear) {
-            
+
                 var month = new Array();
                 month[0] = "January";
                 month[1] = "February";
@@ -390,7 +318,7 @@ header("location: login.html");
 
                 select = document.getElementById('month');
                 select.options.length = 0;
-              
+
                 var thisMonth = new Date().getMonth() - 1;
                 var thisYear = new Date().getFullYear();
                 console.log(month);
@@ -415,7 +343,6 @@ header("location: login.html");
 
 
             }
-
         </script>
 
 </body>
