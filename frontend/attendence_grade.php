@@ -165,7 +165,7 @@ if (!isset($_SESSION['token'])) {
                 var yyyy = today.getFullYear();
 
                 today = yyyy + '-' + mm + '-' + dd;
-                getDataByDate(today, today);
+                getDataByDate(today);
 
                 var selectedDate;
 
@@ -176,7 +176,7 @@ if (!isset($_SESSION['token'])) {
                     $('#eventlog').html('');
                 });
                 $("#fetchReports").click(function() {
-                    getDataByDate(selectedDate, selectedDate)
+                    getDataByDate(selectedDate)
                 });
                 $('#demo1-1').datetimepicker({
                     date: new Date(),
@@ -184,7 +184,6 @@ if (!isset($_SESSION['token'])) {
                     //date selection event
                     onDateChange: function() {
                         logEvent('onDateChange', this.getValue());
-                        // getDataByDate((this.getText('YYYY-MM-DD')), (this.getText('YYYY-MM-DD')))
                         selectedDate = this.getText('YYYY-MM-DD');
                     },
                     //clear button click event
