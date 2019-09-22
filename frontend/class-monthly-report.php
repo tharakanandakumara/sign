@@ -48,7 +48,7 @@ if (!isset($_SESSION['token'])) {
             <div class="col-sm-6">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Monthly Reports - Attendence By Grade</h1>
+                        <h1>Monthly Reports - Attendence By Class</h1>
                     </div>
                 </div>
             </div>
@@ -66,24 +66,25 @@ if (!isset($_SESSION['token'])) {
                                 <div class="stat-icon dib"><i class="fa fa-map-signs text-success border-success"></i>
                                     <h5 id="attendenceDate" class="card-title">Select Year</h5>
                                 </div>
-                                <select class="form-control" id="year" onchange="selectedYear()">
-                                    <option>Year</option>    
+                                <select class="form-control" id="year" onchange="selectYear()">
+                                    <option>Year</option>
                                 </select>
                             </div>
-                            
+
                             <div id="monthCard" style="display:none">
                                 <div class="stat-icon dib"><i class="fa fa-map-signs text-success border-success"></i>
                                     <h5 id="attendenceDate" class="card-title">Select Month</h5>
                                 </div>
-                                <select class="form-control" id="month" onchange="selectedMonth()">
-
+                                <select class="form-control" id="month" onchange="selectMonth()">
+                                    <!-- <option>Month</option> -->
                                 </select>
                             </div>
                             <div id="gradeCard" style="display:none">
                                 <div class="stat-icon dib"><i class="fa fa-map-signs text-success border-success"></i>
                                     <h5 id="attendenceDate" class="card-title">Select Grade</h5>
                                 </div>
-                                <select class="form-control" id="grade">
+                                <select class="form-control" id="grade" onchange="selectGrade()">
+                                    <option>Grade</option>
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -97,6 +98,14 @@ if (!isset($_SESSION['token'])) {
                                     <option>11</option>
                                     <option>12</option>
                                     <option>13</option>
+                                </select>
+                            </div>
+
+                            <div id="classCard" style="display:none">
+                                <div class="stat-icon dib"><i class="fa fa-map-signs text-success border-success"></i>
+                                    <h5 id="attendenceDate" class="card-title">Select Class</h5>
+                                </div>
+                                <select class="form-control" id="classDropdown">
                                 </select>
                             </div>
                         </div>
@@ -160,7 +169,7 @@ if (!isset($_SESSION['token'])) {
         <script src="vendors/jquery/dist/jquery.min.js"></script>
         <script src="vendors/jquery/dist/jquery.min.js"></script>
         <!-- JS functions for fetching data from server -->
-        <script src="attendence_get.js"></script>
+        <script src="js/class_reports.js"></script>
         <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
         <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="assets/js/main.js"></script>
@@ -188,30 +197,24 @@ if (!isset($_SESSION['token'])) {
             $(document).ready(function() {
                 document.getElementById("monthCard").style.display = "none";
 
+                // generate the select year dropdown
                 yearGenerator();
 
-                var selectedDate;
-
-                function logEvent(type, date) {
-                    $("<div class='log__entry'/>").hide().html("<strong>" + type + "</strong>: " + date).prependTo($('#eventlog')).show(200);
-                }
-                $('#clearlog').click(function() {
-                    $('#eventlog').html('');
-                });
                 $("#fetchReports").click(function() {
 
                     var month = $('#month').val();
                     var year = $('#year option:selected').text();
                     var grade = $('#grade option:selected').text();
+                    var selectedClass = $('#classDropdown option:selected').text();
                     month = "0" + (parseInt(month) + 1);
                     var fromDate = "" + year + "-" + month + "-01";
                     var toDate = "" + year + "-" + month + "-31";
                     console.log("fromDate: ", fromDate);
                     console.log("month, year: ", month + year)
 
-                    getDatabyMonth(fromDate, toDate, grade);
+                    getDataByMonth(fromDate, toDate, grade, selectedClass);
                 });
-                
+
             });
             (function($) {
                 "use strict";
@@ -230,24 +233,54 @@ if (!isset($_SESSION['token'])) {
                 });
             })(jQuery);
 
-            function selectedYear() {
-                console.log("selectedYear function");
+            function selectYear() {
+                console.log("selectYear function");
                 var year = document.getElementById("year");
                 var selectedYear = year.options[year.selectedIndex].value;
 
                 if (selectedYear == "Year") {
                     $('#selectionErrors').text('Select an year');
                     document.getElementById("monthCard").style.display = "none";
+                    document.getElementById("gradeCard").style.display = "none";
+                    document.getElementById("classCard").style.display = "none";
                 } else {
                     $('#selectionErrors').text(' ');
                     monthGenerator(selectedYear);
                     document.getElementById("monthCard").style.display = "inherit";
+                    document.getElementById("gradeCard").style.display = "inherit";
                 }
             }
 
-            function selectedMonth() {
-                document.getElementById("gradeCard").style.display = "inherit";
-                document.getElementById("fetchReports").disabled = false;
+            function selectMonth() {
+                console.log("selectMonth function");
+                // var month = document.getElementById("month");
+                // var selectedMonth = month.options[month.selectedIndex].value;
+
+                // if (selectedMonth == "Month") {
+                    // $('#selectionErrors').text('Select a month');
+                    // document.getElementById("gradeCard").style.display = "none";
+                    // document.getElementById("classCard").style.display = "none";
+                // } else {
+                    // $('#selectionErrors').text(' ');
+                    // document.getElementById("gradeCard").style.display = "inherit";
+                // }
+            }
+
+            function selectGrade() {
+                console.log("selectGrade function");
+                var grade = document.getElementById("grade");
+                var selectedGrade = grade.options[grade.selectedIndex].value;
+
+                if (selectedGrade == "Grade") {
+                    $('#selectionErrors').text('Select a grade');
+                    document.getElementById("classCard").style.display = "none";
+                } else {
+                    $('#selectionErrors').text(' ');
+                    document.getElementById("classCard").style.display = "inherit";
+                    var classDropdown = document.getElementById("classDropdown");
+                    classGenerator(selectedGrade, classDropdown);
+                    document.getElementById("fetchReports").disabled = false;
+                }
             }
 
             /**
@@ -312,7 +345,7 @@ if (!isset($_SESSION['token'])) {
                         select.appendChild(opt);
                     }
                 } else {
-                    document.getElementById("month").removeChild("option");
+                    // document.getElementById("month").removeChild("option");
                     for (var i = 0; i <= 11; i++) {
                         var opt = document.createElement('option');
                         opt.value = i;

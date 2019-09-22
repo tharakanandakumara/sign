@@ -175,7 +175,7 @@ if (!isset($_SESSION['token'])) {
         <script src="assets/js/init-scripts/data-table/datatables-init.js"></script>
         <script src="properties.js"></script>
         <!-- JS functions for fetching data from server -->
-        <script src="js/class_daily.js"></script>
+        <script src="js/class_reports.js"></script>
         <script>
             $(document).ready(function() {
                 var initialSelectedGrade = '6';
@@ -186,7 +186,7 @@ if (!isset($_SESSION['token'])) {
                 var yyyy = today.getFullYear();
 
                 today = yyyy + '-' + mm + '-' + dd;
-                getDataByDate(today, today, initialSelectedGrade);
+                getDataByDate(today, initialSelectedGrade);
 
                 var selectedDate;
 
@@ -199,7 +199,7 @@ if (!isset($_SESSION['token'])) {
                 $("#fetchReports").click(function() {
 
                     var selectedGrade = $('#selected_grade').val();
-                    getDataByDate(selectedDate, selectedDate, selectedGrade)
+                    getDataByDate(selectedDate, selectedGrade)
                 });
                 $('#demo1-1').datetimepicker({
                     date: new Date(),
