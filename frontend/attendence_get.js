@@ -9,7 +9,6 @@
  * @param {*} toDate 
  */
 function getDataByDate(reportDate) {
-    console.log("Auth: " + auth)
     $.ajax({
         type: "GET",
         url: gOptions.serverUrl + "/protected/attendance/report?from=" + reportDate + "&to=" + reportDate,
@@ -20,6 +19,8 @@ function getDataByDate(reportDate) {
         },
         success: function (response) {
             console.log(response);
+            if (!response["report"][reportDate]) return;
+
             try {
                 var reports = response["report"][reportDate]["attendanceByGrade"];
                 var chart = response["report"][reportDate]["attendanceByGrade"]
@@ -27,7 +28,7 @@ function getDataByDate(reportDate) {
                 console.log("error: ", error)
             }
             console.log(reports)
-            populateTable(reports)
+            populateTable(reports, reportDate)
             populateGraph(chart)
             $("#attendenceDate").html("Reports for " + reportDate)
         },
@@ -47,9 +48,11 @@ function getDataByDate(reportDate) {
  * Populate graph and data table
  * @param {*} fromDate 
  * @param {*} toDate 
+ * @param {*} selectedYear 
+ * @param {*} selectedMonth 
  * @param {*} selectedGrade 
  */
-function getDatabyMonth(fromDate, toDate, selectedGrade) {
+function getDatabyMonth(fromDate, toDate, selectedYear, selectedMonth, selectedGrade) {
     $.ajax({
         type: "GET",
         url: gOptions.serverUrl + "/protected/attendance/report?from=" + fromDate + "&to=" + toDate,
@@ -58,7 +61,7 @@ function getDatabyMonth(fromDate, toDate, selectedGrade) {
         headers: {
             Authorization: auth
         },
-        success: function (response) { 
+        success: function (response) {
             console.log("grade getDatabyMonth response: ", response);
             try {
                 var report = response["report"];
@@ -68,7 +71,7 @@ function getDatabyMonth(fromDate, toDate, selectedGrade) {
                 var dates = [];
                 for (var i = 0; i < keys.length; i++) {
                     var gradeReport = response["report"][keys[i]]["attendanceByGrade"];
-                    
+
                     for (var key in gradeReport) {
                         if (key == selectedGrade) {
                             dates.push(keys[i]);
@@ -77,7 +80,7 @@ function getDatabyMonth(fromDate, toDate, selectedGrade) {
                     }
                 }
                 populateMonthlyGraph(dates, students);
-                populateMonthlyTable(dates, students);
+                populateMonthlyTable(dates, students, selectedYear, selectedMonth, selectedGrade);
             } catch (error) {
                 console.log("error: ", error)
             }
@@ -93,12 +96,16 @@ function getDatabyMonth(fromDate, toDate, selectedGrade) {
     });
 }
 
-function populateMonthlyTable(dates, students) {
-    $("#bootstrap-data-table-export").dataTable().fnDestroy();
+function populateMonthlyTable(dates, students, selectedYear, selectedMonth, selectedGrade) {
+    $("#grade-monthly-report-table").dataTable().fnDestroy();
     var data = createMonthlyData(dates, students);
-    $('#bootstrap-data-table-export').DataTable({
+    $('#grade-monthly-report-table').DataTable({
         data: data
     });
+
+    $("#report-year").text("- " + selectedYear);
+    $("#report-month").text(" - " + selectedMonth);
+    $("#report-grade").text(" - Grade " + selectedGrade);
 }
 
 /**
@@ -107,7 +114,7 @@ function populateMonthlyTable(dates, students) {
 function createMonthlyData(dates, students) {
     var data = [];
     for (var index in dates) {
- console.log("index ", index);
+        console.log("index ", index);
         if (students[index]) {
             var val = [];
             val.push(dates[index])
@@ -135,14 +142,19 @@ function createData(tableValues) {
     return data;
 }
 
-function populateTable(tableValues) {
-    $("#bootstrap-data-table-export").dataTable().fnDestroy();
+function populateTable(tableValues, reportDate) {
+    $("#grade-daily-report-table").dataTable().fnDestroy();
     var data = createData(tableValues);
-    $('#bootstrap-data-table-export').DataTable({
+    $('#grade-daily-report-table').DataTable({
         data: data
     });
+
+    $("#report-date").text("- " + reportDate);
 }
 
+// define a variable to store the chart instance (this must be outside of your function)
+// so that it can be destroyed before creating a new one
+var myChart;
 function populateGraph(chartValues) {
     console.log("populateGraph");
     var gradeLabels = [];
@@ -156,9 +168,14 @@ function populateGraph(chartValues) {
     }
     console.log("gradeLabels: ", gradeLabels)
 
+    // if the chart is not undefined (e.g. it has been created)
+    // then destory the old one so we can create a new one later
+    if (myChart) {
+        myChart.destroy();
+    }
     var ctx = document.getElementById("team-chart");
     ctx.height = 200;
-    var myChart = new Chart(ctx, {
+    myChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: gradeLabels,
@@ -237,9 +254,14 @@ function populateMonthlyGraph(dateList, studentList) {
     console.log("studentList", studentList);
     console.log("dateList", dateList);
 
+    // if the chart is not undefined (e.g. it has been created)
+    // then destory the old one so we can create a new one later
+    if (myChart) {
+        myChart.destroy();
+    }
     var ctx = document.getElementById("class-chart");
     ctx.height = 250;
-    var myChart = new Chart(ctx, {
+    myChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: dateList,
@@ -312,5 +334,22 @@ function populateMonthlyGraph(dateList, studentList) {
                 display: false,
             }
         }
+    });
+}
+
+/**
+ * Export Report as a file
+ * @param {*} tableId 
+ * @param {*} filename 
+ * @param {*} extension 
+ */
+function exportReport(tableId, filename, extension) {
+    var tbl = document.getElementById(tableId);
+    var wb = XLSX.utils.table_to_book(tbl, {
+        sheet: "Attendance Report"
+    });
+    XLSX.writeFile(wb, filename, {
+        bookType: extension,
+        type: 'binary'
     });
 }

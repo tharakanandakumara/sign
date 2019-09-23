@@ -164,10 +164,19 @@ function getDataByWeek() {
 
 }
 
+// define a variable to store the chart instance (this must be outside of your function)
+// so that it can be destroyed before creating a new one
+var myChart;
 function populateWeekGraph() {
+    // if the chart is not undefined (e.g. it has been created)
+    // then destory the old one so we can create a new one later
+    if (myChart) {
+        myChart.destroy();
+    }
+
     var ctx = document.getElementById("team-chart");
     ctx.height = 200;
-    var myChart = new Chart(ctx, {
+    myChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: date,

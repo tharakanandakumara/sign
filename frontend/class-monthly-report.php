@@ -120,7 +120,7 @@ if (!isset($_SESSION['token'])) {
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="mb-3">Attendence by Grade </h4>
+                                <h4 class="mb-3">Monthly Attendence by Date</h4>
                                 <canvas id="class-chart"></canvas>
                             </div>
                         </div>
@@ -134,13 +134,16 @@ if (!isset($_SESSION['token'])) {
                 <div class="animated fadeIn">
                     <div class="row">
 
-                        <div class="col-md-12">
+                        <div class="col-md-8">
                             <div class="card">
-                                <div class="card-header">
-                                    <strong class="card-title">Student Attendece Report</strong>
+                                <div class="card-header" id="report-title">
+                                    <strong class="card-title">Monthly Attendance Report</strong>
+                                    <span id="report-year"></span>
+                                    <span id="report-month"></span>
+                                    <span id="report-class"></span>
                                 </div>
                                 <div class="card-body">
-                                    <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                    <table id="class-monthly-report-table" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
                                                 <th>Date</th>
@@ -154,6 +157,14 @@ if (!isset($_SESSION['token'])) {
                             </div>
                         </div>
 
+                        <div class="col-md-4">
+                            <button id="export-report-excel" type="button" class="btn btn-success" style="margin: 5px">
+                                Download Report - Excel
+                            </button>
+                            <button id="export-report-csv" type="button" class="btn btn-success" style="margin: 5px">
+                                Download Report - CSV
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -193,6 +204,9 @@ if (!isset($_SESSION['token'])) {
         <script src="vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
         <script src="assets/js/init-scripts/data-table/datatables-init.js"></script>
         <script src="properties.js"></script>
+        <!-- Library for handle Excel export -->
+        <script src="js/xl-min.js"></script>
+
         <script>
             $(document).ready(function() {
                 document.getElementById("monthCard").style.display = "none";
@@ -212,7 +226,17 @@ if (!isset($_SESSION['token'])) {
                     console.log("fromDate: ", fromDate);
                     console.log("month, year: ", month + year)
 
-                    getDataByMonth(fromDate, toDate, grade, selectedClass);
+                    getDataByMonth(fromDate, toDate, year, month, selectedClass);
+                });
+
+                $("#export-report-excel").click(function() {
+                    var reportName = $('#report-title').text() + '.xlsx';
+                    exportReport('class-monthly-report-table', reportName.replace(/\s/g, ''), 'xlsx');
+                });
+
+                $("#export-report-csv").click(function() {
+                    var reportName = $('#report-title').text() + '.csv';
+                    exportReport('class-monthly-report-table', reportName.replace(/\s/g, ''), 'csv');
                 });
 
             });
@@ -257,12 +281,12 @@ if (!isset($_SESSION['token'])) {
                 // var selectedMonth = month.options[month.selectedIndex].value;
 
                 // if (selectedMonth == "Month") {
-                    // $('#selectionErrors').text('Select a month');
-                    // document.getElementById("gradeCard").style.display = "none";
-                    // document.getElementById("classCard").style.display = "none";
+                // $('#selectionErrors').text('Select a month');
+                // document.getElementById("gradeCard").style.display = "none";
+                // document.getElementById("classCard").style.display = "none";
                 // } else {
-                    // $('#selectionErrors').text(' ');
-                    // document.getElementById("gradeCard").style.display = "inherit";
+                // $('#selectionErrors').text(' ');
+                // document.getElementById("gradeCard").style.display = "inherit";
                 // }
             }
 

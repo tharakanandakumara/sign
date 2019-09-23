@@ -116,18 +116,19 @@ if (!isset($_SESSION['token'])) {
             <div class="animated fadeIn">
                 <div class="row">
 
-                    <div class="col-md-12">
+                    <div class="col-md-8">
                         <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title">Student Attendece Report</strong>
+                            <div class="card-header" id="report-title">
+                                <strong class="card-title">Daily Attendance Report </strong>
+                                <span id="report-date"></span>
+                                <span id="report-grade"></span>
                             </div>
                             <div class="card-body">
-                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                <table id="class-daily-report-table" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Class</th>
                                             <th>Attendence</th>
-
                                         </tr>
                                     </thead>
                                     <tbody id="studentDataBody">
@@ -137,7 +138,14 @@ if (!isset($_SESSION['token'])) {
                         </div>
                     </div>
 
-
+                    <div class="col-md-4">
+                        <button id="export-report-excel" type="button" class="btn btn-success" style="margin: 5px">
+                            Download Report - Excel
+                        </button>
+                        <button id="export-report-csv" type="button" class="btn btn-success" style="margin: 5px">
+                            Download Report - CSV
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -176,6 +184,9 @@ if (!isset($_SESSION['token'])) {
         <script src="properties.js"></script>
         <!-- JS functions for fetching data from server -->
         <script src="js/class_reports.js"></script>
+        <!-- Library for handle Excel export -->        
+        <script src="js/xl-min.js"></script>
+
         <script>
             $(document).ready(function() {
                 var initialSelectedGrade = '6';
@@ -209,6 +220,16 @@ if (!isset($_SESSION['token'])) {
                         logEvent('onDateChange', this.getValue());
                         selectedDate = this.getText('YYYY-MM-DD');
                     },
+                });
+
+                $("#export-report-excel").click(function() {
+                    var reportName = $('#report-title').text() + '.xlsx';
+                    exportReport('class-daily-report-table', reportName.replace(/\s/g, ''), 'xlsx');
+                });
+
+                $("#export-report-csv").click(function() {
+                    var reportName = $('#report-title').text() + '.csv';
+                    exportReport('class-daily-report-table', reportName.replace(/\s/g, ''), 'csv');
                 });
             });
             (function($) {

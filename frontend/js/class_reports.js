@@ -36,14 +36,11 @@ function getDataByDate(reportDate, selectedGrade) {
         success: function (response) {
             console.log("Daily class getDataByDate response: ", response);
             try {
+                if (!response["report"][reportDate]) return;
                 // reports - attendanceByClass report
                 var reports = response["report"][reportDate]["attendanceByClass"];
                 console.log(reports)
-            } catch (error) {
-                console.log("error: ", error)
-            }
 
-            try {
                 var gradeClass = [];
                 var gradeStudents = [];
                 var data = [];
@@ -62,7 +59,7 @@ function getDataByDate(reportDate, selectedGrade) {
                     }
                 }
 
-                populateTable(data)
+                populateTable(data, reportDate, selectedGrade)
                 // reverse data in order to show in proper order in graph
                 populateGraph(gradeClass.reverse(), gradeStudents.reverse())
                 console.log("Table Data" + data);
@@ -83,11 +80,13 @@ function getDataByDate(reportDate, selectedGrade) {
 
 /**
  * Function to pass the month and fetch data for reports by class
+ * @param {*} fromDate 
+ * @param {*} toDate 
  * @param {*} selectedYear 
  * @param {*} selectedMonth 
- * @param {*} selectedGrade 
+ * @param {*} selectedClass 
  */
-function getDataByMonth(fromDate, toDate, selectedGrade, selectedClass) {
+function getDataByMonth(fromDate, toDate, selectedYear, selectedMonth, selectedClass) {
     $.ajax({
         type: "GET",
         url: gOptions.serverUrl + "/protected/attendance/report?from=" + fromDate + "&to=" + toDate,
@@ -116,7 +115,7 @@ function getDataByMonth(fromDate, toDate, selectedGrade, selectedClass) {
                     }
                 }
                 populateMonthlyGraph(dates, students);
-                populateMonthlyTable(dates, students);
+                populateMonthlyTable(dates, students, selectedYear, selectedMonth, selectedClass);
             } catch (error) {
                 console.log("error: ", error)
             }
@@ -132,12 +131,16 @@ function getDataByMonth(fromDate, toDate, selectedGrade, selectedClass) {
     });
 }
 
-function populateMonthlyTable(dates, students) {
-    $("#bootstrap-data-table-export").dataTable().fnDestroy();
+function populateMonthlyTable(dates, students, selectedYear, selectedMonth, selectedClass) {
+    $("#class-monthly-report-table").dataTable().fnDestroy();
     var data = createMonthlyData(dates, students);
-    $('#bootstrap-data-table-export').DataTable({
+    $('#class-monthly-report-table').DataTable({
         data: data
     });
+
+    $("#report-year").text("- " + selectedYear);
+    $("#report-month").text(" - " + selectedMonth);
+    $("#report-class").text(" - " + selectedClass);
 }
 
 /**
@@ -171,21 +174,32 @@ function classGenerator(selectedGrade, classDropdown) {
     }
 }
 
-function populateTable(data) {
-    $("#bootstrap-data-table-export").dataTable().fnDestroy();
+function populateTable(data, reportDate, selectedGrade) {
+    $("#class-daily-report-table").dataTable().fnDestroy();
 
-    $('#bootstrap-data-table-export').DataTable({
+    $('#class-daily-report-table').DataTable({
         data: data
     });
+
+    $("#report-date").text("- " + reportDate);
+    $("#report-grade").text(" - Grade " + selectedGrade);
 }
 
+// define a variable to store the chart instance (this must be outside of your function)
+// so that it can be destroyed before creating a new one
+var myChart;
 function populateGraph(gradeClass, gradeStudents) {
     console.log("Populating Graph");
     console.log("Grade Data" + gradeClass[0])
 
+    // if the chart is not undefined (e.g. it has been created)
+    // then destory the old one so we can create a new one later
+    if (myChart) {
+        myChart.destroy();
+    }
     var ctx = document.getElementById("class-chart");
     ctx.height = 250;
-    var myChart = new Chart(ctx, {
+    myChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: gradeClass,
@@ -265,9 +279,14 @@ function populateMonthlyGraph(dateList, studentList) {
     console.log("studentList", studentList);
     console.log("dateList", dateList);
 
+    // if the chart is not undefined (e.g. it has been created)
+    // then destory the old one so we can create a new one later
+    if (myChart) {
+        myChart.destroy();
+    }
     var ctx = document.getElementById("class-chart");
     ctx.height = 250;
-    var myChart = new Chart(ctx, {
+    myChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: dateList,
@@ -342,3 +361,20 @@ function populateMonthlyGraph(dateList, studentList) {
         }
     });
 };
+
+/**
+ * Export Report as a file
+ * @param {*} tableId 
+ * @param {*} filename 
+ * @param {*} extension 
+ */
+function exportReport(tableId, filename, extension) {
+    var tbl = document.getElementById(tableId);
+    var wb = XLSX.utils.table_to_book(tbl, {
+        sheet: "Attendance Report"
+    });
+    XLSX.writeFile(wb, filename, {
+        bookType: extension,
+        type: 'binary'
+    });
+}
