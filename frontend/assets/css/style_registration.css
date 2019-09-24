@@ -101,7 +101,7 @@ a#logoutBtn {
 }
 .register-heading{
     text-align: center;
-    margin-top: 8%;
+    margin-top: 2%;
     margin-bottom: 15px;
     color: #495057;
 }
@@ -115,6 +115,11 @@ a#logoutBtn {
     margin-right: 15px;
     max-width: 300px;   
 }
-  button#indexGrabber {
-            margin-bottom: 50px;
-        }
+
+button#indexGrabber {
+    margin-bottom: 50px;
+}
+
+button#fetch-student {
+    margin-bottom: 10px;
+}
