@@ -1,6 +1,6 @@
 <?php
 session_start();
-//include 'logout.php';
+include 'logout.php';
 //$_SESSION['token']=null;
 
 if (!isset($_SESSION['token'])) {

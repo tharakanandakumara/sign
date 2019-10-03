@@ -1,5 +1,5 @@
 <?php ?>
-<script src="frontend/properties.js"></script>
+<!-- <script src="frontend/properties.js"></script> -->
 
 <header id="header" class="header">
 
@@ -93,7 +93,7 @@
                 </div> -->
 
                 <!-- <a class="nav-link" href="/sign/index.php?logout=1"><i class="fa fa-power-off"></i> Logout</a> -->
-                <a class="nav-link" href="/index.php?logout=1" onclick="location.href=gOptions.clientUrl+this.href" ><i class="fa fa-power-off"></i> Logout</a>
+                <a class="nav-link" href="#" onclick="window.location.href=gOptions.clientUrl+'/frontend/index.php?logout=1'" ><i class="fa fa-power-off"></i> Logout</a>
 
                 <!-- <div class="user-menu dropdown-menu">
                     <a class="nav-link" href="#"><i class="fa fa-user"></i> My Profile</a>
