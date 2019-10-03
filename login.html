@@ -160,10 +160,9 @@
                 // Update Url
 
                 success: function (response) { // Setting Token
-
-                    if (response.token) {
+                    if (response.auth && response.token) {
                         console.log("test,", response)
-                        ajaxCallBack(response.token);
+                        ajaxCallBack(response.token, response.isAdmin);
                     } else {
                         notifyMe('.notify_panel', 'Invalid Credentials Entered', '0');
                     }
@@ -182,9 +181,8 @@
             return false;
         });
 
-        function ajaxCallBack(token1) {
-
-            if (token1) {
+        function ajaxCallBack(token1, isAdmin) {
+            if (token1, isAdmin) {
                 console.log("Token Available :" + token1);
                 $.ajax({
                     method: "POST",
@@ -199,7 +197,9 @@
                         notifyMe('.notify_panel', err, '0');
                     }
                 });
-
+            } else {
+                // TODO: Add a proper error page
+                return "Unauthorized! Contact an admin."
             }
         }
 
