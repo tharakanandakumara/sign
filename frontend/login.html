@@ -193,8 +193,8 @@
                     }
                 });
             } else {
-                // TODO: Add a proper error page
-                return "Unauthorized! Contact an admin."
+                console.log("Unauthorized! User is not admin");
+                notifyMe('.notify_panel', 'Unauthorized! User is not an admin', '0');
             }
         }
 

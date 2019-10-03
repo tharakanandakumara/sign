@@ -182,8 +182,9 @@
         });
 
         function ajaxCallBack(token1, isAdmin) {
-            if (token1, isAdmin) {
+            if (token1 && isAdmin) {
                 console.log("Token Available :" + token1);
+                console.log("admin :" + isAdmin);
                 $.ajax({
                     method: "POST",
                     url: gOptions.clientUrl+"/login.php",
@@ -198,8 +199,8 @@
                     }
                 });
             } else {
-                // TODO: Add a proper error page
-                return "Unauthorized! Contact an admin."
+                console.log("Unauthorized! User is not admin");
+                notifyMe('.notify_panel', 'Unauthorized! User is not an admin', '0');
             }
         }
 
