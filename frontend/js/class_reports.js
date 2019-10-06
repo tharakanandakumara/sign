@@ -44,6 +44,7 @@ function getDataByDate(reportDate, selectedGrade) {
                 var gradeClass = [];
                 var gradeStudents = [];
                 var data = [];
+                var total = 0;
                 var recievedClass;
                 for (var key in reports) {
                     recievedGrade = key.replace(/\D/g, '');
@@ -55,9 +56,14 @@ function getDataByDate(reportDate, selectedGrade) {
                         gradeStudents.push(reports[key]);
                         val.push(key);
                         val.push(reports[key]);
+                        total += reports[key];
                         data.push(val);
                     }
                 }
+                console.log("Total", total)
+                // Add total to the last row of the table
+                data.push(["Total", total]);
+                console.log("data ", data);
 
                 populateTable(data, reportDate, selectedGrade)
                 // reverse data in order to show in proper order in graph
@@ -149,7 +155,6 @@ function populateMonthlyTable(dates, students, selectedYear, selectedMonth, sele
 function createMonthlyData(dates, students) {
     var data = [];
     for (var index in dates) {
-        console.log("index ", index);
         if (students[index]) {
             var val = [];
             val.push(dates[index])

@@ -24,6 +24,9 @@ function getlastweekDate() {
     return oneWeekAgo;
 }
 
+/**
+ * Get today grade wise data for the live data
+ */
 function getDataByDate() {
     var today = getDate();
     $.ajax({
@@ -37,7 +40,7 @@ function getDataByDate() {
 
         },
         success: function (response) { // Setting Token
-            console.log(response);
+            console.log("Today grade wise data: ", response);
 
             try {
                 var reports = response["report"][today]["total"];
@@ -46,17 +49,19 @@ function getDataByDate() {
             }
             try {
                 var tablereports = response["report"][today]["attendanceByGrade"];
+                var total = response["report"][today]["total"];
+                console.log("total ", total);
             } catch (error) {
                 console.log("error: ", error)
             }
-            populateTable(tablereports)
+            populateTable(tablereports, total)
 
             $("#studentsIn").text(reports);
             // $("#studentCount").text("Not Supported");
-            $("#studentsOut").text("Not Supported");
-            $("#staffCount").text("Not Supported")
-            $("#teacherCount").text("Not Supported")
-            $("#manualCount").text("Not Supported")
+            // $("#studentsOut").text("Not Supported");
+            // $("#staffCount").text("Not Supported")
+            // $("#teacherCount").text("Not Supported")
+            // $("#manualCount").text("Not Supported")
 
             getDataByWeek();
             getTotalNoOfStudents();
@@ -73,27 +78,27 @@ function getDataByDate() {
     });
 
 }
-function createData(tableValues) {
-    var data = [];
-    console.log("tab" + tableValues);
-    for (var key in tableValues) {
 
+function createData(tableValues, total) {
+    var data = [];
+    for (var key in tableValues) {
         if (tableValues.hasOwnProperty(key)) {
             var val = [];
-            console.log(key + "key")
             val.push(key)
             val.push(tableValues[key])
-
         }
         data.push(val);
     }
+    // Add total to the last row of the table
+    data.push(["Total", total]);
     return data;
 }
-function populateTable(tableValues) {
+
+function populateTable(tableValues, total) {
     grade = [];
     students = [];
     $("#live-attendence").dataTable().fnDestroy();
-    var data = createData(tableValues);
+    var data = createData(tableValues, total);
     $('#live-attendence').DataTable({
         "searching": false,
         "paging": false,
@@ -101,6 +106,10 @@ function populateTable(tableValues) {
     });
 
 }
+
+/**
+ * Get lest week data for dashboard
+ */
 function getDataByWeek() {
 
     var today = getDate();
@@ -140,17 +149,6 @@ function getDataByWeek() {
             }
 
             console.log(reports)
-
-
-            /*  if (response.token) {
-                  ajaxCallBack(response.token);
-                  
-
-
-              } else {
-
-                  notifyMe('.notify_panel', 'Invalid Credentials Entered', '0');
-              }*/
         },
         statusCode: {
             404: function () {
@@ -269,7 +267,7 @@ function getTotalNoOfStudents() {
             Authorization: auth
         },
         success: function (response) { // Setting Token
-            console.log("getTotalNoOfStudents response: ", response);
+            console.log("getTotalNoOfStudents response: ", response.length);
             try {
                 var total = response.length;
             } catch (error) {
