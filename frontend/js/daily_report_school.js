@@ -1,9 +1,9 @@
-var date = []
-var students = [];
+/**
+ * This file contains the data fetch and data populating methods for the dashboard page
+ */
 
 
 function getDate() {
-
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -14,7 +14,6 @@ function getDate() {
 }
 
 function getlastweekDate() {
-
     var oneWeekAgo = new Date();
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
     var dd = String(oneWeekAgo.getDate()).padStart(2, '0');
@@ -28,6 +27,8 @@ function getlastweekDate() {
  * Get today grade wise data for the live data
  */
 function getDataByDate() {
+    console.log("dashboard getDataByDate ");
+
     var today = getDate();
     $.ajax({
         type: "GET",
@@ -63,8 +64,8 @@ function getDataByDate() {
             // $("#teacherCount").text("Not Supported")
             // $("#manualCount").text("Not Supported")
 
-            getDataByWeek();
-            getTotalNoOfStudents();
+            // getDataByWeek();
+            // getTotalNoOfStudents();
 
         },
         statusCode: {
@@ -95,8 +96,6 @@ function createData(tableValues, total) {
 }
 
 function populateTable(tableValues, total) {
-    grade = [];
-    students = [];
     $("#live-attendence").dataTable().fnDestroy();
     var data = createData(tableValues, total);
     $('#live-attendence').DataTable({
@@ -104,16 +103,19 @@ function populateTable(tableValues, total) {
         "paging": false,
         data: data
     });
-
 }
 
 /**
  * Get lest week data for dashboard
  */
 function getDataByWeek() {
+    console.log("dashboard getDataByWeek ");
 
     var today = getDate();
     var lastweek = getlastweekDate();
+
+    var dates = []
+    var students = [];
     $.ajax({
         type: "GET",
         url: gOptions.serverUrl + "/protected/attendance/report?from=" + lastweek + "&to=" + today,
@@ -125,25 +127,20 @@ function getDataByWeek() {
 
         },
         success: function (response) { // Setting Token
-            console.log(response);
-
             try {
                 var reports = response["report"];
                 var countofDays = Object.keys(reports).length;
                 var keys = Object.keys(reports);
                 for (i = 0; i < countofDays; i++) {
-                    var newData = response["report"][keys[i]];
                     console.log("date" + keys[i]);
 
-
-                    date.push(keys[i]);
+                    dates.push(keys[i]);
                     students.push(response["report"][keys[i]]["total"]);
-
-                    console.log(date);
-                    console.log(students);
-
                 }
-                populateWeekGraph();
+
+                console.log("dates ", dates);
+                console.log("students ", students);
+                populateWeekGraph(dates, students);
             } catch (error) {
                 console.log("error: ", error)
             }
@@ -165,7 +162,7 @@ function getDataByWeek() {
 // define a variable to store the chart instance (this must be outside of your function)
 // so that it can be destroyed before creating a new one
 var myChart;
-function populateWeekGraph() {
+function populateWeekGraph(dates, students) {
     // if the chart is not undefined (e.g. it has been created)
     // then destory the old one so we can create a new one later
     if (myChart) {
@@ -177,7 +174,7 @@ function populateWeekGraph() {
     myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: date,
+            labels: dates,
             type: 'line',
             defaultFontFamily: 'Montserrat',
             datasets: [{
@@ -246,10 +243,6 @@ function populateWeekGraph() {
             }
         }
     });
-
-    grade = []
-    students = [];
-
 }
 
 /**
