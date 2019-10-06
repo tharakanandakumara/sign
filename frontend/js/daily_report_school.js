@@ -75,6 +75,7 @@ function getDataByDate() {
 }
 function createData(tableValues) {
     var data = [];
+    var total = 0;
     console.log("tab" + tableValues);
     for (var key in tableValues) {
 
@@ -83,10 +84,14 @@ function createData(tableValues) {
             console.log(key + "key")
             val.push(key)
             val.push(tableValues[key])
-
+            total += tableValues[key];
         }
         data.push(val);
     }
+    console.log("Total", total)
+    // Add total to the last row of the table
+    data.push(["Total", total]);
+    console.log("data ", data);
     return data;
 }
 function populateTable(tableValues) {
