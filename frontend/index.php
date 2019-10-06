@@ -211,7 +211,17 @@ if (!isset($_SESSION['token'])) {
                 normalizeFunction: 'polynomial'
             });
         })(jQuery);
+
+        getTotalNoOfStudents();
         getDataByDate();
+        getDataByWeek();
+
+        // Automatically refresh dashboard every 5 mins (= 300000ms)
+        setInterval(function() {
+            getDataByDate();
+            getDataByWeek();
+        }, 300000);
+        
     </script>
 
 </body>
