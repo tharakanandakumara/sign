@@ -49,7 +49,7 @@
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-fort-awesome"></i><a href="add-students.php">Add Students</a></li>
                             <li><i class="menu-icon ti-themify-logo"></i><a href="update-students.php">Update Students</a></li>
-                            <li><i class="menu-icon ti-themify-logo"></i><a href="font-themify.html">Check Student</a></li>
+                            <!-- <li><i class="menu-icon ti-themify-logo"></i><a href="font-themify.html">Check Student</a></li> -->
                         </ul>
                     </li>
 
@@ -77,7 +77,9 @@
                         <a href="RFID-manager.php"> <i class="menu-icon fa fa-fort-awesome" ></i>RFID Manager</a>
                     </li>
                     <li>
-                        <a href="Profile-pic-uploader.php"><i class="menu-icon ti-themify-logo"></i>Profile Picture Manager</a>
+                        <a 
+                            onclick="window.location.href=gOptions.clientUrl+'/frontend/profile-pic-uploader.php'" 
+                        ><i class="menu-icon ti-themify-logo"></i>Profile Picture Manager</a>
                     </li>
 
                     <!-- <li class="menu-item-has-children dropdown">
