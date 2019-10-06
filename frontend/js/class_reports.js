@@ -56,7 +56,7 @@ function getDataByDate(reportDate, selectedGrade) {
                         gradeStudents.push(reports[key]);
                         val.push(key);
                         val.push(reports[key]);
-                        totla += reports[key];
+                        total += reports[key];
                         data.push(val);
                     }
                 }
@@ -154,20 +154,14 @@ function populateMonthlyTable(dates, students, selectedYear, selectedMonth, sele
  */
 function createMonthlyData(dates, students) {
     var data = [];
-    var total = 0;
     for (var index in dates) {
         if (students[index]) {
             var val = [];
             val.push(dates[index])
             val.push(students[index])
-            total += students[index];
         }
         data.push(val);
     }
-    console.log("Total", total)
-    // Add total to the last row of the table
-    data.push(["Total", total]);
-    console.log("data ", data);
     return data;
 }
 
