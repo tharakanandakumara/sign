@@ -18,17 +18,18 @@ function getDataByDate(reportDate) {
             Authorization: auth
         },
         success: function (response) {
-            console.log(response);
+            console.log("daily reports by grade response: ", response);
             if (!response["report"][reportDate]) return;
 
             try {
                 var reports = response["report"][reportDate]["attendanceByGrade"];
+                var total = response["report"][reportDate]["total"];
                 var chart = response["report"][reportDate]["attendanceByGrade"]
             } catch (error) {
                 console.log("error: ", error)
             }
-            console.log(reports)
-            populateTable(reports, reportDate)
+            console.log("attendanceByGrade: ", reports)
+            populateTable(reports, reportDate, total)
             populateGraph(chart)
             $("#attendenceDate").html("Reports for " + reportDate)
         },
@@ -114,7 +115,6 @@ function populateMonthlyTable(dates, students, selectedYear, selectedMonth, sele
 function createMonthlyData(dates, students) {
     var data = [];
     for (var index in dates) {
-        console.log("index ", index);
         if (students[index]) {
             var val = [];
             val.push(dates[index])
@@ -129,22 +129,25 @@ function createMonthlyData(dates, students) {
  * Create data for daily grade report table
  * @param {*} tableValues 
  */
-function createData(tableValues) {
+function createData(tableValues, total) {
     var data = [];
     for (var key in tableValues) {
         if (tableValues.hasOwnProperty(key)) {
             var val = [];
-            val.push(key)
-            val.push(tableValues[key])
+            val.push(key);
+            val.push(tableValues[key]);
         }
         data.push(val);
     }
+    console.log("Total", total)
+    // Add total to the last row of the table
+    data.push(["Total", total]);
     return data;
 }
 
-function populateTable(tableValues, reportDate) {
+function populateTable(tableValues, reportDate, total) {
     $("#grade-daily-report-table").dataTable().fnDestroy();
-    var data = createData(tableValues);
+    var data = createData(tableValues, total);
     $('#grade-daily-report-table').DataTable({
         data: data
     });
