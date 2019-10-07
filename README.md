@@ -3,7 +3,7 @@
 # Welcome to Sign
 
 ## Brief intro to the repo 
-This is an admin dashboard application for a school attendance marking system. Essentially, a Client Server Application to upload images to server/ S3 bucket. 
+This is an admin dashboard application for a school attendance marking system. 
 
 ## Getting Started
 This is a simple PHP application. Learn how to setup this project and run it on your local machine. 
