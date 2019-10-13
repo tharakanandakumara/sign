@@ -1,8 +1,10 @@
 <?php
 // Check if the form was submitted
-require 'aws/aws-autoloader.php';
+require 'vendor/autoload.php';
+
 use Aws\S3\S3Client;
 use Aws\S3\Exception\S3Exception;
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Check if file was uploaded without errors

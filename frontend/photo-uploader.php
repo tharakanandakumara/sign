@@ -1,7 +1,8 @@
 <?php
 	// Installed the need packages with Composer by running:
 	// $ composer require aws/aws-sdk-php
-	require 'aws/aws-autoloader.php';
+    require 'vendor/autoload.php';
+
 	$bucketName = 'jvaz-images';
 	$filePath = './102093.jpg';
 	$keyName = basename($filePath);

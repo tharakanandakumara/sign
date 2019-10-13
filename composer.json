@@ -1,0 +1,17 @@
+{
+  "name": "sign",
+  "description": "This is an admin dashboard application for a school attendance marking system",
+  "keywords": ["dashboard", "school attendance marking system"],
+  "license": "MIT",
+  "type": "project",
+  "require": {
+    "guzzlehttp/guzzle": "~6.0",
+    "php-di/php-di": "^6.0",
+    "aws/aws-sdk-php": "^3.112"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "App/"
+    }
+  }
+}
