@@ -2,7 +2,7 @@
 
 // Installed the need packages with Composer by running:
 // $ composer require aws/aws-sdk-php
-require __DIR__ . '/App/bootstrap/autoload.php';
+require __DIR__ . '/../App/bootstrap/autoload.php';
 
 use Aws\S3\S3Client;
 use Aws\S3\Exception\S3Exception;

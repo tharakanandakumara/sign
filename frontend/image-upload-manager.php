@@ -1,7 +1,7 @@
 <?php
 
 // Check if the form was submitted
-require __DIR__ . '/App/bootstrap/autoload.php';
+require __DIR__ . '/../App/bootstrap/autoload.php';
 
 use Aws\S3\S3Client;
 use Aws\S3\Exception\S3Exception;
