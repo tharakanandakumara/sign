@@ -32,8 +32,7 @@ If you've never contributed before, see [the first timer's guide on our blog](ht
  - Setup backend project invloving node.js server and MongoDB. Refer to [Student Attendance System (Back end)](https://github.com/ShanikaEdiriweera/student-attendance-system-backend).
  - Setup the base directory with Apache / any PHP web server.
  - Update the URLs in properties.js to point to your backend endpoints.
-
-Then you can create an admin user for yourself using the /user API endpoint
+ - You may create an admin user to access the dashboard using the /user API endpoint of the backend.
 
 ## Dependencies
 This project uses the following dependencies: 
@@ -87,7 +86,7 @@ In general, we follow the ["fork-and-pull" Git workflow](https://github.com/susa
 
 
 ## Versioning
-Coming soon :metal:
+Coming soon :metal:  
 PRs are welcome.
 
 
