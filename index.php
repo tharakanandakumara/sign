@@ -69,7 +69,7 @@ if (!isset($_SESSION['token'])) {
                                     </div>
                                     <div class="form-group">
                                         <label for="dob">DOB</label>
-                                        <input name="DOB" id="dob " type="date" class="form-control" value="" required>
+                                        <input name="DOB" id="dob" type="date" class="form-control" value="" required>
                                     </div>
                                     <div class="form-group">
                                         <input name="address" type="text" class="form-control" placeholder="Address *" value="" required>
@@ -544,8 +544,7 @@ if (!isset($_SESSION['token'])) {
                 if (key == "DOB") {
                     datevalue = convertDate(value);
                     console.log(datevalue);
-                    $('#DOB').val(datevalue);
-
+                    $('[name=DOB]', frm).val(datevalue);
                 }
                 var $ctrl = $('[name=' + key + ']', frm);
                 if ($ctrl.is('select')) {
@@ -559,6 +558,7 @@ if (!isset($_SESSION['token'])) {
                     });
                 } else {
                     switch ($ctrl.attr("type")) {
+                        case "number":
                         case "text":
                         case "hidden":
                         case "textarea":
@@ -567,9 +567,7 @@ if (!isset($_SESSION['token'])) {
                         case "radio":
                         case "checkbox":
                             $ctrl.each(function() {
-                                if ($(this).attr('value') == value) {
-                                    $(this).attr("checked", value);
-                                }
+                                $(this).prop("checked", $(this).attr('value') == value);
                             });
                             break;
                     }
@@ -612,7 +610,11 @@ if (!isset($_SESSION['token'])) {
             var day = date.getDate();
             var year = date.getFullYear();
             var month = date.getMonth() + 1;
-            var dateStr = month + "/" + day + "/" + year;
+
+            var dateStr = year + '-';
+                dateStr += (month < 10 ? '0' : '') + month + '-';
+                dateStr += (day < 10 ? '0' : '') + day;
+
             return dateStr;
         }
     </script>
