@@ -42,6 +42,7 @@ function getDataByDate() {
         },
         success: function (response) { // Setting Token
             console.log("Today grade wise data: ", response);
+            if (!response["report"][today]) return;
 
             try {
                 var reports = response["report"][today]["total"];
@@ -87,8 +88,8 @@ function createData(tableValues, total) {
             var val = [];
             val.push(key)
             val.push(tableValues[key])
+            data.push(val);
         }
-        data.push(val);
     }
     // Add total to the last row of the table
     data.push(["Total", total]);

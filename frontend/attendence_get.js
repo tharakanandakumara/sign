@@ -119,8 +119,8 @@ function createMonthlyData(dates, students) {
             var val = [];
             val.push(dates[index])
             val.push(students[index])
+            data.push(val);
         }
-        data.push(val);
     }
     return data;
 }
@@ -136,8 +136,8 @@ function createData(tableValues, total) {
             var val = [];
             val.push(key);
             val.push(tableValues[key]);
+            data.push(val);
         }
-        data.push(val);
     }
     console.log("Total", total)
     // Add total to the last row of the table
