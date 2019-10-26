@@ -220,7 +220,7 @@ if (!isset($_SESSION['token'])) {
                     var year = $('#year option:selected').text();
                     var grade = $('#grade option:selected').text();
                     var selectedClass = $('#classDropdown option:selected').text();
-                    month = "0" + (parseInt(month) + 1);
+                    month = parseInt(month)<9 ? "0" + (parseInt(month) + 1) : (parseInt(month) + 1)
                     var fromDate = "" + year + "-" + month + "-01";
                     var toDate = "" + year + "-" + month + "-31";
                     console.log("fromDate: ", fromDate);
