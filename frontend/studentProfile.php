@@ -97,7 +97,7 @@ if (!isset($_SESSION['token'])) {
                         <ul>
                             <li>
                                 <h5 id="presents">0</h5>
-                                Presents
+                                Presence
                             </li>
                             <li>
                                 <h5 id="grade"></h5>
