@@ -220,9 +220,13 @@ if (!isset($_SESSION['token'])) {
                     var year = $('#year option:selected').text();
                     var grade = $('#grade option:selected').text();
                     var selectedClass = $('#classDropdown option:selected').text();
-                    month = "0" + (parseInt(month) + 1);
+                    month = parseInt(month)<9 ? "0" + (parseInt(month) + 1) : (parseInt(month) + 1)
                     var fromDate = "" + year + "-" + month + "-01";
-                    var toDate = "" + year + "-" + month + "-31";
+                    // With day = 0, JS will take the last day of the previous month
+                    // We already added 1 month so we just set day to 0
+                    var endOfMonth = new Date(Date.UTC(year, Number(month), 0))
+                    // ISO string is YYYY-DD-MM'T'hh:mm:ssZZZ, so we need to extract only the day part
+                    var toDate = endOfMonth.toISOString().split('T')[0];
                     console.log("fromDate: ", fromDate);
                     console.log("month, year: ", month + year)
 
