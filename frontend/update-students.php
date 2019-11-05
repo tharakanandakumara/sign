@@ -273,16 +273,16 @@ if (!isset($_SESSION['token'])) {
                 $.each(data, function(key, value) {
                     if (key == "DOB") {
                         datevalue = convertDate(value);
-                        console.log("datevalue:", datevalue);
-                        $('#dob').value = datevalue;
-                        document.getElementById("dob").value = "2014-02-09";
+                        $('#dob').val(datevalue);
+
+                        return;
                     }
                     $('input[name="' + key + '"]').val(value);
 
-                    if (key = "grade") {
+                    if (key == "grade") {
                         $('#grade').find('option[value="' + value + '"]').prop('selected', 'selected');
                     }
-                    if (key = "medium") {
+                    if (key == "medium") {
                         $('#medium').find('option[value="' + value + '"]').prop('selected', 'selected');
                     }
 
