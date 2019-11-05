@@ -10,7 +10,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand" href="./"><img src="images/logo.png" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="./"><img src="images/logo.png" alt="Logo" style="height: 30px"></a>
+                <a class="navbar-brand hidden" href="./"><img src="images/logo.png" alt="Logo" style="height: 30%"></a>
                 <h4 class="navbar-text text-white"></h4>
             </div>
 
@@ -34,6 +34,7 @@
                             <li><i class="fa fa-table"></i><a href="class-monthly-report.php">Attendence by Class</a></li>
                         </ul>
                     </li>
+                   
                     <!-- <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Staff Report</a>
                         <ul class="sub-menu children dropdown-menu">
@@ -49,6 +50,7 @@
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-fort-awesome"></i><a href="add-students.php">Add Students</a></li>
                             <li><i class="menu-icon ti-themify-logo"></i><a href="update-students.php">Update Students</a></li>
+                            <li><i class="menu-icon fa fa-users"></i><a href="studentList.php">Student List</a></li>
                             <!-- <li><i class="menu-icon ti-themify-logo"></i><a href="font-themify.html">Check Student</a></li> -->
                         </ul>
                     </li>
